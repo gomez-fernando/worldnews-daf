@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Article;
 
 class HomeController extends Controller
 {
@@ -13,16 +14,30 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//         $this->middleware('auth');
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home');
+
+        // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
+        $publishedArticles = Article::orderBy('id', 'desc')->paginate(5);
+
+        return view('welcome', [
+            'publishedArticles' => $publishedArticles
+        ]);
+    }
+
+    public function home() {
+        $publishedArticles = Article::orderBy('id', 'desc')->paginate(5);
+
+        return view('home', [
+            'publishedArticles' => $publishedArticles
+        ]);
     }
 }
