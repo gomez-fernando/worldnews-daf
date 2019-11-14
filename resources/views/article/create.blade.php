@@ -20,10 +20,11 @@
                             <div class="form-group row">
                                 <label for="author" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="" type="text" id="author" name="author" class="form-control" required>
+                                    <input readonly value="nombre del usuario" type="text" id="author" name="author" class="form-control" required>
 
 
                                 </div>
+
                             </div>
 
                             <div class="form-group row">
@@ -68,7 +69,7 @@
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">{{ __('lang.section') }}</label>
                                 <div class="col-md-8">
-                                    <select  type="select" id="category" name="category" class="form-control" required>
+                                    <select  type="select" id="section" name="section" class="form-control" required>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}">{{ $section->name }}</option>
                                         @endforeach

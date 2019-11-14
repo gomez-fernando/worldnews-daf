@@ -35,40 +35,51 @@ class ArticleController extends Controller
 
         // validacion
         $validate = $this->validate($request, [
-            'category' => 'required',
-            'name' => 'required',
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'section' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
             // 'image_path' => 'required|mimes:jpg,jpeg,png,gif',
             'image_path' => 'required|image',
-            'description' => 'required',
+            'text' => 'required|string',
         ]);
 
 
         // recoger los datos
-        $category = $request->input('category');
-        $name = $request->input('name');
+        $title = $request->input('title');
+        $subtitle = $request->input('subtitle');
+        $section = $request->input('section');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
         $image_path = $request->file('image_path');
-        $description = $request->input('description');
+        $text = $request->input('text');
 
 
         //asignar valores al objeto
         // $user = \Auth::user(); si no funciona del otro modo hay que poner la barra delante de Auth
         $user = Auth::user();
-        $component = new Component();
-        $component->category_id = $category;
-        $component->user_id = $user->id;
-        $component->name = $name;
-        $component->description = $description;
+        $article = new Article();
+        $article->author = $user->id;
+        $article->edited_by = null;
+        $article->section_id = $section;
+        $article->title = $title;
+        $article->sub_title = $subtitle;
+        $article->text = $text;
+        $article->keywords = $keywords;
+        $article->slug = $slug;
+        $article->state = 'review';
 
         // subir fichero
         if ($image_path){
             $image_path_name = time().$image_path->getClientOriginalName();
             Storage::disk('images')->put($image_path_name, File::get($image_path));
-            $component->image_path = $image_path_name;
+            $article->image_path = $image_path_name;
         }
 
-        $component->save();
+        $article->save();
         return redirect()->route('home')->with([
-            'message' => 'El componente ha sido guardado correctamente'
+            'message' => 'El Artículo se ha enviado para revisión'
         ]);
     }
 
@@ -87,13 +98,13 @@ class ArticleController extends Controller
 
     public function delete($id){
         $user = \Auth::user();
-        $component = Component::find($id);
+        $article = Article::find($id);
 
-        $comments = Comment::where('component_id', $id)->get();
-        $likes = Like::where('component_id', $id)->get();
-        $ratings = Rating::where('component_id', $id)->get();
+        $comments = Comment::where('Article_id', $id)->get();
+        $likes = Like::where('Article_id', $id)->get();
+        $ratings = Rating::where('Article_id', $id)->get();
 
-        if ($user  && $component && $component->user->id == $user->id){
+        if ($user  && $article && $article->user->id == $user->id){
             // eliminar comentarios
             if ($comments && count($comments) >= 1){
                 foreach ($comments as $comment) {
@@ -116,14 +127,14 @@ class ArticleController extends Controller
             }
 
             // eliminar ficheros de imagen del storage
-            Storage::disk('images')->delete($component->image_path);
+            Storage::disk('images')->delete($article->image_path);
 
-            // eliminar registro de componente en db
-            $component->delete();
-            $message = array('message' => 'El componente se ha borrado correctamente');
+            // eliminar registro de Articlee en db
+            $article->delete();
+            $message = array('message' => 'El Articlee se ha borrado correctamente');
 
         } else{
-            $message = array('message' => 'El componente NO se ha borrado');
+            $message = array('message' => 'El Articlee NO se ha borrado');
         }
 
         return redirect()->route('home')->with($message);
@@ -131,11 +142,11 @@ class ArticleController extends Controller
 
     public function edit($id){
         $user = \Auth::user();
-        $component = Component::find($id);
+        $article = Article::find($id);
 
-        if ($user && $component && $component->user->id == $user->id){
+        if ($user && $article && $article->user->id == $user->id){
             return view('image.edit', [
-                'component' => $component
+                'Article' => $article
             ]);
         }else{
             return redirect()->route('home');
@@ -154,19 +165,19 @@ class ArticleController extends Controller
         ]);
 
         // recoger los datos
-        $component_id = $request->input('component_id');
+        $article_id = $request->input('Article_id');
         $category = $request->input('category_id');
         $name = $request->input('name');
         $image_path = $request->file('image_path');
         $description = $request->input('description');
 
-        // conseguir objeto component
+        // conseguir objeto Article
         $user = Auth::user();
-        $component = Component::find($component_id);
-        $component->category_id = $category;
-        $component->user_id = $user->id;
-        $component->name = $name;
-        $component->description = $description;
+        $article = Article::find($article_id);
+        $article->category_id = $category;
+        $article->user_id = $user->id;
+        $article->name = $name;
+        $article->description = $description;
 
         ///////// debug ////////////////
         // echo ('  es igual a: ');
@@ -179,13 +190,13 @@ class ArticleController extends Controller
         if ($image_path){
             $image_path_name = time().$image_path->getClientOriginalName();
             Storage::disk('images')->put($image_path_name, File::get($image_path));
-            $component->image_path = $image_path_name;
+            $article->image_path = $image_path_name;
         }
 
         // actualizar registro
-        $component->update();
-        return redirect()->route('component.detail', ['id' => $component_id])
-            ->with(['message' => 'Componente actulizado con exito']);
+        $article->update();
+        return redirect()->route('Article.detail', ['id' => $article_id])
+            ->with(['message' => 'Articlee actulizado con exito']);
     }
 }
 
