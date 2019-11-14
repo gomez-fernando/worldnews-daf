@@ -61,18 +61,14 @@
                             <a href="{{ route('home') }}" class="nav-link">{{ __('lang.home') }}</a>
                         </li>
 
-                        {{--                        <li class="nav-item">--}}
-                        {{--                            <a href="{{ route('likes') }}" class="nav-link">{{ __('lang.favorites') }}</a>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li class="nav-item">--}}
-                        {{--                            <a href="{{ route('component.create') }}" class="nav-link">{{ __('lang.upload_component') }}</a>--}}
-                        {{--                        </li>--}}
-                        {{-- <li>
+
+                                                <li class="nav-item">
+                                                    <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.upload_component') }}</a>
+                                                </li>
+                         <li>
                                 &nbsp; &nbsp;
-                        </li> --}}
-                        {{--                        <li>--}}
-                        {{--                            @include('includes.avatar')--}}
-                        {{--                        </li>--}}
+                        </li>
+                                                
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
