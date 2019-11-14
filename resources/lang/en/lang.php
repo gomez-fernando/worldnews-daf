@@ -47,6 +47,10 @@ return [
     'save_changes' => 'Save changes',
     'text' => 'Text',
     'title' => 'Title',
-
+    'created_at' => 'Creation date',
+    'section' => 'Section',
+    'author' => 'Author',
+    'subtitle' => 'Sub-title',
+    'keywords' => 'Tags (separate with ",")',
 
 ];

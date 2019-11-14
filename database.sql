@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `keywords` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `state` enum('in process','review','published','inactive') NOT NULL,
+  `editor_comments` text DEFAULT NULL,
   `published_at` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
