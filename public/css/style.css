@@ -1,10 +1,10 @@
 body{
-    background: linear-gradient(
-        rgba( 243, 229, 7 , 0.5),
-        rgba(  243, 229, 7 , 0.5)
-    ),  url('../img/fondo.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+    /*background: linear-gradient(*/
+    /*    rgba( 243, 229, 7 , 0.5),*/
+    /*    rgba(  243, 229, 7 , 0.5)*/
+    /*),  url('../img/fondo.jpg');*/
+    /*background-size: cover;*/
+    /*background-attachment: fixed;*/
     /*background-image: url('../img/fondo.jpg');*/
     /*background-size: cover;*/
     /*background-attachment: fixed;*/
@@ -190,12 +190,12 @@ footer a{
     color: black;
 } */
 
-#login-form.card{
-    background-color: inherit;
-    color: #fafafa;
-    /* font-weight: bold; */
-    border: none;
-}
+/*#login-form.card{*/
+/*    background-color: inherit;*/
+/*    color: #fafafa;*/
+/*    !* font-weight: bold; *!*/
+/*    border: none;*/
+/*}*/
 
 #login-form .card-header{
     background-color: inherit;
