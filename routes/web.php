@@ -33,7 +33,7 @@ Route::get('/gente/{search?}', 'userController@index')->name('user.index');
 // PUBLISHED_ARTICLE
 Route::get('/subir-articulo', 'ArticleController@create')->name('article.create');
 Route::post('/article/save', 'ArticleController@save')->name('article.save');
-Route::get('/article/file/{filename}', 'ArticleController@getComponent')->name('article.file');
+Route::get('/article/file/{filename}', 'ArticleController@getArticleImage')->name('article.file');
 Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
 Route::get('/article/editar/{id}', 'ArticleController@edit')->name('article.edit');

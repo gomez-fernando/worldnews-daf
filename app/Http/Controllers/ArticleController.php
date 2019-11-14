@@ -72,7 +72,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function getComponent($filename){
+    public function getArticleImage($filename){
         $file = Storage::disk('images')->get($filename);
         return new Response($file, 200);
     }
