@@ -34,7 +34,7 @@ return [
     'favorites' => 'Favoritos',
     'category' => 'Categoría',
     'upload_picture' => 'Subir foto',
-    'upload_component' => 'Subir componente',
+    'create_article' => 'Crear artículo',
     'profile' => 'Mi perfil',
     'settings' => 'Configuración',
     'comments' => 'Comentarios',
@@ -45,8 +45,8 @@ return [
     'description' => 'Descripción',
     'my_account_settings' => 'Configuración de mi cuenta',
     'save_changes' => 'Guardar cambios',
-
-
+    'text' => 'Texto',
+    'title' => 'Título',
 
 
 ];

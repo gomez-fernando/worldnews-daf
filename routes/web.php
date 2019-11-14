@@ -31,7 +31,7 @@ Route::get('/perfil/{id}', 'userController@profile')->name('profile');
 Route::get('/gente/{search?}', 'userController@index')->name('user.index');
 
 // PUBLISHED_ARTICLE
-Route::get('/subir-articulo', 'ArticleController@create')->name('article.create');
+Route::get('/article/create', 'ArticleController@create')->name('article.create');
 Route::post('/article/save', 'ArticleController@save')->name('article.save');
 Route::get('/article/file/{filename}', 'ArticleController@getArticleImage')->name('article.file');
 Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');

@@ -63,12 +63,12 @@
 
 
                                                 <li class="nav-item">
-                                                    <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.upload_component') }}</a>
+                                                    <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
                                                 </li>
                          <li>
                                 &nbsp; &nbsp;
                         </li>
-                                                
+
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

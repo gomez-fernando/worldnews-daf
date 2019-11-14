@@ -19,14 +19,14 @@ class ArticleController extends Controller
     }
 
     public function create(){
-//        $categories = Category::orderBy('id', 'desc');
-        $categories = DB::table('categories')
+//        $sections = Section::orderBy('id', 'desc');
+        $sections = DB::table('sections')
             ->orderBy('id')
             ->get();
-//        dd($categories);
+//        dd($sections);
 
-        return view('component.create', [
-            'categories' => $categories
+        return view('article.create', [
+            'sections' => $sections
         ]);
     }
 
