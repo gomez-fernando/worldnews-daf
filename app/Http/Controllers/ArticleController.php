@@ -101,41 +101,22 @@ class ArticleController extends Controller
         $user = \Auth::user();
         $article = Article::find($id);
 
-        $comments = Comment::where('Article_id', $id)->get();
-        $likes = Like::where('Article_id', $id)->get();
-        $ratings = Rating::where('Article_id', $id)->get();
+//        $comments = Comment::where('Article_id', $id)->get();
+//        $likes = Like::where('Article_id', $id)->get();
+//        $ratings = Rating::where('Article_id', $id)->get();
 
-        if ($user  && $article && $article->user->id == $user->id){
-            // eliminar comentarios
-            if ($comments && count($comments) >= 1){
-                foreach ($comments as $comment) {
-                    $comment->delete();
-                }
-            }
+        if ($user  && $user->usertype != 'user'){
 
-            // eliminar likes
-            if ($likes && count($likes) >= 1){
-                foreach ($likes as $like) {
-                    $like->delete();
-                }
-            }
-
-            // eliminar ratings
-            if ($ratings && count($ratings) >= 1){
-                foreach ($ratings as $rating) {
-                    $rating->delete();
-                }
-            }
 
             // eliminar ficheros de imagen del storage
             Storage::disk('images')->delete($article->image_path);
 
             // eliminar registro de Articlee en db
             $article->delete();
-            $message = array('message' => 'El Articlee se ha borrado correctamente');
+            $message = array('message' => 'El artículo se ha eliminado correctamente');
 
         } else{
-            $message = array('message' => 'El Articlee NO se ha borrado');
+            $message = array('message' => 'El artículo NO se ha eliminado');
         }
 
         return redirect()->route('home')->with($message);
@@ -144,9 +125,14 @@ class ArticleController extends Controller
     public function edit($id){
         $user = \Auth::user();
         $article = Article::find($id);
+        $sections = DB::table('sections')
+            ->orderBy('id')
+            ->get();
 
-        if ($user && $article && $article->user->id == $user->id){
-            return view('image.edit', [
+        if ($user && $user->usertype != 'user'){
+                    dd($sections);
+
+            return view('article.edit', [
                 'article' => $article
             ]);
         }else{
