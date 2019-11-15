@@ -27,9 +27,11 @@ class HomeController extends Controller
 
         // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
         $publishedArticles = Article::orderBy('id', 'desc')->paginate(5);
+//        $sections = Section::orderBy('id', 'desc');
 
         return view('home', [
-            'publishedArticles' => $publishedArticles
+            'publishedArticles' => $publishedArticles,
+//            'section' => $sections
         ]);
     }
 
