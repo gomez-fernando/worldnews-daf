@@ -20,8 +20,8 @@ Route::get('/', function () {
 
 // RUTAS GENERALES
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('welcome');
-Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 // USUARIO
 Route::get('/configuracion', 'userController@config')->name('config');

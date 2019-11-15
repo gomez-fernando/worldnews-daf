@@ -94,7 +94,7 @@ body{
     padding: 1.3em 1.3em 0em 1.3em;
 }
 
-.pub_image .btn-comments{
+.pub_image .btn-ver_articulo{
     margin: 0px 20px 20px 5px;
     /* margin-left: 0px; */
 }
@@ -109,7 +109,7 @@ body{
     width: 20px;
 }
 
-.pub_image_detail .comments{
+.pub_image_detail .ver_articulo{
     padding: 20px;
 }
 

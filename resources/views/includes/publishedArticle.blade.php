@@ -21,10 +21,21 @@
         </div>
 
         <div class="description">
+            <p>
+                {{ $publishedArticle->sub_title}}
+            </p>
+        </div>
+
+        <div class="description">
 
             <p>
                 {{ $publishedArticle->text }}
             </p>
+        </div>
+
+        {{-- // ver artículo --}}
+        <div class="ver_articulo">
+            <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning btn-ver_articulo">{{ __('lang.read_article') }} </a>
         </div>
 
     </div>

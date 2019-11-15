@@ -89,10 +89,11 @@ class ArticleController extends Controller
     }
 
     public function detail($id){
-        $article = Article::find($id);
+        $publishedArticle = Article::find($id);
+//        dd($publishedArticle);
 
         return view('article.detail', [
-            'article' => $article
+            'publishedArticle' => $publishedArticle
         ]);
     }
 
@@ -146,7 +147,7 @@ class ArticleController extends Controller
 
         if ($user && $article && $article->user->id == $user->id){
             return view('image.edit', [
-                'Article' => $article
+                'article' => $article
             ]);
         }else{
             return redirect()->route('home');

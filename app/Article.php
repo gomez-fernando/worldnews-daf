@@ -10,7 +10,7 @@ class Article extends Model
 
     // relacion ONE TO ONE
     public function user(){
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'author');
     }
 
     // relacion ONE TO ONE

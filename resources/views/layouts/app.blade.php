@@ -62,17 +62,17 @@
                         </li>
 
 
-                                                <li class="nav-item">
-                                                    <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
-                                                </li>
-                         <li>
-                                &nbsp; &nbsp;
+                        <li class="nav-item">
+                            <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
                         </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('article.edit') }}" class="nav-link">{{ __('lang.edit_article') }}</a>--}}
+{{--                        </li>--}}
 
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->nick }} <span class="caret"></span>
+                                {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

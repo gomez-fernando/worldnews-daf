@@ -37,7 +37,7 @@ return [
     'create_article' => 'Create Article',
     'profile' => 'Profile',
     'settings' => 'Settings',
-    'comments' => 'Comments',
+    'read_article' => 'Read article',
     'search' => 'Search',
     'see_profile' => 'See profile',
     'favorite_components' => 'My favorite components',
@@ -52,5 +52,6 @@ return [
     'author' => 'Author',
     'subtitle' => 'Sub-title',
     'keywords' => 'Tags (separate with ",")',
+    'published_at' => 'Published',
 
 ];
