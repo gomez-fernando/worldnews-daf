@@ -1,43 +1,29 @@
-<div class="card pub_image">
-    <div class="card-header">
-
-        <div class="data-user">
+<div class="box">
+    <div class="row">
+        <div class="col-4">
+            <figure>
+                <img src="{{ route('article.file', ['filename' => $publishedArticle->image_path]) }}" alt="imagen del articulo">
+            </figure>
+        </div>
+        <div class="col-8">
+            <div class="date">
+                {{ $publishedArticle->published_at}}
+            </div>
+            <h3 class="title">
             <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}">
                 {{ $publishedArticle->title}}
             </a>
-        </div>
-
-    </div>
-
-    <div class="card-body">
-        <div class="image-container">
-            <img src="{{ route('article.file', ['filename' => $publishedArticle->image_path]) }}" alt="imagen del articlee">
-        </div>
-
-        <div class="description">
-            <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}">
-                {{ $publishedArticle->title}}
-            </a>
-        </div>
-
-        <div class="description">
-            <p>
+            </h3>
+            <div class="subtitle">
                 {{ $publishedArticle->sub_title}}
-            </p>
-        </div>
-
-        <div class="description">
-
-            <p>
+            </div>
+            <div class="summary">
                 {{ $publishedArticle->text }}
-            </p>
+            </div>
+            <div class="link">
+                <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}" class="btn">Leer m&aacute;s <i></i></a>
+            </div>
         </div>
-
-        {{-- // ver artículo --}}
-        <div class="ver_articulo">
-            <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning btn-ver_articulo">{{ __('lang.read_article') }} </a>
-        </div>
-
     </div>
 </div>
 

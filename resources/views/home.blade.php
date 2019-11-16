@@ -6,22 +6,18 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row col-md-6 justify-content-center">
 
-                {{-- // mostramos mensaje --}}
-                @include('includes.message')
-                {{-- // mustro los artículos --}}
-                @foreach ($publishedArticles as $publishedArticle)
-                    @include('includes.publishedArticle', ['publishedArticle' => $publishedArticle])
-                @endforeach
-                {{-- // añadimos enlaces de paginacion --}}
-                {{-- IMPORTANTE CLASS CLEARFIX para limpiar los flotados --}}
-                <div class="clearfix"></div>
-                <div class="row justify-content-center">
-                    {{ $publishedArticles->links() }}
-                </div>
-
+            {{-- // mostramos mensaje --}}
+            @include('includes.message')
+            {{-- // mustro los artículos --}}
+            @foreach ($publishedArticles as $publishedArticle)
+                @include('includes.publishedArticle', ['publishedArticle' => $publishedArticle])
+            @endforeach
+            {{-- // añadimos enlaces de paginacion --}}
+            <div class="clearfix"></div>
+            <div class="row justify-content-center">
+                {{ $publishedArticles->links() }}
             </div>
 
         </div>

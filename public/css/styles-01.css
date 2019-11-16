@@ -1,3 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,600|Raleway:400,600|Poppins');
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+i {
+	-webkit-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center; 
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #f4f4f4 inset !important;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+textarea { 
+    overflow:auto; 
+    resize:none; 
+} 
+::-webkit-input-placeholder {
+    color: #333333;
+}
+::-moz-placeholder {
+    color: #333333;
+}
+:-ms-input-placeholder {
+    color: #333333;
+}
+:-moz-placeholder {
+    color: #333333;
+}
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+:focus {
+    outline: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    text-decoration: none!important;
+}
+.no-padding {
+    padding: 0;
+}
+h1, h2, h3, h4 {
+	font-weight: bold;
+	font-family: 'Raleway', serif;
+}
+
+
+/**/
 .header-01 {
 	background-color: #58595b;
 	color: #ffffff;
@@ -7,6 +75,7 @@
 .header-01 .nav-link {
 	color: #ffffff;
 }
+/**/
 .header-02 {
 	padding: 10px 0;
 	background-color: #ffffff;
@@ -20,3 +89,97 @@
 	background-position: center;
 	margin: 0 10px;
 }
+.header-02 .nav-link {
+	font-weight: bold;
+	font-family: 'Raleway', serif;
+	font-size: 16px;
+	color: #111111;
+}
+.header-02 .nav-link:hover {
+	color: #39b54a;
+}
+/**/
+.news-list {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #f4f4f4;
+}
+.news-list .box {
+	padding: 20px;
+    background-color: #ffffff;
+}
+.news-list .box h3 {
+	margin: 0 0 5px 0;
+}
+
+.news-list .box h3.title a {
+	color: #000000;
+	font-weight: bold;
+	font-family: 'Poppins';
+	font-size: 22px;
+}
+
+.news-list .box h3.title a:hover {
+	text-decoration: none;
+}
+.news-list .box .subtitle {
+	color: #000000;
+	margin: 0 0 5px 0;
+}
+.news-list .box .summary {
+	color: #000000;
+	font-size: 14px;
+	line-height: 22px;
+	max-height: 44px;
+	overflow: hidden;
+	margin: 0 0 10px 0;
+}
+.news-list .box .date {
+	color: #aaaaaa;
+	font-family: 'Poppins';
+	font-size: 14px;
+	margin: 0;
+}
+.news-list .box .link .btn {
+	color: #39b54a;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 0;
+}
+.news-list .box .link .btn i {
+	width: 20px;
+	height: 22px;
+	margin-left: 4px;
+	display: inline-block;
+	float: right;
+	background-image: url(../img/icon-right-01.png);
+}
+.news-list figure {height: 150px;}
+.news-list figure img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/**/
+a.back-to-top {
+    background-color: #39b54a;
+    color: #ffffff;
+    line-height: 30px;
+    height: 30px;
+    width: 60px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+/**/
+footer {
+	padding: 20px 0;
+	color: #666666;
+}
+footer a {
+	color: #666666;
+	font-weight: bold;
+}
+
+
+

@@ -28,7 +28,7 @@
     <link href="{{ asset('css/styles-02.css') }}" rel="stylesheet">
 
     <!-- favicoon -->
-    <link rel="shortout icon" type="image/png" href="{{ asset('../img/favicon-laravel-32x32.png') }}">
+    <link rel="shortout icon" type="image/png" href="{{ asset('../img/favicon.ico') }}">
 </head>
 <body>
 <div id="app">
@@ -107,9 +107,7 @@
 
     <nav class="navbar navbar-expand-md header-02">
         <div class="container">
-            <div class="navbar-brand" href="{{ url('/') }}">
-                
-            </div>
+            <a class="navbar-brand" href="{{ url('/') }}"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -136,7 +134,7 @@
     </nav>
 
 
-    <main class="py-4">
+    <main class="news-list">
         @yield('content')
     </main>
 
@@ -147,14 +145,11 @@ Footer
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        Developed by: <a href="https://sites.google.com/fp.uoc.edu/grupo-jadf/presentaci%C3%B3n-del-proyecto" target="_blank"><strong>Grupo JDAF 2019 &copy;</strong></a>
-                    </div>
-                    <div class="credits">
-
-                        <a href="https://sites.google.com/fp.uoc.edu/grupo-jadf/presentaci%C3%B3n-del-proyecto" target="_blank"><strong>Github</strong></a>
-                    </div>
+                <div class="col-md-12 copyright">
+                    <a href="https://sites.google.com/fp.uoc.edu/grupo-jadf/presentaci%C3%B3n-del-proyecto" target="_blank">Grupo DAF 2019</a>
+                    |
+                    <a href="https://sites.google.com/fp.uoc.edu/grupo-jadf/presentaci%C3%B3n-del-proyecto" target="_blank">Github</a>
+                    | Todos los derechos reservados
                 </div>
             </div>
         </div>
