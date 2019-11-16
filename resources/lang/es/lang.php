@@ -53,6 +53,7 @@ return [
     'subtitle' => 'Subtítulo',
     'keywords' => 'Tags (separar con ";")',
     'published_at' => 'Publicado',
+    'edit_article' => 'Editar artículo',
 
 
 ];

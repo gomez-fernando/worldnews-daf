@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Section;
 
 class HomeController extends Controller
 {
@@ -27,11 +28,11 @@ class HomeController extends Controller
 
         // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
         $publishedArticles = Article::orderBy('id', 'desc')->paginate(5);
-//        $sections = Section::orderBy('id', 'desc');
+        $sections = Section::orderBy('id', 'desc')->get();
 
         return view('home', [
             'publishedArticles' => $publishedArticles,
-//            'section' => $sections
+            'sections' => $sections
         ]);
     }
 

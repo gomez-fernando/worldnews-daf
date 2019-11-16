@@ -53,5 +53,5 @@ return [
     'subtitle' => 'Sub-title',
     'keywords' => 'Tags (separate with ",")',
     'published_at' => 'Published',
-
+    'edit_article' => 'Edit article',
 ];

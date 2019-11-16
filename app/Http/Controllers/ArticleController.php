@@ -129,11 +129,12 @@ class ArticleController extends Controller
             ->orderBy('id')
             ->get();
 
-        if ($user && $user->usertype != 'user'){
-                    dd($sections);
+        if ($user && $user->usertype != 'editor'){
+//                    dd($sections);
 
             return view('article.edit', [
-                'article' => $article
+                'article' => $article,
+                'sections' => $sections
             ]);
         }else{
             return redirect()->route('home');

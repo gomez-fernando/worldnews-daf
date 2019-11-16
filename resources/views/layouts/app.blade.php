@@ -61,10 +61,12 @@
                             <a href="{{ route('home') }}" class="nav-link">{{ __('lang.home') }}</a>
                         </li>
 
+                        @if (Auth::user() && Auth::user()->usertype != 'editor')
+                            <li class="nav-item">
+                                <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
+                            </li>
+                        @endif
 
-                        <li class="nav-item">
-                            <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
-                        </li>
 {{--                        <li class="nav-item">--}}
 {{--                            <a href="{{ route('article.edit') }}" class="nav-link">{{ __('lang.edit_article') }}</a>--}}
 {{--                        </li>--}}
@@ -122,7 +124,14 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                   <-------------------- Listar aquí las secciones ---------------------->
+                    @if(isset($sections))
+                        @foreach ($sections as $section)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ $section->name }}</a>
+                            </li>
+                        @endforeach
+                    @endif
+
                 </ul>
             </div>
         </div>

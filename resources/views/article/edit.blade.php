@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.create_article') }}</title>
+    <title>{{ __('lang.edit_article') }}</title>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('lang.create_article') }}
+                        {{ __('lang.edit_article') }}
                     </div>
                     <div class="card-body">
                         <form action="{{ route('article.save') }}" method="POST" id="" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                             <div class="form-group row">
                                 <label for="author" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="nombre del usuario" type="text" id="author" name="author" class="form-control" required>
+                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author" name="author" class="form-control" required>
 
 
                                 </div>
@@ -30,7 +30,7 @@
                             <div class="form-group row">
                                 <label for="title" class="col-md-3 col-form-label text-md-right">{{ __('lang.title') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="title" name="title" class="form-control" required>
+                                    <input type="text" value="{{ $article->title }}" id="title" name="title" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('title'))
@@ -45,7 +45,7 @@
                             <div class="form-group row">
                                 <label for="subtitle" class="col-md-3 col-form-label text-md-right">{{ __('lang.subtitle') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="subtitle" name="subtitle" class="form-control" required>
+                                    <input type="text" value="{{ $article->sub_title }}" id="subtitle" name="subtitle" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('subtitle'))
@@ -60,7 +60,7 @@
                             <div class="form-group row">
                                 <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="" type="text" id="created_at" name="created_at" class="form-control" required>
+                                    <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="created_at" class="form-control" required>
 
 
                                 </div>
@@ -71,7 +71,11 @@
                                 <div class="col-md-8">
                                     <select  type="select" id="section" name="section" class="form-control" required>
                                         @foreach ($sections as $section)
-                                            <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                            <option value="{{ $section->id }}"
+                                            @if ($section->id == $article->section_id)
+                                                selected
+                                            @endif
+                                            >{{ $section->name }}</option>
                                         @endforeach
                                     </select>
 

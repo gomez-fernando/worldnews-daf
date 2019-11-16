@@ -13,10 +13,11 @@
                         <div class="data-user">
                                 {{ $publishedArticle->title}}
 
-                                @if (Auth::user() && Auth::user()->usertype == 'admin')
                                     <div class="actions ml-auto">
                                         <a href="{{ route('article.edit', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning">Actualizar</a>
                                     {{-- <a href="{{ route('article.delete', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-light">Borrar</a> --}}
+
+                                    @if (Auth::user() && Auth::user()->usertype == 'admin')
 
                                     <!-- Button to Open the Modal -->
                                         <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#myModal">
@@ -50,9 +51,9 @@
                                             </div>
                                         </div>
 
+                                        @endif
 
                                     </div>
-                                @endif
                         </div>
 
 
