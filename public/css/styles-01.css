@@ -1,0 +1,22 @@
+.header-01 {
+	background-color: #58595b;
+	color: #ffffff;
+	padding: 0;
+	font-size: 13px;
+}
+.header-01 .nav-link {
+	color: #ffffff;
+}
+.header-02 {
+	padding: 10px 0;
+	background-color: #ffffff;
+}
+.header-02 .navbar-brand {
+	background-image: url(../img/logo-01.png);
+	height: 60px;
+	width: 200px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 0 10px;
+}
