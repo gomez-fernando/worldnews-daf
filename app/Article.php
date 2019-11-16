@@ -14,7 +14,7 @@ class Article extends Model
     }
 
     // relacion ONE TO ONE
-    public function category(){
-        return $this->belongsTo('App\Category', 'category_id');
+    public function section(){
+        return $this->belongsTo('App\Section', 'section_id');
     }
 }
