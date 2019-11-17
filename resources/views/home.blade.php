@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row col-md-6 justify-content-center">
+        <div class="row">
 
             {{-- // mostramos mensaje --}}
             @include('includes.message')
