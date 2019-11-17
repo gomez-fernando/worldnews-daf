@@ -57,6 +57,7 @@ return [
     'change_image' => 'Cambiar imagen',
     'editor_comments' => "Comentarios del editor",
     'send_to_review' => "Enviar a revisión",
+    'state' => "Estado",
 
 
 ];

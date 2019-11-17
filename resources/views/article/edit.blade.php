@@ -150,6 +150,21 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="state" class="col-md-3 col-form-label text-md-right">{{ __('lang.state') }}</label>
+                                <div class="col-md-8">
+                                    <input type="text" readonly value="{{ $article->state }}" id="state" name="state" class="form-control" required>
+
+                                    {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
+                                    @if ($errors->has('state'))
+                                        <span class="alert-danger" role="alert">
+                                    <strong>{{ $errors->first('state') }}</strong>
+                                    </span>
+
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="editor_comments" class="col-md-3 col-form-label text-md-right">{{ __('lang.editor_comments') }}</label>
                                 <div class="col-md-8">
                                     <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
