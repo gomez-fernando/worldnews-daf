@@ -14,7 +14,7 @@
                         {{ __('lang.edit_article') }}
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('article.save') }}" method="POST" id="" enctype="multipart/form-data">
+                        <form action="{{ route('article.save') }}" method="POST" id="{{ $article->id }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.image') }}</label>
+                                <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.change_image') }}</label>
                                 <div class="col-md-8">
                                     <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>
 
@@ -107,7 +107,7 @@
                             <div class="form-group row">
                                 <label for="keywords" class="col-md-3 col-form-label text-md-right">{{ __('lang.keywords') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="keywords" name="keywords" class="form-control" required>
+                                    <input type="text" value="{{ $article->keywords }}" id="keywords" name="keywords" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('keywords'))
@@ -122,7 +122,7 @@
                             <div class="form-group row">
                                 <label for="slug" class="col-md-3 col-form-label text-md-right">{{ __('Slug') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="slug" name="slug" class="form-control" required>
+                                    <input type="text" value="{{ $article->slug }}" id="slug" name="slug" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('slug'))
@@ -137,7 +137,7 @@
                             <div class="form-group row">
                                 <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('lang.text') }}</label>
                                 <div class="col-md-8">
-                                    <textarea id="text" name="text" class="form-control" required></textarea>
+                                    <textarea id="text" name="text" class="form-control" required>{{ $article->text }}</textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('text'))
@@ -150,14 +150,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('lang.text') }}</label>
+                                <label for="editor_comments" class="col-md-3 col-form-label text-md-right">{{ __('lang.editor_comments') }}</label>
                                 <div class="col-md-8">
-                                    <textarea id="text" name="text" class="form-control" required></textarea>
+                                    <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
+                                        readonly
+                                    @endif id="editor_comments" name="editor_comments" class="form-control" required>{{$article->editor_comments }}</textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
-                                    @if ($errors->has('text'))
+                                    @if ($errors->has('editor_comments'))
                                         <span class="alert-danger" role="alert">
-                                    <strong>{{ $errors->first('text') }}</strong>
+                                    <strong>{{ $errors->first('editor_comments') }}</strong>
                                     </span>
 
                                     @endif
@@ -167,7 +169,7 @@
                             {{-- <div class="form-group row justify-content-center"> --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="{{ __('lang.create_article') }}" id="" name="" class="btn btn-primary" />
+                                    <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />
                                 </div>
                             </div>
                         </form>

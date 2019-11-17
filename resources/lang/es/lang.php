@@ -54,6 +54,9 @@ return [
     'keywords' => 'Tags (separar con ";")',
     'published_at' => 'Publicado',
     'edit_article' => 'Editar artículo',
+    'change_image' => 'Cambiar imagen',
+    'editor_comments' => "Comentarios del editor",
+    'send_to_review' => "Enviar a revisión",
 
 
 ];

@@ -30,7 +30,7 @@ Route::get('/user/avatar/{filename}', 'userController@getImage')->name('user.ava
 Route::get('/perfil/{id}', 'userController@profile')->name('profile');
 Route::get('/gente/{search?}', 'userController@index')->name('user.index');
 
-// PUBLISHED_ARTICLE
+// ARTICLE
 Route::get('/article/create', 'ArticleController@create')->name('article.create');
 Route::post('/article/save', 'ArticleController@save')->name('article.save');
 Route::get('/article/file/{filename}', 'ArticleController@getArticleImage')->name('article.file');

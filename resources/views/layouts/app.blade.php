@@ -50,11 +50,25 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('lang.login') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('lang.register') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                 Gestor de Contenidos  <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+
+
+                                <a class="dropdown-item" href="{{ route('login') }}">
+                                    {{ __('lang.login') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('register') }}">
+                                    {{ __('lang.register') }}
+                                </a>
+
+
+                            </div>
                         </li>
                     @else
                         <li class="nav-item">

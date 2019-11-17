@@ -148,7 +148,7 @@
                             {{-- <div class="form-group row justify-content-center"> --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="{{ __('lang.create_article') }}" id="" name="" class="btn btn-primary" />
+                                    <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />
                                 </div>
                             </div>
                         </form>

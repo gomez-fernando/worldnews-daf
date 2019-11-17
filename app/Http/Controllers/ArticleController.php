@@ -129,7 +129,7 @@ class ArticleController extends Controller
             ->orderBy('id')
             ->get();
 
-        if ($user && $user->usertype != 'editor'){
+        if (($user && $user->usertype != 'journalist')  || ($user && $user->id == $article->author)){
 //                    dd($sections);
 
             return view('article.edit', [

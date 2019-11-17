@@ -11,11 +11,15 @@
                     <div class="card-header">
 
                         <div class="data-user">
-                                {{ $publishedArticle->title}}
 
-                                    <div class="actions ml-auto">
-                                        <a href="{{ route('article.edit', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning">Actualizar</a>
-                                    {{-- <a href="{{ route('article.delete', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-light">Borrar</a> --}}
+                            {{ $publishedArticle->title}}
+
+                        @if ((Auth::user() && Auth::user()->usertype != 'journalist')  || (Auth::user() && Auth::user()->id == $publishedArticle->author))
+                                <div class="actions ml-auto">
+                                    <a href="{{ route('article.edit', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning">Actualizar</a>
+                            @endif
+
+
 
                                     @if (Auth::user() && Auth::user()->usertype == 'admin')
 
