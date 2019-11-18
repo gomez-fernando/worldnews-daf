@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Article;
+use App\DeletedArticle;
 use App\Section;
 use App\User;
 
@@ -143,25 +144,57 @@ class ArticleController extends Controller
 
     public function update(Request $request){
 
+//                dd($request);
+
         // validacion
         $validate = $this->validate($request, [
-            'category_id' => 'required',
-            'name' => 'required',
-            // 'image_path' => 'required|mimes:jpg,jpeg,png,gif',
-            'image_path' => 'required|image',
-            'description' => 'required',
+            'id' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'section' => 'required|string',
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'image_path' => 'image',
+            'text' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
         ]);
 
         // recoger los datos
-        $article_id = $request->input('Article_id');
-        $category = $request->input('category_id');
-        $name = $request->input('name');
+        $id = $request->input('id');
+        $author = $request->input('author');
+        $section = $request->input('section');
+        $title = $request->input('title');
+        $subtitle = $request->input('subtitle');
         $image_path = $request->file('image_path');
-        $description = $request->input('description');
+        $text = $request->input('text');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
+        $state = $request->input('state');
+
+//        dd($image_path);
+
+//        obtenemos el articulo antiguo
+        $originalArticle = Article::find($id);
+
+
+//        asignamos valores al artículo que se guardará en `deleted_articles`
+
+        $user = Auth::user();
+        $deletedArticle = new DeletedArticle();
+        $deletedArticle->article_id = $id;
+        $deletedArticle->edited_by = $user->id;
+        $deletedArticle->section_id = $section;
+        $deletedArticle->title = $title;
+        $deletedArticle->sub_title = $subtitle;
+        $deletedArticle->image_path = $originalArticle->image_path;
+        $deletedArticle->text = $text;
+        $deletedArticle->keywords = $keywords;
+        $deletedArticle->slug = $slug;
+        $deletedArticle->state = $state;
 
         // conseguir objeto Article
-        $user = Auth::user();
-        $article = Article::find($article_id);
+        $article = Article::find($id);
         $article->category_id = $category;
         $article->user_id = $user->id;
         $article->name = $name;

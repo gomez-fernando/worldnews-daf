@@ -17,4 +17,9 @@ class Article extends Model
     public function section(){
         return $this->belongsTo('App\Section', 'section_id');
     }
+
+    //relacion ONE TO MANY
+    public function deleted_Article() {
+        return $this->hasMany('App\DeletedArticle');
+    }
 }

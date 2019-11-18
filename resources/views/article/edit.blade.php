@@ -14,15 +14,14 @@
                         {{ __('lang.edit_article') }}
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('article.save') }}" method="POST" id="{{ $article->id }}" enctype="multipart/form-data">
+                        <form action="{{ route('article.update') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" value="{{ $article->id }}" name="id" id="" />
 
                             <div class="form-group row">
                                 <label for="author" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
                                     <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author" name="author" class="form-control" required>
-
-
                                 </div>
 
                             </div>
@@ -61,8 +60,13 @@
                                 <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>
                                 <div class="col-md-8">
                                     <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="created_at" class="form-control" required>
+                                </div>
+                            </div>
 
-
+                            <div class="form-group row">
+                                <label for="published_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.published_at') }}</label>
+                                <div class="col-md-8">
+                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>
                                 </div>
                             </div>
 
@@ -89,10 +93,17 @@
                                 </div>
                             </div>
 
+                                <div class="container-avatar">
+                                    <img src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
+                                </div>
+
+{{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
+
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.change_image') }}</label>
                                 <div class="col-md-8">
-                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>
+{{--                                    <input type="file" value="{{ $article->image_path }}" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
+                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('image_path'))
