@@ -193,6 +193,8 @@ class ArticleController extends Controller
         $deletedArticle->slug = $slug;
         $deletedArticle->state = $state;
 
+        dd($deletedArticle);
+
         // conseguir objeto Article
         $article = Article::find($id);
         $article->category_id = $category;
