@@ -173,27 +173,46 @@ class ArticleController extends Controller
         $state = $request->input('state');
 
 //        dd($image_path);
+        $user = Auth::user();
 
 //        obtenemos el articulo antiguo
         $originalArticle = Article::find($id);
 
 
 //        asignamos valores al artículo que se guardará en `deleted_articles`
-
-        $user = Auth::user();
         $deletedArticle = new DeletedArticle();
-        $deletedArticle->article_id = $id;
+        $deletedArticle->article_id = $originalArticle->id;
         $deletedArticle->edited_by = $user->id;
-        $deletedArticle->section_id = $section;
-        $deletedArticle->title = $title;
-        $deletedArticle->sub_title = $subtitle;
+        $deletedArticle->section_id = $originalArticle->section_id;
+        $deletedArticle->title = $originalArticle->title;
+        $deletedArticle->sub_title = $originalArticle->sub_title;
         $deletedArticle->image_path = $originalArticle->image_path;
-        $deletedArticle->text = $text;
-        $deletedArticle->keywords = $keywords;
-        $deletedArticle->slug = $slug;
-        $deletedArticle->state = $state;
+        $deletedArticle->text = $originalArticle->text;
+        $deletedArticle->keywords = $originalArticle->keywords;
+        $deletedArticle->slug = $originalArticle->slug;
+        $deletedArticle->state = $originalArticle->state;
 
-        dd($deletedArticle);
+//        dd($deletedArticle);
+
+        $deletedArticle->save();
+        die();
+
+//        $deletedArticle = new DeletedArticle();
+//        $deletedArticle->article_id = $id;
+//        $deletedArticle->edited_by = $user->id;
+//        $deletedArticle->section_id = $section;
+//        $deletedArticle->title = $title;
+//        $deletedArticle->sub_title = $subtitle;
+//        $deletedArticle->image_path = $originalArticle->image_path;
+//        $deletedArticle->text = $text;
+//        $deletedArticle->keywords = $keywords;
+//        $deletedArticle->slug = $slug;
+//        $deletedArticle->state = $state;
+
+//        dd($deletedArticle);
+
+//        guardamos el $deletedArticle
+
 
         // conseguir objeto Article
         $article = Article::find($id);
