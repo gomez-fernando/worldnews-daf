@@ -106,10 +106,12 @@ h1, h2, h3, h4 {
 }
 .news-list .box {
 	padding: 20px;
-    background-color: #ffffff;
+	background-color: #ffffff;
+	margin-bottom: 20px;
 }
 .news-list .box h3 {
 	margin: 0 0 5px 0;
+	line-height: 1;
 }
 
 .news-list .box h3.title a {
