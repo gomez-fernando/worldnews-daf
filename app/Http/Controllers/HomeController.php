@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index($section_id = null)
     {
-
+//        se muestran los artículos por section si está definida en el get
         if(!empty($section_id)){
             // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
             $publishedArticles = Article::orderBy('id', 'desc')

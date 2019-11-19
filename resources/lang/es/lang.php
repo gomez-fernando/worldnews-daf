@@ -58,6 +58,7 @@ return [
     'editor_comments' => "Comentarios del editor",
     'send_to_review' => "Enviar a revisión",
     'state' => "Estado",
+    'approve_publication' => "Aprobar publicación",
 
 
 ];

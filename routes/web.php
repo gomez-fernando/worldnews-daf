@@ -38,6 +38,8 @@ Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
 Route::get('/article/editar/{id}', 'ArticleController@edit')->name('article.edit');
 Route::post('/article/update', 'ArticleController@update')->name('article.update');
+Route::get('/article/approve-publication', 'ArticleController@approvePublication')->name('article.approve-publication');
+
 
 
 

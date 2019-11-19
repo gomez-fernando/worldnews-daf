@@ -74,16 +74,17 @@
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">{{ __('lang.home') }}</a>
                         </li>
+                    @if (Auth::user() && Auth::user()->usertype != 'editor')
+                        <li class="nav-item">
+                            <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
+                        </li>
+                    @endif
 
-                        @if (Auth::user() && Auth::user()->usertype != 'editor')
-                            <li class="nav-item">
-                                <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
-                            </li>
-                        @endif
-
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route('article.edit') }}" class="nav-link">{{ __('lang.edit_article') }}</a>--}}
-{{--                        </li>--}}
+                    @if (Auth::user() && Auth::user()->usertype == 'editor')
+                        <li class="nav-item">
+                            <a href="{{ route('article.approve-publication') }}" class="nav-link">{{ __('lang.approve_publication') }}</a>
+                        </li>
+                    @endif
 
 
                         <li class="nav-item dropdown">
@@ -93,9 +94,6 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-{{--                                <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id]) }}">--}}
-{{--                                    {{ __('lang.profile') }}--}}
-{{--                                </a>--}}
 
                                 <a class="dropdown-item" href="{{ route('config') }}">
                                     {{ __('lang.profile') }}
