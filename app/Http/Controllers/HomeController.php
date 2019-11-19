@@ -21,16 +21,28 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param $section_id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($section_id = null)
     {
 
-        // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
-        $publishedArticles = Article::orderBy('id', 'desc')
-                            ->where('state', 'publicado')
-                            ->paginate(5);
-        $sections = Section::orderBy('id')->get();
+        if(!empty($section_id)){
+            // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
+            $publishedArticles = Article::orderBy('id', 'desc')
+                ->where('state', 'publicado')
+                ->where('section_id', $section_id)
+                ->paginate(5);
+            $sections = Section::orderBy('id')->get();
+        } else {
+            // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
+            $publishedArticles = Article::orderBy('id', 'desc')
+                ->where('state', 'publicado')
+//                ->where('section_id', $section_id)
+                ->paginate(5);
+            $sections = Section::orderBy('id')->get();
+        }
+
 
         return view('home', [
             'publishedArticles' => $publishedArticles,

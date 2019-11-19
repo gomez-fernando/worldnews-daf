@@ -137,7 +137,7 @@
                     @if(isset($sections))
                         @foreach ($sections as $section)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ $section->name }}</a>
+                                <a class="nav-link" href="{{ route('home', ['section_id' =>$section->id]) }}">{{ $section->name }}</a>
                             </li>
                         @endforeach
                     @endif
