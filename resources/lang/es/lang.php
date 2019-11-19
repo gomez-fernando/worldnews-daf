@@ -50,7 +50,7 @@ return [
     'created_at' => 'Fecha de creación',
     'section' => 'Sección',
     'author' => 'Autor',
-    'subtitle' => 'Subtítulo',
+    'sub_title' => 'Subtítulo',
     'keywords' => 'Tags (separar con ";")',
     'published_at' => 'Publicado',
     'edit_article' => 'Editar artículo',

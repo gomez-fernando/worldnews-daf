@@ -50,7 +50,7 @@ return [
     'created_at' => 'Creation date',
     'section' => 'Section',
     'author' => 'Author',
-    'subtitle' => 'Sub-title',
+    'sub_title' => 'Sub-title',
     'keywords' => 'Tags (separate with ",")',
     'published_at' => 'Published',
     'edit_article' => 'Edit article',
@@ -58,5 +58,5 @@ return [
     'editor_comments' => "Editor's comments",
     'send_to_review' => "Send to review",
     'state' => "State",
-    
+
 ];

@@ -5,11 +5,13 @@
 @endsection
 
 @section('content')
+
     <div class="container">
+        {{-- // mostramos mensaje --}}
+        @include('includes.message')
         <div class="row">
 
-            {{-- // mostramos mensaje --}}
-            @include('includes.message')
+
             {{-- // mustro los artículos --}}
             @foreach ($publishedArticles as $publishedArticle)
                 @include('includes.publishedArticle', ['publishedArticle' => $publishedArticle])

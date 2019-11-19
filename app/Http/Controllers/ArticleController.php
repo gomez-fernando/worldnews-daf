@@ -37,7 +37,7 @@ class ArticleController extends Controller
         // validacion
         $validate = $this->validate($request, [
             'title' => 'required|string|max:255',
-            'subtitle' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
             'section' => 'required|string',
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
@@ -49,7 +49,7 @@ class ArticleController extends Controller
 
         // recoger los datos
         $title = $request->input('title');
-        $subtitle = $request->input('subtitle');
+        $sub_title = $request->input('sub_title');
         $section = $request->input('section');
         $keywords = $request->input('keywords');
         $slug = $request->input('slug');
@@ -65,7 +65,7 @@ class ArticleController extends Controller
         $article->edited_by = null;
         $article->section_id = $section;
         $article->title = $title;
-        $article->sub_title = $subtitle;
+        $article->sub_title = $sub_title;
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;
@@ -102,18 +102,14 @@ class ArticleController extends Controller
         $user = \Auth::user();
         $article = Article::find($id);
 
-//        $comments = Comment::where('Article_id', $id)->get();
-//        $likes = Like::where('Article_id', $id)->get();
-//        $ratings = Rating::where('Article_id', $id)->get();
+        $article->edited_by = $user->id;
+        $article->state = 'inactivo';
 
-        if ($user  && $user->usertype != 'user'){
+        if ($user  && $user->usertype == 'admin'){
 
 
-            // eliminar ficheros de imagen del storage
-            Storage::disk('images')->delete($article->image_path);
-
-            // eliminar registro de Articlee en db
-            $article->delete();
+            // cambiar 'state' en el artículo
+            $article->update();
             $message = array('message' => 'El artículo se ha eliminado correctamente');
 
         } else{
@@ -152,7 +148,7 @@ class ArticleController extends Controller
             'author' => 'required|string|max:255',
             'section' => 'required|string',
             'title' => 'required|string|max:255',
-            'subtitle' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
             'image_path' => 'image',
             'text' => 'required|string',
             'keywords' => 'required|string|max:255',
@@ -165,7 +161,7 @@ class ArticleController extends Controller
         $author = $request->input('author');
         $section = $request->input('section');
         $title = $request->input('title');
-        $subtitle = $request->input('subtitle');
+        $sub_title = $request->input('sub_title');
         $image_path = $request->file('image_path');
         $text = $request->input('text');
         $keywords = $request->input('keywords');
@@ -204,7 +200,7 @@ class ArticleController extends Controller
         $article->edited_by = $user->id;
         $article->section_id = $section;
         $article->title = $title;
-        $article->sub_title = $subtitle;
+        $article->sub_title = $sub_title;
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;

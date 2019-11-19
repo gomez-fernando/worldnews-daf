@@ -43,14 +43,14 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="subtitle" class="col-md-3 col-form-label text-md-right">{{ __('lang.subtitle') }}</label>
+                                <label for="sub_title" class="col-md-3 col-form-label text-md-right">{{ __('lang.sub_title') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" value="{{ $article->sub_title }}" id="subtitle" name="subtitle" class="form-control" required>
+                                    <input type="text" value="{{ $article->sub_title }}" id="sub_title" name="sub_title" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
-                                    @if ($errors->has('subtitle'))
+                                    @if ($errors->has('sub_title'))
                                         <span class="alert-danger" role="alert">
-                                    <strong>{{ $errors->first('subtitle') }}</strong>
+                                    <strong>{{ $errors->first('sub_title') }}</strong>
                                     </span>
 
                                     @endif
