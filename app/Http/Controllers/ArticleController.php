@@ -172,7 +172,7 @@ class ArticleController extends Controller
         $slug = $request->input('slug');
         $state = $request->input('state');
 
-//        dd($image_path);
+//        dd($title);
         $user = Auth::user();
 
 //        obtenemos el articulo antiguo
@@ -194,51 +194,39 @@ class ArticleController extends Controller
 
 //        dd($deletedArticle);
 
+        //        guardamos el $deletedArticle
         $deletedArticle->save();
-        die();
+//        die();
 
-//        $deletedArticle = new DeletedArticle();
-//        $deletedArticle->article_id = $id;
-//        $deletedArticle->edited_by = $user->id;
-//        $deletedArticle->section_id = $section;
-//        $deletedArticle->title = $title;
-//        $deletedArticle->sub_title = $subtitle;
-//        $deletedArticle->image_path = $originalArticle->image_path;
-//        $deletedArticle->text = $text;
-//        $deletedArticle->keywords = $keywords;
-//        $deletedArticle->slug = $slug;
-//        $deletedArticle->state = $state;
-
-//        dd($deletedArticle);
-
-//        guardamos el $deletedArticle
-
-
-        // conseguir objeto Article
+        // actualizar objeto Article
         $article = Article::find($id);
-        $article->category_id = $category;
-        $article->user_id = $user->id;
-        $article->name = $name;
-        $article->description = $description;
-
-        ///////// debug ////////////////
-        // echo ('  es igual a: ');
-        // var_dump($image_id);
-        // var_dump($description);
-        // die();
-        ///////// end debug /////////
+        $article->author = $author;
+        $article->edited_by = $user->id;
+        $article->section_id = $section;
+        $article->title = $title;
+        $article->sub_title = $subtitle;
+        $article->text = $text;
+        $article->keywords = $keywords;
+        $article->slug = $slug;
+        $article->state = $state;
+        $article->editor_comments = $originalArticle->editor_comments;
+//        $article->published_at = $originalArticle->published_at;
 
         // subir fichero
         if ($image_path){
             $image_path_name = time().$image_path->getClientOriginalName();
             Storage::disk('images')->put($image_path_name, File::get($image_path));
             $article->image_path = $image_path_name;
+        } else{
+            $article->image_path = $originalArticle->image_path;
         }
+
+//        dd($article);
 
         // actualizar registro
         $article->update();
-        return redirect()->route('Article.detail', ['id' => $article_id])
-            ->with(['message' => 'Articlee actulizado con exito']);
+        return redirect()->route('article.detail', ['id' => $id])
+            ->with(['message' => 'Artículo actualizado con éxito']);
     }
 }
 

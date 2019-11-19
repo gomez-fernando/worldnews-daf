@@ -17,11 +17,12 @@
                         <form action="{{ route('article.update') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
+                            <input type="hidden" value="{{ $article->author }}" name="author" id="" />
 
                             <div class="form-group row">
-                                <label for="author" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
+                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author" name="author" class="form-control" required>
+                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>
                                 </div>
 
                             </div>
