@@ -102,9 +102,14 @@ h1, h2, h3, h4 {
 	font-size: 18px;
 	color: #111111;
 	margin: 0 0 0 10px;
+	transition: 0.3s ease all;
 }
-.header-02 .nav-link:hover,
-.header-02 .nav-link:active {
+.header-02 .nav-link.selected,
+.header-02 .nav-link.selected:hover {
+	background-color: #39b54a;
+	color: #ffffff;
+}
+.header-02 .nav-link:hover {
 	color: #39b54a;
 }
 /**/

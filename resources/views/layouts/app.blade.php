@@ -185,7 +185,11 @@ Footer
 <script src="{{ asset('lib/easing/easing.js') }}"></script>
 
 <script>
-    if(window.location.href.indexOf("/home/1") > -1) {
+    // Resaltar enlace de la categoría seleccionada
+    if(window.location.href.indexOf("/home/") > -1) {
+        url = window.location.href;
+        n = url.substr(url.length - 1);
+        $('.nav-item:nth-child('+n+')').find('.nav-link').addClass('selected');
     } 
 </script>
 
