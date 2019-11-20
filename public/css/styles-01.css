@@ -74,6 +74,7 @@ h1, h2, h3, h4 {
 }
 .header-01 .nav-link {
 	color: #ffffff;
+	text-align: right;
 }
 .header-01 i.icon-cms {
 	float: left;
@@ -134,6 +135,7 @@ h1, h2, h3, h4 {
 	font-weight: bold;
 	font-family: 'Poppins';
 	font-size: 20px;
+	line-height: 18px;
 }
 
 .news-list .box h3.title a:hover {
@@ -261,5 +263,39 @@ footer a {
 	font-size: 14px;
 }
 
+/* Responsive */
 
+.navbar-toggler {
+	background-color: #f4f4f4;
+	margin: 0 10px;
+}
+.navbar-toggler-icon {
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	width: 16px;
+	height: 14px;
+	position: relative;
+	position: relative;
+	top: -2px;
+}
+.navbar-toggler-icon:before {
+	content:"";
+	display: block;
+	width: 16px;
+	height: 2px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: #000000;
+}
 
+@media (max-width: 768px) {
+
+.header-02 .nav-link {
+	margin: 0;
+	padding-left: 10px;
+}
+
+}

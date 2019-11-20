@@ -34,24 +34,20 @@
 <div id="app">
     <nav class="navbar navbar-expand-md header-01">
         <div class="container">
-            <div class="col-12 col-md-6">16 noviembre 2019</div>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="row w-100 m-auto">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
+                <div class="col-4">
+                    <div class="pt-2 pb-2 pl-1 pr-1">30 noviembre 2019</div>
+                </div>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <div class="col-8">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <li class="nav-item dropdown float-right">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle pt-2 pb-2 pl-1 pr-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                  <i class="icon-cms"></i>Gestor de Contenidos  <span class="caret"></span>
                             </a>
 
@@ -112,7 +108,7 @@
                             </div>
                         </li>
                     @endguest
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
