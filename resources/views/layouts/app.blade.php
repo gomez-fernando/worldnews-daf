@@ -35,7 +35,7 @@
     <nav class="navbar navbar-expand-md header-01">
         <div class="container">
             <div class="col-12 col-md-6">16 noviembre 2019</div>
-            </a>
+{{--            </a>--}}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
