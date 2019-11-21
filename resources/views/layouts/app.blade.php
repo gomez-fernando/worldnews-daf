@@ -34,15 +34,11 @@
 <div id="app">
     <nav class="navbar navbar-expand-md header-01">
         <div class="container">
-            <div class="col-12 col-md-6">16 noviembre 2019</div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
             <div class="row w-100 m-auto">
                 <!-- Left Side Of Navbar -->
                 <div class="col-4">
-                    <div class="pt-2 pb-2 pl-1 pr-1">30 noviembre 2019</div>
+                    <div class="pt-2 pb-2 pl-1 pr-1">30/11/2019</div>
                 </div>
 
                 <!-- Right Side Of Navbar -->
@@ -119,15 +115,11 @@
     <nav class="navbar navbar-expand-md header-02">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">

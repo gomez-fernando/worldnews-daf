@@ -297,5 +297,7 @@ footer a {
 	margin: 0;
 	padding-left: 10px;
 }
-
+.navbar-collapse:not(.show) {
+	height: 0;
+}
 }
