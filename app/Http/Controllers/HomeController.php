@@ -32,14 +32,14 @@ class HomeController extends Controller
             $publishedArticles = Article::orderBy('id', 'desc')
                 ->where('state', 'publicado')
                 ->where('section_id', $section_id)
-                ->paginate(5);
+                ->paginate(6);
             $sections = Section::orderBy('id')->get();
         } else {
             // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
             $publishedArticles = Article::orderBy('id', 'desc')
                 ->where('state', 'publicado')
 //                ->where('section_id', $section_id)
-                ->paginate(5);
+                ->paginate(6);
             $sections = Section::orderBy('id')->get();
         }
 

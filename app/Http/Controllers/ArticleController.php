@@ -91,10 +91,16 @@ class ArticleController extends Controller
 
     public function detail($id){
         $publishedArticle = Article::find($id);
+        $last6articles = Article::orderBy('id', 'desc')
+                        ->where('section_id', $publishedArticle->section_id)
+                        ->limit(6)
+                        ->get();
+//        dd($last6articles);
 //        dd($publishedArticle);
 
         return view('article.detail', [
-            'publishedArticle' => $publishedArticle
+            'publishedArticle' => $publishedArticle,
+            'last6articles' => $last6articles
         ]);
     }
 

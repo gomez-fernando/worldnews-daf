@@ -3,6 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row">
+
+            {{--                    ULTIMOS 6 ARTICULOS--}}
+            @foreach ($last6articles as $article)
+                {{ $article->id }}
+            @endforeach
+            {{--                    --}}
+
             <div class="col-9">
                 {{-- // mostramos mensaje --}}
                 @include('includes.message')
@@ -63,7 +70,7 @@
                         <div class="item-subtitle">
                             {{ $publishedArticle->sub_title}}
                         </div>
-                        
+
                         <div class="item-author">
                             {{ __('lang.author').' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
                         </div>
@@ -78,17 +85,24 @@
                                 {{ $publishedArticle->text }}
                             </div>
                         </div>
-                        
-                        
+
+
+
+
+
+
 
                     </div>
 
                         <div class="clearfix"></div>
-                    </div>
+
+
+            </div>
                 </div>
 
             </div>
 
         </div>
+
     </div>
 @endsection
