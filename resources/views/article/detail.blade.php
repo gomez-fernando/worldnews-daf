@@ -2,15 +2,16 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
+        <div class="row">
+            <div class="col-9">
                 {{-- // mostramos mensaje --}}
                 @include('includes.message')
 
-                <div class="card pub_image pub_image_detail">
-                    <div class="card-header">
-
-                        <div class="data-user">
+                <div class="news-item">
+                        <div class="item-date">
+                            {{ __('lang.published_at').' : ' .$publishedArticle->published_at }}
+                        </div>
+                        <h2 class="item-title">
 
                             {{ $publishedArticle->title}}
 
@@ -57,41 +58,30 @@
 
                                         @endif
 
-                                    </div>
+                        </h2>
+
+                        <div class="item-subtitle">
+                            {{ $publishedArticle->sub_title}}
+                        </div>
+                        
+                        <div class="item-author">
+                            {{ __('lang.author').' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
                         </div>
 
-
+                        <div class="row">
+                            <div class="col-12">
+                                <figure>
+                                    <img src="{{ route('article.file', ['filename' => $publishedArticle->image_path]) }}" alt="Imagen de la noticia">
+                                </figure>
+                            </div>
+                            <div class="col-12 item-content">
+                                {{ $publishedArticle->text }}
+                            </div>
+                        </div>
+                        
+                        
 
                     </div>
-
-                    <div class="card-body">
-                        <div class="image-container image-detail">
-                            <img src="{{ route('article.file', ['filename' => $publishedArticle->image_path]) }}" alt="">
-                        </div>
-
-                        <div class="description">
-                            {{ __('lang.author').' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
-
-                            <span class="nickname date">{{ ' | '. __('lang.published_at').' : ' .$publishedArticle->published_at }}</span>
-
-                            <div class="description article_title">
-                                    {{ $publishedArticle->title}}
-                            </div>
-
-                            <div class="description">
-                                <p>
-                                    {{ $publishedArticle->sub_title}}
-                                </p>
-                            </div>
-
-                            <div class="description">
-
-                                <p>
-                                    {{ $publishedArticle->text }}
-                                </p>
-                            </div>
-
-                        </div>
 
                         <div class="clearfix"></div>
                     </div>

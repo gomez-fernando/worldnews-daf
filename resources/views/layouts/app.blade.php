@@ -184,7 +184,10 @@ Footer
 <script src="{{ asset('lib/stickyjs/sticky.js') }}"></script>
 <script src="{{ asset('lib/easing/easing.js') }}"></script>
 
-
+<script>
+    if(window.location.href.indexOf("/home/1") > -1) {
+    } 
+</script>
 
 </body>
 </html>
