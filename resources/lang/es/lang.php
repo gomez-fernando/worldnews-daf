@@ -59,6 +59,10 @@ return [
     'send_to_review' => "Enviar a revisión",
     'state' => "Estado",
     'approve_publication' => "Aprobar publicación",
+    'exit_and_save' => "Guardar y salir",
+    'publish' => "Publicar",
+    'authorize_publications' => "Autorizar publicaciones",
+    'review' => "Revisar",
 
 
 ];

@@ -14,13 +14,13 @@
                         {{ __('lang.create_article') }}
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('article.save') }}" method="POST" id="" enctype="multipart/form-data">
+                        <form action="{{ route('article.review') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="author" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="nombre del usuario" type="text" id="author" name="author" class="form-control" required>
+                                    <input readonly value="{{ Auth::user()->name . ' '. Auth::user()->surname }}" type="text" id="author" name="author" class="form-control" required>
 
 
                                 </div>
@@ -146,6 +146,12 @@
                             </div>
 
                             {{-- <div class="form-group row justify-content-center"> --}}
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-3">
+                                    <input type="submit" value="{{ __('lang.exit_and_save') }}" id="" name="" class="btn btn-primary" />
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
                                     <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />

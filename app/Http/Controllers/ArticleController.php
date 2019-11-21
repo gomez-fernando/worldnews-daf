@@ -31,7 +31,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function save(Request $request){
+    public function review(Request $request){
 //        dd($request);
 
         // validacion
@@ -69,7 +69,7 @@ class ArticleController extends Controller
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;
-        $article->state = 'review';
+        $article->state = 'en revisión';
 
         // subir fichero
         if ($image_path){
@@ -210,8 +210,87 @@ class ArticleController extends Controller
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;
-        $article->state = $state;
+        if($state == 'publicado'){
+            $article->state = 'en revisión';
+        } else{
+            $article->state = $state;
+        }
         $article->editor_comments = $originalArticle->editor_comments;
+//        $article->published_at = $originalArticle->published_at;
+
+        // subir fichero
+        if ($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            $article->image_path = $image_path_name;
+        } else{
+            $article->image_path = $originalArticle->image_path;
+        }
+
+//        dd($article);
+
+        // actualizar registro
+        $article->update();
+        return redirect()->route('article.detail', ['id' => $id])
+            ->with(['message' => 'Artículo actualizado con éxito']);
+    }
+
+    public function authorizePublications(){
+        $articles = Article::orderBy('id', 'asc')
+            ->where('state', 'en revisión')
+            ->get();
+
+        return view('editor.authorizePublications', [
+            'articles' => $articles,
+        ]);
+    }
+
+    public function approvePublications(Request $request){
+
+//                dd($request);
+
+        // validacion
+        $validate = $this->validate($request, [
+            'id' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'section' => 'required|string',
+            'title' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
+            'image_path' => 'image',
+            'text' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+        ]);
+
+        // recoger los datos
+        $id = $request->input('id');
+        $author = $request->input('author');
+        $section = $request->input('section');
+        $title = $request->input('title');
+        $sub_title = $request->input('sub_title');
+        $image_path = $request->file('image_path');
+        $text = $request->input('text');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
+        $state = $request->input('state');
+
+//        dd($title);
+        $user = Auth::user();
+        $originalArticle = Article::find($id);
+
+        // actualizar objeto Article
+        $article = Article::find($id);
+        $article->author = $author;
+        $article->edited_by = $user->id;
+        $article->section_id = $section;
+        $article->title = $title;
+        $article->sub_title = $sub_title;
+        $article->text = $text;
+        $article->keywords = $keywords;
+        $article->slug = $slug;
+        $article->state = 'publicado';
+        $article->editor_comments = $article->editor_comments;
 //        $article->published_at = $originalArticle->published_at;
 
         // subir fichero

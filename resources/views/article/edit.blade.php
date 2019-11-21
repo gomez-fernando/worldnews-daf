@@ -199,6 +199,15 @@
                                     <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />
                                 </div>
                             </div>
+
+                            @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="{{ __('lang.publish') }}" id="" name="" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            @endif
+
                         </form>
                     </div>
                 </div>

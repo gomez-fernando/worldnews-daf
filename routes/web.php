@@ -32,13 +32,15 @@ Route::get('/gente/{search?}', 'userController@index')->name('user.index');
 
 // ARTICLE
 Route::get('/article/create', 'ArticleController@create')->name('article.create');
-Route::post('/article/save', 'ArticleController@save')->name('article.save');
+Route::post('/article/review', 'ArticleController@review')->name('article.review');
 Route::get('/article/file/{filename}', 'ArticleController@getArticleImage')->name('article.file');
 Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
 Route::get('/article/editar/{id}', 'ArticleController@edit')->name('article.edit');
 Route::post('/article/update', 'ArticleController@update')->name('article.update');
-Route::get('/article/approve-publication', 'ArticleController@approvePublication')->name('article.approve-publication');
+
+// EDITOR
+Route::get('/editor/aprobar-publicaciones', 'ArticleController@authorizePublications')->name('editor.authorize-publications');
 
 
 

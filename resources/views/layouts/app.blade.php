@@ -77,7 +77,7 @@
 
                     @if (Auth::user() && Auth::user()->usertype == 'editor')
                         <li class="nav-item">
-                            <a href="{{ route('article.approve-publication') }}" class="nav-link">{{ __('lang.approve_publication') }}</a>
+                            <a href="{{ route('editor.authorize-publications') }}" class="nav-link">{{ __('lang.authorize_publications') }}</a>
                         </li>
                     @endif
 
