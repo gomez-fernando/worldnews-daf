@@ -312,7 +312,7 @@ footer .social i.icon-pi {
 /**/
 
 .news-list .box.strong {
-	padding-top: 150px;
+	padding-top: 100px;
 	position: relative;
 }
 .news-list .box.strong figure {
@@ -347,10 +347,11 @@ footer .social i.icon-pi {
 }
 .news-list .box.strong .link .btn {
 	padding: 5px 10px;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #ffffff;
-    border-radius: 0;
-    -webkit-border-radius: 0;
+	background-color: #FFC107;
+	color: #000000;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	letter-spacing: 1px;
 }
 .news-list .box.strong .link .btn i {
 	display: none;
