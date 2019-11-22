@@ -37,17 +37,17 @@
 
             <div class="row w-100 m-auto">
                 <!-- Left Side Of Navbar -->
-                <div class="col-4">
-                    <div class="pt-2 pb-2 pl-1 pr-1"><?php echo date("l d M y, g:i a");?></div>
+                <div class="col-6">
+                    <div class="pt-2 pb-2 pl-1 pr-1"><?php echo date("d M y, g:i a");?></div>
                 </div>
 
                 <!-- Right Side Of Navbar -->
-                <div class="col-8">
+                <div class="col-6">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item dropdown float-right">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle pt-2 pb-2 pl-1 pr-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                 <i class="icon-cms"></i>Gestor de Contenidos  <span class="caret"></span>
+                                 <i class="icon-cms"></i><span class="sm-hidden">Gestor de Contenidos</span>  <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
