@@ -127,6 +127,7 @@ h1, h2, h3, h4 {
 .news-list .box h3 {
 	margin: 0 0 5px 0;
 	line-height: 1;
+	font-size: inherit;
 }
 
 .news-list .box h3.title a {
@@ -134,7 +135,7 @@ h1, h2, h3, h4 {
 	font-weight: bold;
 	font-family: 'Poppins';
 	font-size: 20px;
-	line-height: 1;
+	line-height: 1.25;
 }
 
 .news-list .box h3.title a:hover {
@@ -215,9 +216,27 @@ footer a {
 	color: #666666;
 	font-weight: bold;
 }
-
-
-
+footer .social {
+	text-align: right;
+}
+footer .social i {
+	width: 22px;
+	height: 22px;
+	display: inline-block;
+	margin: 0 2px;
+}
+footer .social i.icon-ig {
+	background-image: url(../img/icon-social-instagram.png);
+}
+footer .social i.icon-sh {
+	background-image: url(../img/icon-social-share.png);
+}
+footer .social i.icon-tw {
+	background-image: url(../img/icon-social-twitter.png);
+}
+footer .social i.icon-pi {
+	background-image: url(../img/icon-social-pinterest.png);
+}
 
 /**/
 
@@ -337,6 +356,9 @@ footer a {
 	display: none;
 }
 
+
+
+
 /**/
 
 @media (max-width: 768px) {
@@ -360,6 +382,8 @@ footer a {
 .news-list .box.strong .link {
 	display: none;
 }
-
+.news-list .box h3.title a {
+	font-size: 18px;
+}
 
 }

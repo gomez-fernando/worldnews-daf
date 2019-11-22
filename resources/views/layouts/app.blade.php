@@ -148,11 +148,17 @@ Footer
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 copyright">
+                <div class="col-12 col-md-6 copyright">
                     <a href="https://sites.google.com/fp.uoc.edu/grupo-jadf/presentaci%C3%B3n-del-proyecto" target="_blank">Grupo DAF 2019</a>
                     |
                     <a href="https://sites.google.com/fp.uoc.edu/grupo-jadf/presentaci%C3%B3n-del-proyecto" target="_blank">Github</a>
                     | Todos los derechos reservados
+                </div>
+                <div class="col-12 col-md-6 social">
+                    <a href="#"><i class="icon-ig"></i></a>
+                    <a href="#"><i class="icon-tw"></i></a>
+                    <a href="#"><i class="icon-pi"></i></a>
+                    <a href="#"><i class="icon-sh"></i></a>
                 </div>
             </div>
         </div>
