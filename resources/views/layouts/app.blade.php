@@ -38,7 +38,7 @@
             <div class="row w-100 m-auto">
                 <!-- Left Side Of Navbar -->
                 <div class="col-4">
-                    <div class="pt-2 pb-2 pl-1 pr-1">30/11/2019</div>
+                    <div class="pt-2 pb-2 pl-1 pr-1"><?php echo date("l d M y, g:i a");?></div>
                 </div>
 
                 <!-- Right Side Of Navbar -->

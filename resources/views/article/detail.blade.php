@@ -16,7 +16,7 @@
 
                 <div class="news-item">
                         <div class="item-date">
-                            {{ __('lang.published_at').' : ' .$publishedArticle->published_at }}
+                            Publicado: <?php echo date("d M y, g:i a",strtotime($publishedArticle->published_at));?>
                         </div>
                         <h2 class="item-title">
 
