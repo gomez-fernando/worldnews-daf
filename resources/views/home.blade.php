@@ -9,7 +9,7 @@
     <div class="container">
         {{-- // mostramos mensaje --}}
         @include('includes.message')
-        <div class="row">
+        <div class="row" news_list>
 
 
             {{-- // mustro los artículos --}}
@@ -24,5 +24,11 @@
 
         </div>
     </div>
+
+    <script>
+        $('[news_list]>div:first-child').toggleClass('col-md-6').find('.box').addClass('strong').find('.col-4').removeAttr('class');
+        $('[news_list] .strong').find('.col-8').toggleClass('txt col-12 col-md-8');
+    </script>
+
 @endsection
 

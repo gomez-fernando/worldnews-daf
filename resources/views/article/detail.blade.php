@@ -10,13 +10,13 @@
             @endforeach
             {{--                    --}}
 
-            <div class="col-9">
+            <div class="col-12 col-md-9">
                 {{-- // mostramos mensaje --}}
                 @include('includes.message')
 
                 <div class="news-item">
                         <div class="item-date">
-                            {{ __('lang.published_at').' : ' .$publishedArticle->published_at }}
+                            Publicado: <?php echo date("d M y, g:i a",strtotime($publishedArticle->published_at));?>
                         </div>
                         <h2 class="item-title">
 
