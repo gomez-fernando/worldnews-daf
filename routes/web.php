@@ -38,9 +38,11 @@ Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
 Route::get('/article/editar/{id}', 'ArticleController@edit')->name('article.edit');
 Route::post('/article/update', 'ArticleController@update')->name('article.update');
+Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
 // EDITOR
 Route::get('/editor/aprobar-publicaciones', 'ArticleController@authorizePublications')->name('editor.authorize-publications');
+Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');
 
 
 

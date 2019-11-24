@@ -14,7 +14,8 @@
                         {{ __('lang.create_article') }}
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('article.review') }}" method="POST" id="" enctype="multipart/form-data">
+{{--                        <form action="{{ route('article.create') }}" method="POST" id="" enctype="multipart/form-data" >--}}
+                            <form id="altaArticuloForm"  >
                             @csrf
 
                             <div class="form-group row">
@@ -88,7 +89,8 @@
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.image') }}</label>
                                 <div class="col-md-8">
-                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>
+{{--                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
+                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('image_path'))
@@ -145,19 +147,21 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="form-group row justify-content-center"> --}}
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="{{ __('lang.exit_and_save') }}" id="" name="" class="btn btn-primary" />
-                                </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />
-                                </div>
-                            </div>
                         </form>
+
+                        {{-- <div class="form-group row justify-content-center"> --}}
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-3">
+                                <input type="button" value="{{ __('lang.exit_and_save') }}" id="in_process"  class="btn btn-primary" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-3">
+                                <input type="button" value="{{ __('lang.send_to_review') }}" id="for_review" class="btn btn-primary" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -165,6 +169,9 @@
         </div>
     </div>
 
+    <script>
+        let urlArticleSave = '{{ route('article.store') }}' ;
+    </script>
 @endsection
 
 

@@ -77,9 +77,9 @@
                                     <select  type="select" id="section" name="section" class="form-control" required>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}"
-                                            @if ($section->id == $article->section_id)
-                                                selected
-                                            @endif
+                                                    @if ($section->id == $article->section_id)
+                                                    selected
+                                                @endif
                                             >{{ $section->name }}</option>
                                         @endforeach
                                     </select>
@@ -94,16 +94,16 @@
                                 </div>
                             </div>
 
-                                <div class="container-avatar">
-                                    <img src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
-                                </div>
+                            <div class="container-avatar">
+                                <img src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
+                            </div>
 
-{{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
+                            {{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
 
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.change_image') }}</label>
                                 <div class="col-md-8">
-{{--                                    <input type="file" value="{{ $article->image_path }}" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
+                                    {{--                                    <input type="file" value="{{ $article->image_path }}" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
                                     <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
@@ -180,8 +180,8 @@
                                 <label for="editor_comments" class="col-md-3 col-form-label text-md-right">{{ __('lang.editor_comments') }}</label>
                                 <div class="col-md-8">
                                     <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
-                                        readonly
-                                    @endif id="editor_comments" name="editor_comments" class="form-control">{{$article->editor_comments }}</textarea>
+                                              readonly
+                                              @endif id="editor_comments" name="editor_comments" class="form-control">{{$article->editor_comments }}</textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('editor_comments'))

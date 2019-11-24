@@ -31,8 +31,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function review(Request $request){
-//        dd($request);
+    public function store(Request $request){
 
         // validacion
         $validate = $this->validate($request, [
@@ -41,8 +40,8 @@ class ArticleController extends Controller
             'section' => 'required|string',
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            // 'image_path' => 'required|mimes:jpg,jpeg,png,gif',
-            'image_path' => 'required|image',
+            'image_path' => 'required|mimes:jpg,jpeg,png,gif',
+
             'text' => 'required|string',
         ]);
 
@@ -55,6 +54,10 @@ class ArticleController extends Controller
         $slug = $request->input('slug');
         $image_path = $request->file('image_path');
         $text = $request->input('text');
+        $state = $request->input('state');
+
+
+        dd($request);
 
 
         //asignar valores al objeto
@@ -69,7 +72,83 @@ class ArticleController extends Controller
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;
+        $article->state = $state;
+
+        // subir fichero
+
+        if ($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            $article->image_path = $image_path_name;
+        }
+
+        $article->save();
+        return redirect()->route('home')->with([
+            'message' => 'El Artículo se ha enviado para revisión'
+        ]);
+    }
+
+    public function reviewPublishArticleView($id){
+//        $sections = Section::orderBy('id', 'desc');
+        $sections = DB::table('sections')
+            ->orderBy('id')
+            ->get();
+        $article = Article::find($id);
+//        dd($sections);
+
+        return view('editor.reviewPublishArticle', [
+            'sections' => $sections,
+            'article' => $article
+        ]);
+    }
+
+    public function publishArticle(Request $request){
+//        dd($request);
+
+        // validacion
+        $validate = $this->validate($request, [
+            'id' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
+            'section' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            // 'image_path' => 'required|mimes:jpg,jpeg,png,gif',
+            'image_path' => 'required|image',
+            'text' => 'required|string',
+            'editor_comments' => 'string'
+        ]);
+
+
+        // recoger los datos
+        $title = $request->input('title');
+        $sub_title = $request->input('sub_title');
+        $section = $request->input('section');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
+        $image_path = $request->file('image_path');
+        $text = $request->input('text');
+        $editorComments = $request->input('editor_comments');
+
+//        recoger el objeto original
+        $originalArticle = Article::find($id);
+
+
+        //asignar valores al objeto
+        // $user = \Auth::user(); si no funciona del otro modo hay que poner la barra delante de Auth
+        $user = Auth::user();
+        $article = Article::find($id);
+        $article->author = $user->id;
+        $article->edited_by = null;
+        $article->section_id = $section;
+        $article->title = $title;
+        $article->sub_title = $sub_title;
+        $article->text = $text;
+        $article->keywords = $keywords;
+        $article->slug = $slug;
         $article->state = 'en revisión';
+        $article->editor_comments = $editorComments;
 
         // subir fichero
         if ($image_path){

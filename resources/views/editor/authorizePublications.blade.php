@@ -18,7 +18,7 @@
                         <th scope="row">{{ $article->title }}</th>
                         <td>{{ $article->created_at }}</td>
                         <td>
-                            <a href="{{ route('article.edit', ['id' => $article->id]) }}" class="btn btn-sm btn-warning">{{ __('lang.review') }}</a>
+                            <a href="{{ route('editor.review-publish-article', ['id' => $article->id]) }}" class="btn btn-sm btn-warning">{{ __('lang.review') }}</a>
                         </td>
                     </tr>
                 @endforeach
