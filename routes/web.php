@@ -42,7 +42,11 @@ Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
 // EDITOR
 Route::get('/editor/aprobar-publicaciones', 'ArticleController@authorizePublications')->name('editor.authorize-publications');
+Route::post('/editor/publicar', 'ArticleController@approvePublications')->name('editor.approve-publications');
 Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');
+
+//JOURNALIST
+Route::get('periodista/panel-de-control', 'ArticleController@controlPanelJournalistView')->name('journalist.controlPanelView');
 
 
 

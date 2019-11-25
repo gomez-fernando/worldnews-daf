@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.edit_article') }}</title>
+    <title>{{ __('lang.publish') }}</title>
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('lang.edit_article') }}
+                        {{ __('lang.publish') }}
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('article.update') }}" method="POST" id="" enctype="multipart/form-data">
+                        <form action="{{ route('editor.approve-publications') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
                             <input type="hidden" value="{{ $article->author }}" name="author" id="" />

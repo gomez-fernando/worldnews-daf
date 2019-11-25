@@ -1,4 +1,4 @@
-<?php
+p<?php
 
 return [
 
@@ -63,6 +63,7 @@ return [
     'publish' => "Publicar",
     'authorize_publications' => "Autorizar publicaciones",
     'review' => "Revisar",
+    'control_panel' => "Panel de control",
 
 
 ];

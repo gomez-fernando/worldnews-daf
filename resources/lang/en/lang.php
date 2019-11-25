@@ -63,5 +63,6 @@ return [
     'publish' => "Publish",
     'authorize_publications' => "Authorize publications",
     'review' => "Review",
+    'control_panel' => "Control panel",
 
 ];

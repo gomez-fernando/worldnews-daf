@@ -37,10 +37,11 @@ class ArticleController extends Controller
         $validate = $this->validate($request, [
             'title' => 'required|string|max:255',
             'sub_title' => 'required|string|max:255',
-            'section' => 'required|string',
+            'section' => 'required|string|max:255',
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'image_path' => 'required|mimes:jpg,jpeg,png,gif',
+//            'image_path' => 'required|mimes:jpg,jpeg,png,gif',
+//            'image_path' => 'image',
 
             'text' => 'required|string',
         ]);
@@ -57,7 +58,7 @@ class ArticleController extends Controller
         $state = $request->input('state');
 
 
-        dd($request);
+//        dd($request);
 
 
         //asignar valores al objeto
@@ -99,6 +100,30 @@ class ArticleController extends Controller
         return view('editor.reviewPublishArticle', [
             'sections' => $sections,
             'article' => $article
+        ]);
+    }
+
+    public function controlPanelJournalistView(){
+//        $sections = Section::orderBy('id', 'desc');
+//        $sections = DB::table('sections')
+//            ->orderBy('id')
+//            ->get();
+        $inProcessArticles = Article::orderBy('id', 'asc')
+                            ->where('author', Auth::user()->id)
+                            ->where('state', 'en proceso')
+                            ->get();
+
+        $commentedArticles = Article::orderBy('id', 'asc')
+            ->where('author', Auth::user()->id)
+            ->where('state', 'en revisión')
+            ->where('editor_comments', '!=', null)
+            ->get();
+//        dd($commentedArticles);
+
+        return view('journalist.controlPanelView', [
+//            'sections' => $sections,
+            'inProcessArticles' => $inProcessArticles,
+            'commentedArticles' => $commentedArticles
         ]);
     }
 
@@ -339,7 +364,7 @@ class ArticleController extends Controller
             'text' => 'required|string',
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
+//            'state' => 'required|string|max:255',
         ]);
 
         // recoger los datos
@@ -352,7 +377,7 @@ class ArticleController extends Controller
         $text = $request->input('text');
         $keywords = $request->input('keywords');
         $slug = $request->input('slug');
-        $state = $request->input('state');
+        $state = $request->input('publicado');
 
 //        dd($title);
         $user = Auth::user();
@@ -386,7 +411,7 @@ class ArticleController extends Controller
         // actualizar registro
         $article->update();
         return redirect()->route('article.detail', ['id' => $id])
-            ->with(['message' => 'Artículo actualizado con éxito']);
+            ->with(['message' => 'Artículo publicado con éxito']);
     }
 }
 
