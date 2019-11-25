@@ -38,12 +38,12 @@
 
             <div class="row w-100 m-auto">
                 <!-- Left Side Of Navbar -->
-                <div class="col-6">
+                <div class="col-6 a">
                     <div class="pt-2 pb-2 pl-1 pr-1"><?php echo date("d M y, g:i a");?></div>
                 </div>
 
                 <!-- Right Side Of Navbar -->
-                <div class="col-6">
+                <div class="col-6 b">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item dropdown float-right">
@@ -91,6 +91,7 @@
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="icon-profile"></i>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
