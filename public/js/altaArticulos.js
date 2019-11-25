@@ -42,7 +42,7 @@ $(document).ready( function(){
         let $form = $('#altaArticuloForm');
         console.log('clicked');
         let params = [] ;
-        $form.find('input,select, textarea').each(function(i,elem){
+        $form.find('input,select,textarea').each(function(i,elem){
 
             let $elem = $(elem);
             let key = $elem.attr('id');
@@ -81,7 +81,7 @@ function post(path, params, method, attachment) {
             hiddenField.setAttribute("name", key);
             hiddenField.setAttribute("value", params[key]);
 
-            form.appendChild(hiddenField);
+            form.appendChild(hiddenField)
         }
     }
 

@@ -24,6 +24,7 @@
                                 <div class="col-md-8">
                                     <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>
                                 </div>
+{{--                                <input type="hidden" value="{{ $article->user->id }}">--}}
 
                             </div>
 
@@ -194,6 +195,13 @@
                             </div>
 
                             {{-- <div class="form-group row justify-content-center"> --}}
+                            @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso' || $article->state == 'publicado') )
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="button" value="{{ __('lang.exit_and_save') }}" id="in_process"  class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            @endif
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
                                     <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />

@@ -19,11 +19,11 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="author" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
+                                <label for="authorReadOnly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ Auth::user()->name . ' '. Auth::user()->surname }}" type="text" id="author" name="author" class="form-control" required>
+                                    <input readonly value="{{ Auth::user()->name . ' '. Auth::user()->surname }}" type="text" id="authorReadOnly" name="authorReadOnly" class="form-control" required>
 
-
+                                    <input type="hidden" name="author" value="{{ Auth::user()->id }}">
                                 </div>
 
                             </div>
