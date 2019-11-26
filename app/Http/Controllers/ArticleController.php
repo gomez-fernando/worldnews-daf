@@ -32,6 +32,8 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request){
+        dd($request);
+
 
         // validacion
         $validate = $this->validate($request, [
@@ -41,11 +43,10 @@ class ArticleController extends Controller
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
 //            'image_path' => 'required|mimes:jpg,jpeg,png,gif',
-//            'image_path' => 'image',
+            'image_path' => 'image',
 
             'text' => 'required|string',
         ]);
-
 
         // recoger los datos
         $title = $request->input('title');
@@ -58,7 +59,7 @@ class ArticleController extends Controller
         $state = $request->input('state');
 
 
-//        dd($request);
+
 
 
         //asignar valores al objeto
@@ -73,7 +74,7 @@ class ArticleController extends Controller
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;
-        $article->state = $state;
+        $article->state = 'en revisión';
 
         // subir fichero
 

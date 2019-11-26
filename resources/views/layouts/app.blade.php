@@ -30,6 +30,9 @@
 
     <!-- favicoon -->
     <link rel="shortout icon" type="image/png" href="{{ asset('../img/favicon.ico') }}">
+
+    {{--    CKEditor--}}
+{{--    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>--}}
 </head>
 <body>
 <div id="app">
