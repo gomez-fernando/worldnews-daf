@@ -58,7 +58,7 @@ $(document).ready( function(){
         params['_token'] = $token.val();
         params['state'] = 'en revisión';
         console.log(params);
-        // post(urlArticleSave, params, 'post');
+        post(urlArticleSave, params, 'post');
     })
 });
 

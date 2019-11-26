@@ -14,8 +14,8 @@
                         {{ __('lang.create_article') }}
                     </div>
                     <div class="card-body">
-{{--                        <form action="{{ route('article.create') }}" method="POST" id="" enctype="multipart/form-data" >--}}
-                            <form id="altaArticuloForm"  >
+                        <form action="{{ route('article.create') }}" method="POST" id="" enctype="multipart/form-data" >
+{{--                            <form id="altaArticuloForm"  >--}}
                             @csrf
 
                             <div class="form-group row">
@@ -135,7 +135,13 @@
                             <div class="form-group row">
                                 <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('lang.text') }}</label>
                                 <div class="col-md-8">
-                                    <textarea id="text" name="text" class="form-control" required></textarea>
+                                    <textarea id="editor1" name="text" class="form-control" required></textarea>
+
+                                    <script>
+                                        // Replace the <textarea id="editor1"> with a CKEditor
+                                        // instance, using default configuration.
+                                        CKEDITOR.replace( 'editor1' );
+                                    </script>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('text'))
@@ -151,15 +157,16 @@
                         </form>
 
                         {{-- <div class="form-group row justify-content-center"> --}}
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-3">
-                                <input type="button" value="{{ __('lang.exit_and_save') }}" id="in_process"  class="btn btn-primary" />
-                            </div>
-                        </div>
+{{--                        <div class="form-group row">--}}
+{{--                            <div class="col-md-6 offset-md-3">--}}
+{{--                                <input type="button" value="{{ __('lang.exit_and_save') }}" id="in_process"  class="btn btn-primary" />--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-3">
-                                <input type="button" value="{{ __('lang.send_to_review') }}" id="for_review" class="btn btn-primary" />
+{{--                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="for_review" class="btn btn-primary" />--}}
+                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="" class="btn btn-primary" />
                             </div>
                         </div>
                     </div>
@@ -169,9 +176,9 @@
         </div>
     </div>
 
-    <script>
-        let urlArticleSave = '{{ route('article.store') }}' ;
-    </script>
+{{--    <script>--}}
+{{--        let urlArticleSave = '{{ route('article.store') }}' ;--}}
+{{--    </script>--}}
 @endsection
 
 

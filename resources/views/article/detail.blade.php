@@ -82,7 +82,10 @@
                                 </figure>
                             </div>
                             <div class="col-12 item-content">
-                                {{ $publishedArticle->text }}
+{{--                                {{ $publishedArticle->text }}--}}
+                                <?php
+                                echo $publishedArticle->text;
+                                ?>
                             </div>
                         </div>
 
