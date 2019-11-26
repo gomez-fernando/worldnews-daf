@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Article;
 use App\DeletedArticle;
+use App\InReviewPublished;
 use App\Section;
 use App\User;
 
@@ -32,7 +33,7 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request){
-        dd($request);
+//        dd($request);
 
 
         // validacion
@@ -285,59 +286,118 @@ class ArticleController extends Controller
 //        obtenemos el articulo antiguo
         $originalArticle = Article::find($id);
 
-
-//        asignamos valores al artículo que se guardará en `deleted_articles`
-        $deletedArticle = new DeletedArticle();
-        $deletedArticle->article_id = $originalArticle->id;
-        $deletedArticle->edited_by = $user->id;
-        $deletedArticle->section_id = $originalArticle->section_id;
-        $deletedArticle->title = $originalArticle->title;
-        $deletedArticle->sub_title = $originalArticle->sub_title;
-        $deletedArticle->image_path = $originalArticle->image_path;
-        $deletedArticle->text = $originalArticle->text;
-        $deletedArticle->keywords = $originalArticle->keywords;
-        $deletedArticle->slug = $originalArticle->slug;
-        $deletedArticle->state = $originalArticle->state;
+        if ($state != 'publicado'){
+            //        asignamos valores al artículo que se guardará en `deleted_articles`
+            $deletedArticle = new DeletedArticle();
+            $deletedArticle->article_id = $originalArticle->id;
+            $deletedArticle->edited_by = $user->id;
+            $deletedArticle->section_id = $originalArticle->section_id;
+            $deletedArticle->title = $originalArticle->title;
+            $deletedArticle->sub_title = $originalArticle->sub_title;
+            $deletedArticle->image_path = $originalArticle->image_path;
+            $deletedArticle->text = $originalArticle->text;
+            $deletedArticle->keywords = $originalArticle->keywords;
+            $deletedArticle->slug = $originalArticle->slug;
+            $deletedArticle->state = $originalArticle->state;
 
 //        dd($deletedArticle);
 
-        //        guardamos el $deletedArticle
-        $deletedArticle->save();
+            //        guardamos el $deletedArticle
+            $deletedArticle->save();
 //        die();
 
-        // actualizar objeto Article
-        $article = Article::find($id);
-        $article->author = $author;
-        $article->edited_by = $user->id;
-        $article->section_id = $section;
-        $article->title = $title;
-        $article->sub_title = $sub_title;
-        $article->text = $text;
-        $article->keywords = $keywords;
-        $article->slug = $slug;
-        if($state == 'publicado'){
-            $article->state = 'en revisión';
-        } else{
+            // actualizar objeto Article
+            $article = Article::find($id);
+            $article->author = $author;
+            $article->edited_by = $user->id;
+            $article->section_id = $section;
+            $article->title = $title;
+            $article->sub_title = $sub_title;
+            $article->text = $text;
+            $article->keywords = $keywords;
+            $article->slug = $slug;
             $article->state = $state;
-        }
-        $article->editor_comments = $originalArticle->editor_comments;
+
+            $article->editor_comments = $originalArticle->editor_comments;
 //        $article->published_at = $originalArticle->published_at;
 
-        // subir fichero
-        if ($image_path){
-            $image_path_name = time().$image_path->getClientOriginalName();
-            Storage::disk('images')->put($image_path_name, File::get($image_path));
-            $article->image_path = $image_path_name;
-        } else{
-            $article->image_path = $originalArticle->image_path;
-        }
+            // subir fichero
+            if ($image_path){
+                $image_path_name = time().$image_path->getClientOriginalName();
+                Storage::disk('images')->put($image_path_name, File::get($image_path));
+                $article->image_path = $image_path_name;
+            } else{
+                $article->image_path = $originalArticle->image_path;
+            }
 
 //        dd($article);
 
-        // actualizar registro
-        $article->update();
-        return redirect()->route('article.detail', ['id' => $id])
-            ->with(['message' => 'Artículo actualizado con éxito']);
+            // actualizar registro
+            $article->update();
+            return redirect()->route('article.detail', ['id' => $id])
+                ->with(['message' => 'Artículo enviado a revisión']);
+        } else {
+            //        asignamos valores al artículo que se guardará en `in_review_published`
+            $publicadoYEnRevision = new inReviewPublished();
+            $publicadoYEnRevision->article_id = $id;
+            $publicadoYEnRevision->edited_by = $user->id;
+            $publicadoYEnRevision->section_id = $section;
+            $publicadoYEnRevision->title = $title;
+            $publicadoYEnRevision->sub_title = $sub_title;
+//            $publicadoYEnRevision->image_path = $image_path;
+            $publicadoYEnRevision->text = $originalArticle->text;
+            $publicadoYEnRevision->keywords = $originalArticle->keywords;
+            $publicadoYEnRevision->slug = $originalArticle->slug;
+            $publicadoYEnRevision->state = $originalArticle->state;
+
+            if ($image_path){
+                $image_path_name = time().$image_path->getClientOriginalName();
+                Storage::disk('images')->put($image_path_name, File::get($image_path));
+                $publicadoYEnRevision->image_path = $image_path_name;
+            } else {
+                $image_path = $originalArticle->image_path;
+            }
+
+//        dd($publicadoYEnRevision);
+
+            //        guardamos el $publicadoYEnRevision
+            $publicadoYEnRevision->save();
+//        die();
+//
+//            // actualizar objeto Article
+//            $article = Article::find($id);
+//            $article->author = $author;
+//            $article->edited_by = $user->id;
+//            $article->section_id = $section;
+//            $article->title = $title;
+//            $article->sub_title = $sub_title;
+//            $article->text = $text;
+//            $article->keywords = $keywords;
+//            $article->slug = $slug;
+//            $article->state = 'en revisión';
+//            $article->editor_comments = $originalArticle->editor_comments;
+////        $article->published_at = $originalArticle->published_at;
+//
+//            // subir fichero
+//            if ($image_path){
+//                $image_path_name = time().$image_path->getClientOriginalName();
+//                Storage::disk('images')->put($image_path_name, File::get($image_path));
+//                $article->image_path = $image_path_name;
+//            } else{
+//                $article->image_path = $originalArticle->image_path;
+//            }
+//
+////        dd($article);
+//
+//            // actualizar registro
+//            $article->update();
+            return redirect()->route('article.detail', ['id' => $id])
+                ->with(['message' => 'La versión enviada está en revisión. La versión original sigue publicada sin cambios hasta que los apruebe el editor.']);
+        }
+
+
+
+
     }
 
     public function authorizePublications(){
@@ -414,6 +474,84 @@ class ArticleController extends Controller
         return redirect()->route('article.detail', ['id' => $id])
             ->with(['message' => 'Artículo publicado con éxito']);
     }
+
+    public function authorizeRePublications(){
+        $articles = inReviewPublished::orderBy('id', 'asc')
+            ->get();
+
+        return view('editor.authorizeRePublications', [
+            'articles' => $articles,
+        ]);
+    }
+
+    public function approveRePublications(Request $request){
+
+//                dd($request);
+
+        // validacion
+        $validate = $this->validate($request, [
+            'id' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'section' => 'required|string',
+            'title' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
+            'image_path' => 'image',
+            'text' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+//            'state' => 'required|string|max:255',
+        ]);
+
+        // recoger los datos
+        $id = $request->input('id');
+        $author = $request->input('author');
+        $section = $request->input('section');
+        $title = $request->input('title');
+        $sub_title = $request->input('sub_title');
+        $image_path = $request->file('image_path');
+        $text = $request->input('text');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
+        $state = $request->input('publicado');
+
+//        dd($title);
+        $user = Auth::user();
+        $originalArticle = Article::find($id);
+
+        // actualizar objeto Article
+        $article = Article::find($id);
+        $article->author = $author;
+        $article->edited_by = $user->id;
+        $article->section_id = $section;
+        $article->title = $title;
+        $article->sub_title = $sub_title;
+        $article->text = $text;
+        $article->keywords = $keywords;
+        $article->slug = $slug;
+        $article->state = 'publicado';
+        $article->editor_comments = $article->editor_comments;
+//        $article->published_at = $originalArticle->published_at;
+
+        // subir fichero
+        if ($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            $article->image_path = $image_path_name;
+        } else{
+            $article->image_path = $originalArticle->image_path;
+        }
+
+//        dd($article);
+
+        // actualizar registro
+        $article->update();
+        return redirect()->route('article.detail', ['id' => $id])
+            ->with(['message' => 'Artículo publicado con éxito']);
+    }
+
+
+
+
 }
 
 
