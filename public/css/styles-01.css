@@ -3,6 +3,9 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
+body {
+    min-width: 0;
+}
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -257,6 +260,7 @@ footer .social i.icon-pi {
 .news-item {
 	background-color: #fff;
 	padding: 20px;
+	margin-bottom: 20px;
 }
 .news-item .item-date {margin: 0 0 10px 0;color: #888888;}
 .news-item h2.item-title {
@@ -370,8 +374,21 @@ footer .social i.icon-pi {
 .news-list .box.strong .link .btn i {
 	display: none;
 }
+/**/
 
-
+.news-list.side {
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: transparent;
+}
+.news-list.side .box {
+	height: auto;
+}
+.news-list.side .box h3.title,
+.news-list.side .box h3.title *  {
+	    line-height: 1.3;
+    font-size: 18px;
+}
 
 
 /**/

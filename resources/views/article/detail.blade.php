@@ -4,11 +4,6 @@
     <div class="container">
         <div class="row">
 
-            {{--                    ULTIMOS 6 ARTICULOS--}}
-            @foreach ($last6articles as $article)
-                {{ $article->id }}
-            @endforeach
-            {{--                    --}}
 
             <div class="col-12 col-md-9">
                 {{-- // mostramos mensaje --}}
@@ -101,9 +96,34 @@
 
 
             </div>
-                </div>
 
+
+
+<div class="col-12 col-md-3 news-list side">
+    {{-- ULTIMOS 6 ARTICULOS --}}
+        @foreach ($last6articles as $article)
+        <div class="box">
+            <div class="date">
+                <?php echo date("d M y | g:i a",strtotime($article->published_at));?>
             </div>
+            <h3 class="title">
+            <a href="{{ route('article.detail', ['id' => $article->id]) }}">
+                {{ $article->title}}
+            </a>
+            </h3>
+            <div class="subtitle">
+                {{ $article->sub_title}}
+            </div>
+            <div class="link">
+                <a href="{{ route('article.detail', ['id' => $article->id]) }}" class="btn">Leer m&aacute;s <i></i></a>
+            </div>
+        </div>
+
+        @endforeach
+    {{-- --}}
+</div>
+
+
 
         </div>
 
