@@ -69,6 +69,20 @@
                         <div class="item-author">
                             {{ __('lang.author').' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
                         </div>
+                            
+                        <div class="item-keywords">
+
+                            <?php
+                                $string = $publishedArticle->keywords; 
+                                $str_arr = explode (";", $string);  
+                                echo '<ul>';
+                                echo '<li>' . implode( '</li><li>', $str_arr) . '</li>';
+                                echo '</ul>';
+                            ?>
+
+
+
+                        </div>
 
                         <div class="row">
                             <div class="col-12">
