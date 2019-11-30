@@ -75,7 +75,7 @@ class ArticleController extends Controller
         $article->text = $text;
         $article->keywords = $keywords;
         $article->slug = $slug;
-        $article->state = 'en revisión';
+        $article->state = $state;
 
         // subir fichero
 
@@ -86,8 +86,9 @@ class ArticleController extends Controller
         }
 
         $article->save();
-        return redirect()->route('home')->with([
-            'message' => 'El Artículo se ha enviado para revisión'
+
+        return json_encode([
+            'status' => '1'
         ]);
     }
 
@@ -471,8 +472,8 @@ class ArticleController extends Controller
 
         // actualizar registro
         $article->update();
-        return redirect()->route('article.detail', ['id' => $id])
-            ->with(['message' => 'Artículo publicado con éxito']);
+
+
     }
 
     public function authorizeRePublications(){
