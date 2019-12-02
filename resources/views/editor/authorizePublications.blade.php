@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>publicar...página a eliminar posiblemente</title>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

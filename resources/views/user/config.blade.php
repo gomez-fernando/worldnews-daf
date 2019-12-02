@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.settings') }}</title>
+    <title>Mi perfil</title>
 @endsection
 
 @section('content')

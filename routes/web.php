@@ -41,13 +41,16 @@ Route::post('/article/update', 'ArticleController@update')->name('article.update
 Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
 // EDITOR
-Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.control-panel');
+Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.controlPanelView');
 Route::get('/editor/republicar/{id}', 'InReviewPublishedController@rePublishView')->name('editor.re-publish');
-
-
-
 Route::post('/editor/publicar', 'ArticleController@approvePublications')->name('editor.approve-publications');
+
+
 Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');
+
+// ADMIN
+Route::get('/admin/panel-de-control', 'ArticleController@adminControlPanelView')->name('admin.controlPanelView');
+
 
 //JOURNALIST
 Route::get('periodista/panel-de-control', 'ArticleController@controlPanelJournalistView')->name('journalist.controlPanelView');

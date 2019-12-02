@@ -13,10 +13,6 @@ return [
     |
     */
 
-    'register' => 'Registrarse',
-    'email_address' => 'Correo Electrónico',
-    'remember_me' => 'Recuérdame',
-    'send_password_reset_link' => 'Enviar enlace de recuperación de contraseña',
     'login' => 'Iniciar sesión',
     'logout' => 'Cerrar Sesión',
     'reset_password' => "Recuperar contraseña",

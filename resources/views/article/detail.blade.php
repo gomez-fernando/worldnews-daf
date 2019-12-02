@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Noticia</title>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -69,12 +73,12 @@
                         <div class="item-author">
                             {{ __('lang.author').' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
                         </div>
-                            
+
                         <div class="item-keywords">
 
                             <?php
-                                $string = $publishedArticle->keywords; 
-                                $str_arr = explode (";", $string);  
+                                $string = $publishedArticle->keywords;
+                                $str_arr = explode (";", $string);
                                 echo '<ul>';
                                 echo '<li>' . implode( '</li><li>', $str_arr) . '</li>';
                                 echo '</ul>';

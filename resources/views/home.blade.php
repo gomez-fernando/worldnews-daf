@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.home') }}</title>
+    <title>Inicio</title>
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
             @foreach ($publishedArticles as $publishedArticle)
                 @include('includes.publishedArticle', ['publishedArticle' => $publishedArticle])
             @endforeach
-            {{-- // añadimos enlaces de paginacion --}}            
+            {{-- // añadimos enlaces de paginacion --}}
 
         </div>
         <div class="row justify-content-center">

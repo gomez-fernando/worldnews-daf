@@ -414,6 +414,23 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function adminControlPanelView(){
+        $inReviewArticles = Article::orderBy('id', 'asc')
+            ->where('state', 'en revisión')
+            ->get();
+        $deletedArticles = Article::orderBy('id')
+            ->where('state', 'inactivo')
+            ->get();
+
+        $inReviewPublishedArticles = InReviewPublished::orderBy('id')->get();
+
+        return view('admin.controlPanelView', [
+            'inReviewArticles' => $inReviewArticles,
+            'deletedArticles' => $deletedArticles,
+            'inReviewPublishedArticles' => $inReviewPublishedArticles,
+        ]);
+    }
+
     public function approvePublications(Request $request){
 
 //                dd($request);

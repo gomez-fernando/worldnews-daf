@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Panel de control</title>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -47,6 +51,31 @@
                         <td>{{ $inReviewPublishedArticle->created_at }}</td>
                         <td>
                             <a href="{{ route('editor.re-publish', ['id' => $inReviewPublishedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="row">
+            <h3>Noticias eliminadas</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Revisar</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($deletedArticles as $deletedArticle)
+                    <tr>
+                        <th scope="row">{{ $deletedArticle->title }}</th>
+                        <td>{{ $deletedArticle->created_at }}</td>
+                        <td>
+                            <a href="{{ route('editor.re-publish', ['id' => $deletedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
                         </td>
                     </tr>
                 @endforeach

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.publish') }}</title>
+    <title>Publicar</title>
 @endsection
 
 @section('content')

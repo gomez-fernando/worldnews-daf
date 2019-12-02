@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.edit_article') }}</title>
+    <title>Editar artículo</title>
 @endsection
 
 @section('content')

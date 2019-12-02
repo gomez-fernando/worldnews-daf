@@ -61,11 +61,11 @@
 
 
                                 <a class="dropdown-item" href="{{ route('login') }}">
-                                    {{ __('lang.login') }}
+                                    Iniciar sesión
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('register') }}">
-                                    {{ __('lang.register') }}
+                                    Registrarse
                                 </a>
 
 
@@ -93,11 +93,11 @@
                         </li>
                     @endif
 
-{{--                    @if (Auth::user() && Auth::user()->usertype == 'admin')--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route('admin.controlPanelView') }}" class="nav-link">{{ __('lang.control_panel') }}</a>--}}
-{{--                        </li>--}}
-{{--                    @endif--}}
+                    @if (Auth::user() && Auth::user()->usertype == 'admin')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.controlPanelView') }}" class="nav-link">{{ __('lang.control_panel') }}</a>
+                        </li>
+                    @endif
 
 
                         <li class="nav-item dropdown">

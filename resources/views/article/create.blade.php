@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ __('lang.create_article') }}</title>
+    <title>Crear nuevo artículo</title>
 @endsection
 
 @section('content')
