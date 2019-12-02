@@ -401,13 +401,16 @@ class ArticleController extends Controller
 
     }
 
-    public function authorizePublications(){
-        $articles = Article::orderBy('id', 'asc')
+    public function editorControlPanelView(){
+        $inReviewArticles = Article::orderBy('id', 'asc')
             ->where('state', 'en revisión')
             ->get();
 
-        return view('editor.authorizePublications', [
-            'articles' => $articles,
+        $inReviewPublishedArticles = InReviewPublished::orderBy('id')->get();
+
+        return view('editor.controlPanelView', [
+            'inReviewArticles' => $inReviewArticles,
+            'inReviewPublishedArticles' => $inReviewPublishedArticles,
         ]);
     }
 

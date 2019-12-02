@@ -19,13 +19,13 @@
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
                             <input type="hidden" value="{{ $article->author }}" name="author" id="" />
 
-                            <div class="form-group row">
-                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
-                                <div class="col-md-8">
-                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>
-                                </div>
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>--}}
+{{--                                <div class="col-md-8">--}}
+{{--                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>--}}
+{{--                                </div>--}}
 
-                            </div>
+{{--                            </div>--}}
 
                             <div class="form-group row">
                                 <label for="title" class="col-md-3 col-form-label text-md-right">{{ __('lang.title') }}</label>
@@ -64,12 +64,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="published_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.published_at') }}</label>
-                                <div class="col-md-8">
-                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>
-                                </div>
-                            </div>
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.published_at') }}</label>--}}
+{{--                                <div class="col-md-8">--}}
+{{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">{{ __('lang.section') }}</label>

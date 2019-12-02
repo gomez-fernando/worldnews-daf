@@ -200,7 +200,8 @@
                             </div>
 
                             {{-- <div class="form-group row justify-content-center"> --}}
-                            @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso' || $article->state == 'publicado') )
+{{--                            @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso' || $article->state == 'publicado') )--}}
+                                @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso') )
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-3">
                                         <input type="button" value="{{ __('lang.exit_and_save') }}" id="in_process"  class="btn btn-primary" />

@@ -83,7 +83,7 @@
 
                     @if (Auth::user() && Auth::user()->usertype == 'editor')
                         <li class="nav-item">
-                            <a href="{{ route('editor.authorize-publications') }}" class="nav-link">{{ __('lang.authorize_publications') }}</a>
+                            <a href="{{ route('editor.control-panel') }}" class="nav-link">Panel de control</a>
                         </li>
                     @endif
 
@@ -92,6 +92,12 @@
                             <a href="{{ route('journalist.controlPanelView') }}" class="nav-link">{{ __('lang.control_panel') }}</a>
                         </li>
                     @endif
+
+{{--                    @if (Auth::user() && Auth::user()->usertype == 'admin')--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('admin.controlPanelView') }}" class="nav-link">{{ __('lang.control_panel') }}</a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
 
 
                         <li class="nav-item dropdown">
@@ -225,9 +231,9 @@ Footer
 
         // Compose the string for display
         var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
-        
-        
-        $("#current-time").html(currentTimeString);        
+
+
+        $("#current-time").html(currentTimeString);
      }
 </script>
 

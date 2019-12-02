@@ -26,9 +26,9 @@ Route::get('/home/{section_id?}', 'HomeController@index')->name('home');
 // USUARIO
 Route::get('/configuracion', 'userController@config')->name('config');
 Route::post('/user/update', 'userController@update')->name('user.update');
-Route::get('/user/avatar/{filename}', 'userController@getImage')->name('user.avatar');
+//Route::get('/user/avatar/{filename}', 'userController@getImage')->name('user.avatar');
 Route::get('/perfil/{id}', 'userController@profile')->name('profile');
-Route::get('/gente/{search?}', 'userController@index')->name('user.index');
+//Route::get('/gente/{search?}', 'userController@index')->name('user.index');
 
 // ARTICLE
 Route::get('/article/create', 'ArticleController@create')->name('article.create');
@@ -41,7 +41,11 @@ Route::post('/article/update', 'ArticleController@update')->name('article.update
 Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
 // EDITOR
-Route::get('/editor/aprobar-publicaciones', 'ArticleController@authorizePublications')->name('editor.authorize-publications');
+Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.control-panel');
+Route::get('/editor/republicar/{id}', 'InReviewPublishedController@rePublishView')->name('editor.re-publish');
+
+
+
 Route::post('/editor/publicar', 'ArticleController@approvePublications')->name('editor.approve-publications');
 Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');
 

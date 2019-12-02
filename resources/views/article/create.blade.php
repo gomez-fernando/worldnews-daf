@@ -145,7 +145,7 @@
                                         CKEDITOR.replace( 'text' );
                                     </script>
 
-                                     // si se produce un error en la validacion hay una variable siponivble que es errors
+{{--                                     // si se produce un error en la validacion hay una variable siponivble que es errors--}}
                                     @if ($errors->has('text'))
                                         <span class="alert-danger" role="alert">
                                     <strong>{{ $errors->first('text') }}</strong>
