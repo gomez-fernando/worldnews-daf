@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Publicar</title>
+    <title>Republicar</title>
 @endsection
 
 @section('content')
@@ -11,16 +11,17 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('lang.publish') }}
+                        Republicar
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('editor.approve-publications') }}" method="POST" id="" enctype="multipart/form-data">
+                        <form action="{{ route('editor.rePublish') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" value="{{ $article->id }}" name="id" id="" />
-                            <input type="hidden" value="{{ $article->author }}" name="author" id="" />
+                            <input type="hidden" value="{{ $article->article_id }}" name="articleId" id="" />
+                            <input type="hidden" value="{{ $article->edited_by }}" name="editedBy" id="" />
+{{--                            <input type="hidden" value="{{ $article->image_path }}" name="imagePath" id="" />--}}
 
 {{--                            <div class="form-group row">--}}
-{{--                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>--}}
+{{--                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>--}}
 {{--                                <div class="col-md-8">--}}
 {{--                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>--}}
 {{--                                </div>--}}
@@ -28,7 +29,7 @@
 {{--                            </div>--}}
 
                             <div class="form-group row">
-                                <label for="title" class="col-md-3 col-form-label text-md-right">{{ __('lang.title') }}</label>
+                                <label for="title" class="col-md-3 col-form-label text-md-right">Título</label>
                                 <div class="col-md-8">
                                     <input type="text" value="{{ $article->title }}" id="title" name="title" class="form-control" required>
 
@@ -43,7 +44,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="sub_title" class="col-md-3 col-form-label text-md-right">{{ __('lang.sub_title') }}</label>
+                                <label for="sub_title" class="col-md-3 col-form-label text-md-right">Subtítulo</label>
                                 <div class="col-md-8">
                                     <input type="text" value="{{ $article->sub_title }}" id="sub_title" name="sub_title" class="form-control" required>
 
@@ -58,21 +59,21 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>
+                                <label for="created_at" class="col-md-3 col-form-label text-md-right">Creado</label>
                                 <div class="col-md-8">
                                     <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="created_at" class="form-control" required>
                                 </div>
                             </div>
 
 {{--                            <div class="form-group row">--}}
-{{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.published_at') }}</label>--}}
+{{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">Publicado</label>--}}
 {{--                                <div class="col-md-8">--}}
 {{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
 
                             <div class="form-group row">
-                                <label for="section" class="col-md-3 col-form-label text-md-right">{{ __('lang.section') }}</label>
+                                <label for="section" class="col-md-3 col-form-label text-md-right">Sección</label>
                                 <div class="col-md-8">
                                     <select  type="select" id="section" name="section" class="form-control" required>
                                         @foreach ($sections as $section)
@@ -101,7 +102,7 @@
                             {{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
 
                             <div class="form-group row">
-                                <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.change_image') }}</label>
+                                <label for="image_path" class="col-md-3 col-form-label text-md-right">Cambiar imagen</label>
                                 <div class="col-md-8">
                                     {{--                                    <input type="file" value="{{ $article->image_path }}" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
                                     <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
@@ -117,7 +118,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="keywords" class="col-md-3 col-form-label text-md-right">{{ __('lang.keywords') }}</label>
+                                <label for="keywords" class="col-md-3 col-form-label text-md-right">Tags</label>
                                 <div class="col-md-8">
                                     <input type="text" value="{{ $article->keywords }}" id="keywords" name="keywords" class="form-control" required>
 
@@ -147,7 +148,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('lang.text') }}</label>
+                                <label for="text" class="col-md-3 col-form-label text-md-right">Texto</label>
                                 <div class="col-md-8">
                                     <textarea id="text" name="text" class="form-control" required>{{ $article->text }}</textarea>
 
@@ -162,7 +163,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="state" class="col-md-3 col-form-label text-md-right">{{ __('lang.state') }}</label>
+                                <label for="state" class="col-md-3 col-form-label text-md-right">Estado</label>
                                 <div class="col-md-8">
                                     <input type="text" readonly value="{{ $article->state }}" id="state" name="state" class="form-control" required>
 
@@ -177,16 +178,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="editor_comments" class="col-md-3 col-form-label text-md-right">{{ __('lang.editor_comments') }}</label>
+                                <label for="editorComments" class="col-md-3 col-form-label text-md-right">Comentarios del editor</label>
                                 <div class="col-md-8">
                                     <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
                                               readonly
-                                              @endif id="editor_comments" name="editor_comments" class="form-control">{{$article->editor_comments }}</textarea>
+                                              @endif id="editorComments" name="editorComments" class="form-control">{{$article->editor_comments }}</textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
-                                    @if ($errors->has('editor_comments'))
+                                    @if ($errors->has('editorComments'))
                                         <span class="alert-danger" role="alert">
-                                    <strong>{{ $errors->first('editor_comments') }}</strong>
+                                    <strong>{{ $errors->first('editorComments') }}</strong>
                                     </span>
 
                                     @endif
@@ -196,14 +197,14 @@
                             {{-- <div class="form-group row justify-content-center"> --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="{{ __('lang.send_to_review') }}" id="" name="" class="btn btn-primary" />
+                                    <input type="submit" value="Devolver con comentarios" id="" name="" class="btn btn-primary" />
                                 </div>
                             </div>
 
                             @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="{{ __('lang.publish') }}" id="" name="" class="btn btn-primary" />
+                                        <input type="submit" value="Republicar" id="" name="" class="btn btn-primary" />
                                     </div>
                                 </div>
                             @endif

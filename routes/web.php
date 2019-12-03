@@ -36,7 +36,12 @@ Route::post('/article/review', 'ArticleController@review')->name('article.review
 Route::get('/article/file/{filename}', 'ArticleController@getArticleImage')->name('article.file');
 Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
+
 Route::get('/article/editar/{id}', 'ArticleController@edit')->name('article.edit');
+Route::post('/article/republicar', 'ArticleController@publicadoARevisionRepublicar')->name('article.publicadoARevisionRepublicar');
+
+
+
 Route::post('/article/update', 'ArticleController@update')->name('article.update');
 Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
@@ -44,6 +49,7 @@ Route::post('/article/store', 'ArticleController@store')->name('article.store');
 Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.controlPanelView');
 Route::get('/editor/republicar/{id}', 'InReviewPublishedController@rePublishView')->name('editor.re-publish');
 Route::post('/editor/publicar', 'ArticleController@approvePublications')->name('editor.approve-publications');
+Route::post('/editor/republicar', 'ArticleController@rePublish')->name('editor.rePublish');
 
 
 Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');

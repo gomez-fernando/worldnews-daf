@@ -73,35 +73,35 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link">{{ __('lang.home') }}</a>
+                            <a href="{{ route('home') }}" class="nav-link">Inicio</a>
                         </li>
                     @if (Auth::user() && Auth::user()->usertype != 'editor')
                         <li class="nav-item">
-                            <a href="{{ route('article.create') }}" class="nav-link">{{ __('lang.create_article') }}</a>
+                            <a href="{{ route('article.create') }}" class="nav-link">Crear artículo</a>
                         </li>
                     @endif
 
                     @if (Auth::user() && Auth::user()->usertype == 'editor')
                         <li class="nav-item">
-                            <a href="{{ route('editor.control-panel') }}" class="nav-link">Panel de control</a>
+                            <a href="{{ route('editor.controlPanelView') }}" class="nav-link">Panel de control</a>
                         </li>
                     @endif
 
                     @if (Auth::user() && Auth::user()->usertype == 'journalist')
                         <li class="nav-item">
-                            <a href="{{ route('journalist.controlPanelView') }}" class="nav-link">{{ __('lang.control_panel') }}</a>
+                            <a href="{{ route('journalist.controlPanelView') }}" class="nav-link">Panel de control</a>
                         </li>
                     @endif
 
                     @if (Auth::user() && Auth::user()->usertype == 'admin')
                         <li class="nav-item">
-                            <a href="{{ route('admin.controlPanelView') }}" class="nav-link">{{ __('lang.control_panel') }}</a>
+                            <a href="{{ route('admin.controlPanelView') }}" class="nav-link">Panel de control</a>
                         </li>
                     @endif
 
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                 <i class="icon-profile"></i>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
@@ -110,13 +110,13 @@
 
 
                                 <a class="dropdown-item" href="{{ route('config') }}">
-                                    {{ __('lang.profile') }}
+                                    Mi perfil
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('lang.logout') }}
+                                    Cerrar sesión
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

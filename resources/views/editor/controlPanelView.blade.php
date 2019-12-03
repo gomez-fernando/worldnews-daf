@@ -7,6 +7,14 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                {{-- // mostramos mensaje --}}
+                @include('includes.message')
+            </div>
+        </div>
+        <div class="row">
+
+
             <h3>Noticias pendientes de publicar</h3>
             <table class="table table-striped">
                 <thead>

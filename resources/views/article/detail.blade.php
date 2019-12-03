@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="item-author">
-                            {{ __('lang.author').' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
+                            Autor{{' : ' . $publishedArticle->user->name.' '.$publishedArticle->user->surname }}
                         </div>
 
                         <div class="item-keywords">

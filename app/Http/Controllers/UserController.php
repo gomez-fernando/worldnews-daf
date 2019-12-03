@@ -47,21 +47,15 @@ class UserController extends Controller
             'surname' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username,'.$id,
             'email' => 'required|string|email|max:255|unique:users,email, '.$id,
-
         ]);
 
         if($request->input('password')){
             // validacion de la contraseña
             $validate = $this->validate($request, [
                 'password' => 'string|min:6|confirmed',
-
-
             ]);
 
         }
-
-//        return redirect()->route('config')
-//            ->with(['message'=>'Usuario actualizado correctamente']);
 
 
         // el Auth le ponemos una barra delante por si falla al no tener ningún namespace declarado

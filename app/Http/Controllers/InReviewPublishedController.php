@@ -24,7 +24,7 @@ class InReviewPublishedController extends Controller
             ->orderBy('id')
             ->get();
 
-        return view('editor.reviewPublishArticle', [
+        return view('editor.reviewPublishView', [
             'article' => $article,
             'sections' => $sections,
         ]);
