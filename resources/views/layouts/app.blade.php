@@ -205,7 +205,10 @@ Footer
     if(window.location.href.indexOf("/home/") > -1) {
         url = window.location.href;
         n = url.substr(url.length - 1);
-        $('.nav-item:nth-child('+n+')').find('.nav-link').addClass('selected');
+        $('.header-02 .nav-item:nth-child('+n+')').find('.nav-link').addClass('selected');
+        // Title con el nombre de la categoria
+        title = $('.header-02 .nav-link.selected').text();
+        document.title=title;
     }
     //
     setInterval('updateClock()', 1000);
