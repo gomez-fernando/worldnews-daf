@@ -410,6 +410,16 @@ footer .social i.icon-pi {
 }
 /**/
 
+@media (min-width: 640px) {
+
+.news-list {
+    min-height: 640px;
+}
+
+}
+
+
+
 @media (max-width: 768px) {
 .header-01 {
 	height: auto;
@@ -424,7 +434,6 @@ footer .social i.icon-pi {
 .navbar-collapse:not(.show) {
 	height: 0;
 }
-
 
 .news-list .box.strong h3.title a {
 	font-size: 24px;
