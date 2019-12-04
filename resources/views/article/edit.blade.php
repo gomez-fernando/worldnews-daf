@@ -95,8 +95,10 @@
                                 </div>
                             </div>
 
-                                <div class="container-avatar">
-                                    <img src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
+                                <div class="form-group row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <img class="preview-img" src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
+                                    </div>
                                 </div>
 
 {{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
