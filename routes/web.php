@@ -47,11 +47,13 @@ Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
 // EDITOR
 Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.controlPanelView');
+Route::get('/editor/publicar/{id}', 'ArticleController@publishView')->name('editor.publishView');
+Route::post('/editor/publicar', 'ArticleController@publish')->name('editor.publish');
 Route::get('/editor/republicar/{id}', 'InReviewPublishedController@rePublishView')->name('editor.re-publish');
-Route::post('/editor/publicar', 'ArticleController@approvePublications')->name('editor.approve-publications');
 Route::post('/editor/republicar', 'ArticleController@rePublish')->name('editor.rePublish');
 
 
+Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');
 Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');
 
 // ADMIN

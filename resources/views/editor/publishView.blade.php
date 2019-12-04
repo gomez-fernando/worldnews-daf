@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Republicar</title>
+    <title>Publicar</title>
 @endsection
 
 @section('content')
@@ -14,20 +14,20 @@
                         Republicar
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('editor.rePublish') }}" method="POST" id="" enctype="multipart/form-data">
+                        <form action="{{ route('editor.publish') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
-                            <input type="hidden" value="{{ $article->article_id }}" name="articleId" id="" />
+{{--                            <input type="hidden" value="{{ $article->article_id }}" name="articleId" id="" />--}}
                             <input type="hidden" value="{{ $article->edited_by }}" name="editedBy" id="" />
-{{--                            <input type="hidden" value="{{ $article->image_path }}" name="imagePath" id="" />--}}
+                            {{--                            <input type="hidden" value="{{ $article->image_path }}" name="imagePath" id="" />--}}
 
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>--}}
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>--}}
-{{--                                </div>--}}
+                            {{--                            <div class="form-group row">--}}
+                            {{--                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>--}}
+                            {{--                                <div class="col-md-8">--}}
+                            {{--                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>--}}
+                            {{--                                </div>--}}
 
-{{--                            </div>--}}
+                            {{--                            </div>--}}
 
                             <div class="form-group row">
                                 <label for="title" class="col-md-3 col-form-label text-md-right">Título</label>
@@ -66,12 +66,12 @@
                                 </div>
                             </div>
 
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">Publicado</label>--}}
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="form-group row">--}}
+                            {{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">Publicado</label>--}}
+                            {{--                                <div class="col-md-8">--}}
+                            {{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
 
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">Sección</label>
@@ -205,7 +205,7 @@
                             @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="Republicar" id="" name="" class="btn btn-primary" />
+                                        <input type="submit" value="Publicar" id="" name="" class="btn btn-primary" />
                                     </div>
                                 </div>
                             @endif

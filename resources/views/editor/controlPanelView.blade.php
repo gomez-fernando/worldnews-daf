@@ -30,7 +30,7 @@
                         <th scope="row">{{ $inReviewArticle->title }}</th>
                         <td>{{ $inReviewArticle->created_at }}</td>
                         <td>
-                            <a href="{{ route('article.edit', ['id' => $inReviewArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                            <a href="{{ route('editor.publishView', ['id' => $inReviewArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
                         </td>
                     </tr>
                 @endforeach
