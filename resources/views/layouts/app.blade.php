@@ -138,6 +138,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+
+            {{--                    formulario del buscador de tags--}}
+            <form method="get" action="{{ route('article.tagsSearchResult') }}" id="tagsSearch">
+                <input type="text" id="search" class="form-control" required>
+                <input type="submit" value="Buscar">
+            </form>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <!-- Right Side Of Navbar -->

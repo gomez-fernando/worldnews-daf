@@ -16,12 +16,12 @@
             @foreach ($publishedArticles as $publishedArticle)
                 @include('includes.publishedArticle', ['publishedArticle' => $publishedArticle])
             @endforeach
-            {{-- // añadimos enlaces de paginacion --}}
 
+        {{-- // añadimos enlaces de paginacion --}}
         </div>
         <div class="row justify-content-center">
                 {{ $publishedArticles->links() }}
-            </div>
+        </div>
     </div>
 
     <script>

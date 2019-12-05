@@ -34,6 +34,8 @@ Route::get('/perfil/{id}', 'userController@profile')->name('profile');
 Route::get('/article/create', 'ArticleController@create')->name('article.create');
 Route::post('/article/review', 'ArticleController@review')->name('article.review');
 Route::get('/article/file/{filename}', 'ArticleController@getArticleImage')->name('article.file');
+//buscador de tags
+Route::get('/article/tags-search-result/{search?}', 'ArticleController@tagsSearchResult')->name('article.tagsSearchResult');
 Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
 
@@ -44,6 +46,9 @@ Route::post('/article/republicar', 'ArticleController@publicadoARevisionRepublic
 
 Route::post('/article/update', 'ArticleController@update')->name('article.update');
 Route::post('/article/store', 'ArticleController@store')->name('article.store');
+
+
+
 
 // EDITOR
 Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.controlPanelView');

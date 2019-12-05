@@ -657,12 +657,25 @@ class ArticleController extends Controller
             return redirect()->route('editor.controlPanelView')
                 ->with(['message' => 'Artículo registrado con éxito']);
         }
-
-
-
     }
 
-
+    public function tagsSearchResult($search = null) {
+       if (!empty($search)){
+           $articles = Article::where('keywords', 'LIKE', '%'.$search.'%')
+               ->where('state', 'publicado')
+               ->orderBy('id', 'desc')
+               ->paginate(6);
+//           dd($articles);
+           return view('article.tagsSearchResult', [
+               'articles' => $articles,
+               'search' => $search
+           ]);
+       }else{
+           return redirect()->route('home')->with([
+               'message' => 'Ningún artículo coincide con la búsqueda'
+           ]);
+       }
+    }
 
 
 }
