@@ -1,0 +1,65 @@
+p<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used during authentication for various
+    | messages that we need to display to the user. You are free to modify
+    | these language lines according to your application's requirements.
+    |
+    */
+
+    'login' => 'Iniciar sesión',
+    'logout' => 'Cerrar Sesión',
+    'reset_password' => "Recuperar contraseña",
+    'insert_password' => 'Contraseña',
+    'forgot_password' => 'Olvidaste tu contraseña?',
+    'register' => 'Registrarse',
+    'email_address' => 'Correo Electrónico',
+    'remember_me' => 'Recuérdame',
+    'send_password_reset_link' => 'Enviar enlace de recuperación de contraseña',
+    'name' => 'Nombre',
+    'surname' => 'Apellidos',
+    'confirm_password' => 'Repetir Contraseña',
+    'home' => 'Inicio',
+    'people' => 'Gente',
+    'favorites' => 'Favoritos',
+    'category' => 'Categoría',
+    'upload_picture' => 'Subir foto',
+    'create_article' => 'Crear artículo',
+    'profile' => 'Mi perfil',
+    'settings' => 'Configuración',
+    'read_article' => 'Ver artículo',
+    'search' => 'Buscar',
+    'see_profile' => 'Ver perfil',
+    'favorite_components' => 'Mis componentes favoritos',
+    'image' => 'Imagen',
+    'description' => 'Descripción',
+    'my_account_settings' => 'Configuración de mi cuenta',
+    'save_changes' => 'Guardar cambios',
+    'text' => 'Texto',
+    'title' => 'Título',
+    'created_at' => 'Fecha de creación',
+    'section' => 'Sección',
+    'author' => 'Autor',
+    'sub_title' => 'Subtítulo',
+    'keywords' => 'Tags (separar con ";")',
+    'published_at' => 'Publicado',
+    'edit_article' => 'Editar artículo',
+    'change_image' => 'Cambiar imagen',
+    'editor_comments' => "Comentarios del editor",
+    'send_to_review' => "Enviar a revisión",
+    'state' => "Estado",
+    'approve_publication' => "Aprobar publicación",
+    'exit_and_save' => "Guardar y salir",
+    'publish' => "Publicar",
+    'authorize_publications' => "Autorizar publicaciones",
+    'review' => "Revisar",
+    'control_panel' => "Panel de control",
+
+
+];
