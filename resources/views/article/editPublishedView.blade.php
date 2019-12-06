@@ -201,9 +201,29 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>
-                            </div>
+                            @if ($article->state == 'publicado')
+                                <div class="row">
+                                    <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if ($article->state == 'en proceso')
+                                <div class="row">
+                                    <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            @endif
+
+
 
                             {{-- <div class="form-group row justify-content-center"> --}}
 {{--                            @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso' || $article->state == 'publicado') )--}}
@@ -221,13 +241,7 @@
 {{--                            </div>--}}
 
 {{--                            @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )--}}
-                                @if (Auth::user() && $article->state == 'publicado' )
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />
-                                    </div>
-                                </div>
-                            @endif
+
 
                         </form>
                     </div>

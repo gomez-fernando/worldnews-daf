@@ -33,19 +33,20 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request){
-//        dd($request);
+        dd($request);
 
 
         // validacion
         $validate = $this->validate($request, [
+//            'author' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'sub_title' => 'required|string|max:255',
             'section' => 'required|string|max:255',
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-//            'image_path' => 'required|mimes:jpg,jpeg,png,gif',
-            'image_path' => 'image',
-
+            'state' => 'required|string|max:255',
+            'image_path' => 'required|mimes:jpg,jpeg,png,gif',
+//            'image_path' => 'image',
             'text' => 'required|string',
         ]);
 
@@ -76,7 +77,6 @@ class ArticleController extends Controller
         $article->keywords = $keywords;
         $article->slug = $slug;
         $article->state = $state;
-
         // subir fichero
 
         if ($image_path){
@@ -84,12 +84,35 @@ class ArticleController extends Controller
             Storage::disk('images')->put($image_path_name, File::get($image_path));
             $article->image_path = $image_path_name;
         }
+//        dd($article);
 
         $article->save();
 
-        return json_encode([
-            'status' => '1'
-        ]);
+//        return json_encode([
+//            'status' => '1'
+//        ]);
+        if ($state == 'en revisión'){
+            if ($user->usertype == 'journalist'){
+                return redirect()->route('journalist.controlPanelView')->with([
+                    'message' => 'El artículo se ha enviado a revisión. Será publicado cuando el editor lo apruebe'
+                ]);
+            } else{
+                return redirect()->route('admin.controlPanelView')->with([
+                    'message' => 'El artículo se ha enviado a revisión. Será publicado cuando el editor lo apruebe'
+                ]);
+            }
+
+        }else {
+            if ($user->usertype == 'journalist'){
+                return redirect()->route('journalist.controlPanelView')->with([
+                    'message' => 'El artículo se ha guardado correctamente.'
+                ]);
+            } else{
+                return redirect()->route('admin.controlPanelView')->with([
+                    'message' => 'El artículo se ha guardado correctamente.'
+                ]);
+            }
+        }
     }
 
     public function publishView($id){
@@ -121,11 +144,17 @@ class ArticleController extends Controller
             ->where('state', 'en revisión')
             ->where('editor_comments', '!=', null)
             ->get();
+
+        $inReviewArticles = Article::orderBy('id', 'asc')
+            ->where('author', Auth::user()->id)
+            ->where('state', 'en revisión')
+            ->get();
 //        dd($commentedArticles);
 
         return view('journalist.controlPanelView', [
 //            'sections' => $sections,
             'inProcessArticles' => $inProcessArticles,
+            'inReviewArticles' => $inReviewArticles,
             'commentedArticles' => $commentedArticles
         ]);
     }
@@ -232,23 +261,23 @@ class ArticleController extends Controller
         return redirect()->route('home')->with($message);
     }
 
-    public function edit($id){
+    public function editPublishedView($id){
         $user = \Auth::user();
         $article = Article::find($id);
         $sections = DB::table('sections')
             ->orderBy('id')
             ->get();
 
-        if (($user && $user->usertype != 'journalist')  || ($user && $user->id == $article->author)){
+//        if (($user && $user->usertype != 'journalist')  || ($user && $user->id == $article->author)){
 //                    dd($sections);
 
-            return view('article.edit', [
+            return view('article.editPublishedView', [
                 'article' => $article,
                 'sections' => $sections
             ]);
-        }else{
-            return redirect()->route('home');
-        }
+//        }else{
+//            return redirect()->route('home');
+//        }
     }
 
     public function update(Request $request){
@@ -399,6 +428,58 @@ class ArticleController extends Controller
 
 
 
+    }
+
+    public function editInProcessInReviewView($id){
+        $user = \Auth::user();
+        $article = Article::find($id);
+        $sections = DB::table('sections')
+            ->orderBy('id')
+            ->get();
+
+//        if (($user && $user->usertype != 'journalist')  || ($user && $user->id == $article->author)){
+//                    dd($sections);
+
+        return view('article.editInProcessInReviewView', [
+            'article' => $article,
+            'sections' => $sections
+        ]);
+//        }else{
+//            return redirect()->route('home');
+//        }
+    }
+
+    public function editInProcessInReview(Request $request){
+                        dd($request);
+
+        // validacion
+        $validate = $this->validate($request, [
+            'id' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'section' => 'required|string',
+            'title' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
+            'image_path' => 'image',
+            'text' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+        ]);
+
+        // recoger los datos
+        $id = $request->input('id');
+        $author = $request->input('author');
+        $section = $request->input('section');
+        $title = $request->input('title');
+        $sub_title = $request->input('sub_title');
+        $image_path = $request->file('image_path');
+        $text = $request->input('text');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
+        $state = $request->input('state');
+
+//        dd($title);
+        $user = Auth::user();
     }
 
     public function editorControlPanelView(){
