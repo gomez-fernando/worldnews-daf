@@ -39,7 +39,9 @@ Route::get('/article/tags-search-result/{search?}', 'ArticleController@tagsSearc
 Route::get('/article/{id}', 'ArticleController@detail')->name('article.detail');
 Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.delete');
 
-Route::get('/article/editar/{id}', 'ArticleController@edit')->name('article.edit');
+Route::get('/article/editar/{id}', 'ArticleController@editInProcessInReviewView')->name('article.editInProcessInReviewView');
+Route::post('/article/actualizar-articulo', 'ArticleController@editInProcessInReview')->name('article.editInProcessInReview');
+Route::get('/article/editar-publicado/{id}', 'ArticleController@editPublishedView')->name('article.editPublishedView');
 Route::post('/article/republicar', 'ArticleController@publicadoARevisionRepublicar')->name('article.publicadoARevisionRepublicar');
 
 

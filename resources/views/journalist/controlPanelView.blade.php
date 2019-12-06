@@ -6,6 +6,8 @@
 
 @section('content')
     <div class="container">
+        {{-- // mostramos mensaje --}}
+        @include('includes.message')
         <div class="row">
             <h3>Noticias en proceso de redacción</h3>
             <table class="table table-striped">
@@ -22,7 +24,7 @@
                         <th scope="row">{{ $inProcessArticle->title }}</th>
                         <td>{{ $inProcessArticle->created_at }}</td>
                         <td>
-                            <a href="{{ route('article.edit', ['id' => $inProcessArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                            <a href="{{ route('article.editInProcessInReviewView', ['id' => $inProcessArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -50,7 +52,7 @@
                         <th scope="row">{{ $commentedArticle->title }}</th>
                         <td>{{ $commentedArticle->created_at }}</td>
                         <td>
-                            <a href="{{ route('article.edit', ['id' => $commentedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                            <a href="{{ route('article.editInProcessInReviewView', ['id' => $commentedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -58,6 +60,33 @@
             </table>
 
         </div>
+        <hr>
+
+        <div class="row">
+            <h3>Noticias en revisión</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Revisar</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($inReviewArticles as $inReviewArticle)
+                    <tr>
+                        <th scope="row">{{ $inReviewArticle->title }}</th>
+                        <td>{{ $inReviewArticle->created_at }}</td>
+                        <td>
+                            <a href="{{ route('article.editInProcessInReviewView', ['id' => $inReviewArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+        </div>
+
 
     </div>
 

@@ -14,16 +14,18 @@
                         {{ __('lang.create_article') }}
                     </div>
                     <div class="card-body">
-{{--                        <form action="{{ route('article.create') }}" method="POST" id="" enctype="multipart/form-data" >--}}
-                            <form id="altaArticuloForm"  >
+                        <form action="{{ route('article.store') }}" method="POST" id="" enctype="multipart/form-data" >
+{{--                            <form id="altaArticuloForm"  >--}}
                             @csrf
+{{--                            <input type="hidden" id="state" name="state" value="">--}}
+                                                        <input type="hidden" id="state" name="state" value="en proceso">
+                            {{--                            <input type="hidden" id="state" name="state" value="en revisión">--}}
 
                             <div class="form-group row">
                                 <label for="authorReadOnly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ Auth::user()->name . ' '. Auth::user()->surname }}" type="text" id="authorReadOnly" name="authorReadOnly" class="form-control" required>
+                                    <input readonly value="{{ Auth::user()->name . ' '. Auth::user()->surname }}" type="text" id="authorReadOnly" class="form-control" required>
 
-                                    <input type="hidden" name="author" value="{{ Auth::user()->id }}">
                                 </div>
 
                             </div>
@@ -61,7 +63,7 @@
                             <div class="form-group row">
                                 <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>
                                 <div class="col-md-8">
-                                    <input readonly value="" type="text" id="created_at" name="created_at" class="form-control" required>
+                                    <input readonly value="" type="text" id="created_at"  class="form-control" required>
 
 
                                 </div>
@@ -155,19 +157,27 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-3">
+                                    <input type="submit" value="{{ __('lang.send_to_review') }}" id="for_review" class="btn btn-primary" />
+                                    {{--                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="" class="btn btn-primary" />--}}
+                                </div>
+                            </div>
+
 
                         </form>
 
                          <div class="form-group row justify-content-center">
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-3">
-                                <input type="button" value="{{ __('lang.exit_and_save') }}" id="in_process"  class="btn btn-primary" />
+                                <input type="button" value="Guardar y salir" id="guardarYSalir"  class="btn btn-primary" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-3">
-                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="for_review" class="btn btn-primary" />
+                                <input type="submit" value="Enviar a revisión" id="enviarARevision" class="btn btn-primary" />
+{{--                                <input type="submit" value="Enviar a revisión" id="for_review" class="btn btn-primary" />--}}
 {{--                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="" class="btn btn-primary" />--}}
                             </div>
                         </div>
@@ -179,8 +189,26 @@
     </div>
 
     <script>
-        let urlArticleSave = '{{ route('article.store') }}' ;
+        {{--let urlArticleSave = '{{ route('article.store') }}' ;--}}
+
+        window.addEventListener('load', function(){
+
+            $('#state').submit(function(e){
+                // alert('ey');
+                // e.preventDefault();
+                $(this).attr('state','en proceso');
+                // $(this).submit();
+            });
+
+            $('#state').submit(function(e){
+                // alert('ey');
+                // e.preventDefault();
+                $(this).attr('state','en revisión');
+                // $(this).submit();
+            });
+        });
     </script>
+
 @endsection
 
 
