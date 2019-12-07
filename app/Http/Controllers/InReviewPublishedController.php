@@ -24,9 +24,121 @@ class InReviewPublishedController extends Controller
             ->orderBy('id')
             ->get();
 
-        return view('editor.reviewPublishView', [
+        return view('editor.rePublishView', [
             'article' => $article,
             'sections' => $sections,
         ]);
+    }
+
+    public function save(Request $request){
+//                                dd($request);
+
+        // validacion
+        $validate = $this->validate($request, [
+            'id' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'section' => 'required|string',
+            'title' => 'required|string|max:255',
+            'sub_title' => 'required|string|max:255',
+            'image_path' => 'image',
+            'text' => 'required|string',
+            'keywords' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'submitState' => 'required|string|max:255',
+        ]);
+
+        // recoger los datos
+        $articleId = $request->input('id');
+        $author = $request->input('author');
+        $section = $request->input('section');
+        $title = $request->input('title');
+        $sub_title = $request->input('sub_title');
+        $image_path = $request->file('image_path');
+        $text = $request->input('text');
+        $keywords = $request->input('keywords');
+        $slug = $request->input('slug');
+//        $state = $request->input('publicado');
+
+        // recuperamos el artículo original
+        $originalArticle = Article::find($articleId);
+
+        // creamos el artículo que se guardará en in_review_published
+        $inReviewPublished = new InReviewPublished();
+        $inReviewPublished->article_id = $articleId;
+        $inReviewPublished->edited_by = \Auth::user()->id;
+        $inReviewPublished->section_id = $section;
+        $inReviewPublished->title = $title;
+        $inReviewPublished->sub_title = $sub_title;
+        $inReviewPublished->image_path = $image_path;
+        $inReviewPublished->text = $text;
+        $inReviewPublished->keywords = $keywords;
+        $inReviewPublished->slug = $slug;
+        $inReviewPublished->state = 'publicado';
+        // subir fichero
+        if ($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            $inReviewPublished->image_path = $image_path_name;
+        }else{
+            $inReviewPublished->image_path = $originalArticle->image_path;
+        }
+
+        $inReviewPublished->save();
+
+        if (Auth::user()->role == 'journalist'){
+            return redirect()->route('journalist.controlPanelView')
+                ->with(['message' => 'Cambios guardados con éxito. Están pendientes de revisión']);
+        } elseif(Auth::user()->role == 'admin'){
+            return redirect()->route('admin.controlPanelView')
+                ->with(['message' => 'Cambios guardados con éxito. Están pendientes de revisión']);
+        } else{
+            return redirect()->route('editor.controlPanelView')
+                ->with(['message' => 'Cambios guardados con éxito. Están pendientes de revisión']);
+        }
+
+        // asignamos l
+//        BORRAR DESDE AQUI
+//////////////////////////////////////////////////////
+        $user = Auth::user();
+        $originalArticle = Article::find($articleId);
+
+        // creamos el nuevo artículo en in_review_published
+        $article = new InReviewPublished();
+        $article->article_id = $articleId;
+        $article->edited_by = Auth::user()->id;
+        $article->title = $section;
+        $article->title = $title;
+        $article->sub_title = $sub_title;
+        $article->text = $text;
+        $article->keywords = $keywords;
+        $article->slug = $slug;
+        $article->state = 'publicado';
+
+//        dd($article);
+
+        // subir fichero
+        if ($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            $article->image_path = $image_path_name;
+        } else{
+            $article->image_path = $originalArticle->image_path;
+        }
+
+//        dd($article);
+
+        $article->save();
+
+        if (Auth::user()->role == 'journalist'){
+            return redirect()->route('journalist.controlPanelView')
+                ->with(['message' => 'Artículo registrado con éxito']);
+        } elseif(Auth::user()->role == 'admin'){
+            return redirect()->route('admin.controlPanelView')
+                ->with(['message' => 'Artículo registrado con éxito']);
+        } else{
+            return redirect()->route('editor.controlPanelView')
+                ->with(['message' => 'Artículo registrado con éxito']);
+        }
     }
 }

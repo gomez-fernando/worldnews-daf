@@ -23,15 +23,17 @@
 
                         @if ((Auth::user() && Auth::user()->usertype != 'journalist')  || (Auth::user() && Auth::user()->id == $publishedArticle->author))
                                 <div class="actions ml-auto">
-                                    <a href="{{ route('article.edit', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning">Actualizar</a>
+                                    <a href="{{ route('article.editPublishedView', ['id' => $publishedArticle->id]) }}" class="btn btn-sm btn-warning">Actualizar</a>
+                                </div>
+
                             @endif
 
+{{--{{ Auth::user()->usertype  }}--}}
 
-
-                                    @if (Auth::user() && Auth::user()->usertype == 'admin')
-
+                                    @if (\Auth::user() && \Auth::user()->usertype == 'admin')
+{{--                                        {{ Auth::user()->usertype  }}--}}
                                     <!-- Button to Open the Modal -->
-                                        <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#myModal">
+                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
                                             Borrar
                                         </button>
 

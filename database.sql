@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `deleted_articles`;
 CREATE TABLE IF NOT EXISTS `deleted_articles` (
                                                   `id` smallint(6) NOT NULL AUTO_INCREMENT,
                                                   `article_id` smallint(6) NOT NULL,
-                                                  `edited_by` smallint(6) NOT NULL,
+                                                  `edited_by` smallint(6) DEFAULT NULL,
                                                   `section_id` smallint(6) NOT NULL,
                                                   `title` varchar(255) NOT NULL,
                                                   `sub_title` varchar(255) NOT NULL,
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `in_review_published`;
 CREATE TABLE IF NOT EXISTS `in_review_published` (
                                                   `id` smallint(6) NOT NULL AUTO_INCREMENT,
                                                   `article_id` smallint(6) NOT NULL,
-                                                  `edited_by` smallint(6) NOT NULL,
+                                                  `edited_by` smallint(6) DEFAULT NULL,
                                                   `section_id` smallint(6) NOT NULL,
                                                   `title` varchar(255) NOT NULL,
                                                   `sub_title` varchar(255) NOT NULL,
@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `in_review_published` (
                                                   `text` text NOT NULL,
                                                   `keywords` varchar(255) NOT NULL,
                                                   `slug` varchar(255) NOT NULL,
+                                                  `editor_comments` text DEFAULT NULL,
                                                   `state` enum('publicado') NOT NULL,
                                                   `created_at` datetime NOT NULL,
                                                   `updated_at` datetime DEFAULT NULL,

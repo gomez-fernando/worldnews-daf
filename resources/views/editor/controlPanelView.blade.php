@@ -58,7 +58,7 @@
                         <th scope="row">{{ $inReviewPublishedArticle->title }}</th>
                         <td>{{ $inReviewPublishedArticle->created_at }}</td>
                         <td>
-                            <a href="{{ route('editor.re-publish', ['id' => $inReviewPublishedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                            <a href="{{ route('editor.rePublishView', ['id' => $inReviewPublishedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
                         </td>
                     </tr>
                 @endforeach

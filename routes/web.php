@@ -42,7 +42,7 @@ Route::get('/article/delete/{id}', 'ArticleController@delete')->name('article.de
 Route::get('/article/editar/{id}', 'ArticleController@editInProcessInReviewView')->name('article.editInProcessInReviewView');
 Route::post('/article/actualizar-articulo', 'ArticleController@editInProcessInReview')->name('article.editInProcessInReview');
 Route::get('/article/editar-publicado/{id}', 'ArticleController@editPublishedView')->name('article.editPublishedView');
-Route::post('/article/republicar', 'ArticleController@publicadoARevisionRepublicar')->name('article.publicadoARevisionRepublicar');
+Route::post('/article/republicar', 'ArticleController@editPublished')->name('article.editPublished');
 
 
 
@@ -56,8 +56,10 @@ Route::post('/article/store', 'ArticleController@store')->name('article.store');
 Route::get('/editor/panel-de-control', 'ArticleController@editorControlPanelView')->name('editor.controlPanelView');
 Route::get('/editor/publicar/{id}', 'ArticleController@publishView')->name('editor.publishView');
 Route::post('/editor/publicar', 'ArticleController@publish')->name('editor.publish');
-Route::get('/editor/republicar/{id}', 'InReviewPublishedController@rePublishView')->name('editor.re-publish');
+Route::get('/editor/republicar/{id}', 'InReviewPublishedController@rePublishView')->name('editor.rePublishView');
 Route::post('/editor/republicar', 'ArticleController@rePublish')->name('editor.rePublish');
+// crear version provisional para republicar en in_review_published
+Route::post('/editor/guardar-nueva-versión-provisionalmente', 'InReviewPublishedController@save')->name('save');
 
 
 Route::get('/editor/revisar-publicar-articulo/{id}', 'ArticleController@reviewPublishArticleView')->name('editor.review-publish-article');

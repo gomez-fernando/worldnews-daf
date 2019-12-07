@@ -11,18 +11,18 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        Editar artículo
+                        Editar artículo no publicado
                     </div>
                     <div class="card-body">
                         <form action="{{ route('article.editInProcessInReview') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
-                            <input type="hidden" value="{{ $article->author }}" name="author" id="" />
+{{--                            <input type="hidden" value="{{ $article->author }}" name="author" id="" />--}}
 
                             <div class="form-group row">
                                 <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>
+                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="" class="form-control" required>
                                 </div>
                                 {{--                                <input type="hidden" value="{{ $article->user->id }}">--}}
 
@@ -31,7 +31,7 @@
                             <div class="form-group row">
                                 <label for="title" class="col-md-3 col-form-label text-md-right">Título</label>
                                 <div class="col-md-8">
-                                    <input type="text" value="{{ $article->title }}" id="title" name="title" class="form-control" required>
+                                    <input type="text" value="{{ $article->title }}" id="title" name="title" class="form-control" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('title'))
@@ -46,7 +46,7 @@
                             <div class="form-group row">
                                 <label for="sub_title" class="col-md-3 col-form-label text-md-right">Subtítulo</label>
                                 <div class="col-md-8">
-                                    <input type="text" value="{{ $article->sub_title }}" id="sub_title" name="sub_title" class="form-control" required>
+                                    <input type="text" value="{{ $article->sub_title }}" id="sub_title" name="sub_title" class="form-control" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('sub_title'))
@@ -61,21 +61,21 @@
                             <div class="form-group row">
                                 <label for="created_at" class="col-md-3 col-form-label text-md-right">Creado</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="created_at" class="form-control" required>
+                                    <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="created_at" class="form-control" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="published_at" class="col-md-3 col-form-label text-md-right">Publicado</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>
+                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">Sección</label>
                                 <div class="col-md-8">
-                                    <select  type="select" id="section" name="section" class="form-control" required>
+                                    <select  type="select" id="section" name="section" class="form-control" required autofocus>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}"
                                                     @if ($section->id == $article->section_id)
@@ -107,7 +107,7 @@
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">Cambiar imagen</label>
                                 <div class="col-md-8">
                                     {{--                                    <input type="file" value="{{ $article->image_path }}" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
-                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
+                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" value="{{ old('text') }}" />
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('image_path'))
@@ -122,7 +122,7 @@
                             <div class="form-group row">
                                 <label for="keywords" class="col-md-3 col-form-label text-md-right">Tags</label>
                                 <div class="col-md-8">
-                                    <input type="text" value="{{ $article->keywords }}" id="keywords" name="keywords" class="form-control" required>
+                                    <input type="text" value="{{ $article->keywords }}" id="keywords" name="keywords" class="form-control" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('keywords'))
@@ -137,7 +137,7 @@
                             <div class="form-group row">
                                 <label for="slug" class="col-md-3 col-form-label text-md-right">Slug</label>
                                 <div class="col-md-8">
-                                    <input type="text" value="{{ $article->slug }}" id="slug" name="slug" class="form-control" required>
+                                    <input type="text" value="{{ $article->slug }}" id="slug" name="slug" class="form-control" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('slug'))
@@ -152,7 +152,7 @@
                             <div class="form-group row">
                                 <label for="text" class="col-md-3 col-form-label text-md-right">Texto</label>
                                 <div class="col-md-8">
-                                    <textarea id="text" name="text" class="form-control" required>{{ $article->text }}</textarea>
+                                    <textarea id="text" name="text" class="form-control" required autofocus>{{ $article->text }}</textarea>
 
                                     <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
                                     <script>
@@ -201,43 +201,19 @@
                                 </div>
                             </div>
 
-                            @if ($article->state == 'en proceso')
+                            <div class="form-group row justify-content-center">
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="Guardar y salir" id="" name="" class="btn btn-primary" />
+                                        <input type="submit" name="submitState" id="guardarYSalir" value="Guardar y salir" class="btn btn-primary"  />
                                     </div>
                                 </div>
-                            @endif
 
-
-
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="Enviar a revisión" id="" name="" class="btn btn-primary" />
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" name="submitState" id="enviarARevision" value="Enviar a revisión" class="btn btn-primary" />
+                                    </div>
                                 </div>
                             </div>
-
-
-
-                            {{-- <div class="form-group row justify-content-center"> --}}
-                            {{--                            @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso' || $article->state == 'publicado') )--}}
-                            {{--                                @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso') )--}}
-                            {{--                                <div class="form-group row">--}}
-                            {{--                                    <div class="col-md-6 offset-md-3">--}}
-                            {{--                                        <input type="button" value="Guardar y salir" id="in_process"  class="btn btn-primary" />--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            @endif--}}
-                            {{--                            <div class="form-group row">--}}
-                            {{--                                <div class="col-md-6 offset-md-3">--}}
-                            {{--                                    <input type="submit" value="Enviar a revisión" id="" name="" class="btn btn-primary" />--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
-                            {{--                            @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )--}}
-
-
                         </form>
                     </div>
                 </div>
