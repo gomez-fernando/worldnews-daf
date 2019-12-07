@@ -34,6 +34,7 @@
                                 <div class="col-md-8">
                                     <input type="text" value="{{ $article->title }}" id="title" name="title" class="form-control" required>
 
+
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('title'))
                                         <span class="alert-danger" role="alert">
@@ -69,7 +70,7 @@
 {{--                            <div class="form-group row">--}}
 {{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">Publicado</label>--}}
 {{--                                <div class="col-md-8">--}}
-{{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="published_at" class="form-control" required>--}}
+{{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="" class="form-control" required>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
 
@@ -152,6 +153,14 @@
                                 <label for="text" class="col-md-3 col-form-label text-md-right">Texto</label>
                                 <div class="col-md-8">
                                     <textarea id="text" name="text" class="form-control" required>{{ $article->text }}</textarea>
+                                    {{--                                    CKEDITOR--}}
+                                    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+
+                                    <script>
+                                        // Replace the <textarea id="editor1"> with a CKEditor
+                                        // instance, using default configuration.
+                                        CKEDITOR.replace( 'text' );
+                                    </script>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('text'))
@@ -166,7 +175,7 @@
                             <div class="form-group row">
                                 <label for="state" class="col-md-3 col-form-label text-md-right">Estado</label>
                                 <div class="col-md-8">
-                                    <input type="text" readonly value="{{ $article->state }}" id="state" name="state" class="form-control" required>
+                                    <input type="text" readonly value="{{ $article->state }}" id="state" name="" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('state'))
@@ -183,7 +192,7 @@
                                 <div class="col-md-8">
                                     <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
                                               readonly
-                                              @endif id="editorComments" name="editorComments" class="form-control">{{$article->editor_comments }}</textarea>
+                                              @endif id="editorComments" name="editorComments" class="form-control" required autofocus>{{$article->editor_comments }} </textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('editorComments'))
@@ -198,17 +207,15 @@
                             {{-- <div class="form-group row justify-content-center"> --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="Devolver con comentarios" id="" name="" class="btn btn-primary" />
+                                    <input type="submit" value="Devolver al autor" id="" name="submitState" class="btn btn-primary" />
                                 </div>
                             </div>
 
-                            @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="Republicar" id="" name="" class="btn btn-primary" />
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-3">
+                                    <input type="submit" value="Republicar" id="" name="submitState" class="btn btn-primary" />
                                 </div>
-                            @endif
+                            </div>
 
                         </form>
                     </div>

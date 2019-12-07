@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Editar artículo</title>
+    <title>Editar artículo publicado</title>
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        Editar artículo
+                        Editar artículo publicado
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('article.publicadoARevisionRepublicar') }}" method="POST" id="" enctype="multipart/form-data">
+                        <form action="{{ route('save') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
                             <input type="hidden" value="{{ $article->author }}" name="author" id="" />
@@ -22,7 +22,7 @@
                             <div class="form-group row">
                                 <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>
+                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="" class="form-control" required>
                                 </div>
 {{--                                <input type="hidden" value="{{ $article->user->id }}">--}}
 
@@ -201,48 +201,32 @@
                                 </div>
                             </div>
 
-                            @if ($article->state == 'publicado')
-                                <div class="row">
-                                    <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($article->state == 'en proceso')
-                                <div class="row">
-                                    <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />
-                                    </div>
-                                </div>
-                            @endif
-
-
-
-                            {{-- <div class="form-group row justify-content-center"> --}}
-{{--                            @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso' || $article->state == 'publicado') )--}}
-{{--                                @if (Auth::user() && Auth::user()->usertype == 'journalist' && ($article->state == 'en proceso') )--}}
+{{--                            @if ($article->state == 'publicado')--}}
+{{--                                <div class="row">--}}
+{{--                                    <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>--}}
+{{--                                </div>--}}
 {{--                                <div class="form-group row">--}}
 {{--                                    <div class="col-md-6 offset-md-3">--}}
-{{--                                        <input type="button" value="Guardar y salir" id="in_process"  class="btn btn-primary" />--}}
+{{--                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                            @endif--}}
-{{--                            <div class="form-group row">--}}
-{{--                                <div class="col-md-6 offset-md-3">--}}
-{{--                                    <input type="submit" value="Enviar a revisión" id="" name="" class="btn btn-primary" />--}}
+
+
+
+                            <div class="form-group row justify-content-center">
+{{--                                <div class="form-group row">--}}
+{{--                                    <div class="col-md-6 offset-md-3">--}}
+{{--                                        <input type="submit" name="submitState" value="Devolver al autor" class="btn btn-primary"  />--}}
+{{--                                    </div>--}}
 {{--                                </div>--}}
-{{--                            </div>--}}
 
-{{--                            @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )--}}
-
-
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" name="submitState" value="Enviar a revisión" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

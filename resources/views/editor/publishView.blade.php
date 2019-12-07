@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        Republicar
+                        Publicar artículo
                     </div>
                     <div class="card-body">
                         <form action="{{ route('editor.publish') }}" method="POST" id="" enctype="multipart/form-data">
@@ -62,7 +62,7 @@
                             <div class="form-group row">
                                 <label for="created_at" class="col-md-3 col-form-label text-md-right">Creado</label>
                                 <div class="col-md-8">
-                                    <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="created_at" class="form-control" required>
+                                    <input readonly value="{{ $article->created_at }}" type="text" id="created_at" name="" class="form-control" required>
                                 </div>
                             </div>
 
@@ -166,7 +166,7 @@
                             <div class="form-group row">
                                 <label for="state" class="col-md-3 col-form-label text-md-right">Estado</label>
                                 <div class="col-md-8">
-                                    <input type="text" readonly value="{{ $article->state }}" id="state" name="state" class="form-control" required>
+                                    <input type="text" readonly value="{{ $article->state }}" id="state" name="" class="form-control" required>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('state'))
@@ -183,7 +183,7 @@
                                 <div class="col-md-8">
                                     <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
                                               readonly
-                                              @endif id="editorComments" name="editorComments" class="form-control">{{$article->editor_comments }}</textarea>
+                                              @endif id="editorComments" name="editorComments" class="form-control">{{$article->editor_comments }} {{ old('editorComments') }} required autofocus</textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('editorComments'))
@@ -195,20 +195,19 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="form-group row justify-content-center"> --}}
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="Devolver con comentarios" id="" name="" class="btn btn-primary" />
-                                </div>
-                            </div>
-
-                            @if (Auth::user() && Auth::user()->usertype == 'editor' && ($article->state == 'en revisión' || $article->state == 'publicado') )
+                            <div class="form-group row justify-content-center">
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-3">
-                                        <input type="submit" value="Publicar" id="" name="" class="btn btn-primary" />
+                                        <input type="submit" name="submitState" value="Devolver al autor" class="btn btn-primary"  />
                                     </div>
                                 </div>
-                            @endif
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" name="submitState" value="Publicar" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
 
                         </form>
                     </div>

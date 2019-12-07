@@ -18,7 +18,7 @@
 {{--                            <form id="altaArticuloForm"  >--}}
                             @csrf
 {{--                            <input type="hidden" id="state" name="state" value="">--}}
-                                                        <input type="hidden" id="state" name="state" value="en proceso">
+{{--                                                        <input type="hidden" id="state" name="state" value="en proceso">--}}
                             {{--                            <input type="hidden" id="state" name="state" value="en revisión">--}}
 
                             <div class="form-group row">
@@ -33,7 +33,7 @@
                             <div class="form-group row">
                                 <label for="title" class="col-md-3 col-form-label text-md-right">{{ __('lang.title') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="title" name="title" class="form-control" required>
+                                    <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('title'))
@@ -48,7 +48,7 @@
                             <div class="form-group row">
                                 <label for="sub_title" class="col-md-3 col-form-label text-md-right">{{ __('lang.sub_title') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="sub_title" name="sub_title" class="form-control" required>
+                                    <input type="text" id="sub_title" name="sub_title" class="form-control" value="{{ old('sub_title') }}" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('sub_title'))
@@ -60,19 +60,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>
-                                <div class="col-md-8">
-                                    <input readonly value="" type="text" id="created_at"  class="form-control" required>
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>--}}
+{{--                                <div class="col-md-8">--}}
+{{--                                    <input readonly value="" type="text" id="created_at"  class="form-control" required>--}}
 
 
-                                </div>
-                            </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">{{ __('lang.section') }}</label>
                                 <div class="col-md-8">
-                                    <select  type="select" id="section" name="section" class="form-control" required>
+                                    <select  type="select" id="section" name="section" class="form-control" value="{{ old('section') }}" required autofocus>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}">{{ $section->name }}</option>
                                         @endforeach
@@ -92,7 +92,7 @@
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.image') }}</label>
                                 <div class="col-md-8">
 {{--                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
-                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
+                                    <input type="file" id="image_path" name="image_path" class="form-control {{ $errors->has('image_path') ? 'is-invalid' : '' }}" value="{{ old('image_path') }}" required autofocus />
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('image_path'))
@@ -107,7 +107,7 @@
                             <div class="form-group row">
                                 <label for="keywords" class="col-md-3 col-form-label text-md-right">{{ __('lang.keywords') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="keywords" name="keywords" class="form-control" required>
+                                    <input type="text" id="keywords" name="keywords" class="form-control"  value="{{ old('keywords') }}" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('keywords'))
@@ -122,7 +122,7 @@
                             <div class="form-group row">
                                 <label for="slug" class="col-md-3 col-form-label text-md-right">{{ __('Slug') }}</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="slug" name="slug" class="form-control" required>
+                                    <input type="text" id="slug" name="slug" class="form-control"  value="{{ old('slug') }}" required autofocus>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('slug'))
@@ -137,7 +137,7 @@
                             <div class="form-group row">
                                 <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('lang.text') }}</label>
                                 <div class="col-md-8">
-                                    <textarea id="text" name="text" class="form-control" required></textarea>
+                                    <textarea id="text" name="text" class="form-control"  value="{{ old('text') }}" required autofocus></textarea>
 
                                     <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 
@@ -156,32 +156,23 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group row justify-content-center">
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" name="submitState" id="guardarYSalir" value="Guardar y salir" class="btn btn-primary"  />
+                                    </div>
+                                </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-3">
-                                    <input type="submit" value="{{ __('lang.send_to_review') }}" id="for_review" class="btn btn-primary" />
-                                    {{--                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="" class="btn btn-primary" />--}}
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" name="submitState" id="enviarARevision" value="Enviar a revisión" class="btn btn-primary" />
+                                    </div>
                                 </div>
                             </div>
 
-
                         </form>
 
-                         <div class="form-group row justify-content-center">
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-3">
-                                <input type="button" value="Guardar y salir" id="guardarYSalir"  class="btn btn-primary" />
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-3">
-                                <input type="submit" value="Enviar a revisión" id="enviarARevision" class="btn btn-primary" />
-{{--                                <input type="submit" value="Enviar a revisión" id="for_review" class="btn btn-primary" />--}}
-{{--                                <input type="submit" value="{{ __('lang.send_to_review') }}" id="" class="btn btn-primary" />--}}
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -191,22 +182,15 @@
     <script>
         {{--let urlArticleSave = '{{ route('article.store') }}' ;--}}
 
-        window.addEventListener('load', function(){
-
-            $('#state').submit(function(e){
-                // alert('ey');
-                // e.preventDefault();
-                $(this).attr('state','en proceso');
-                // $(this).submit();
-            });
-
-            $('#state').submit(function(e){
-                // alert('ey');
-                // e.preventDefault();
-                $(this).attr('state','en revisión');
-                // $(this).submit();
-            });
-        });
+        // $(document).ready(function(){
+        //
+        //     $("input[type=submit]").click(function() {
+        //         var accion = $(this).attr('dir');
+        //         $('form').attr('action', accion);
+        //         $('form').submit();
+        //     });
+        //
+        // });
     </script>
 
 @endsection
