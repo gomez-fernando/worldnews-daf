@@ -408,6 +408,41 @@ footer .social i.icon-pi {
 .preview-img {
 	max-width: 100%;
 }
+
+#tagsSearch {
+	position: relative;
+	border-radius: 0.25rem;
+	overflow: hidden;
+	border: 1px solid #cfcfcf;
+}
+#tagsSearch > * {
+	height: 40px;
+	line-height: 40px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+#tagsSearch .form-control {
+	padding-left: 10px;
+	padding-right: 50px;
+	border: 0;
+}
+
+#tagsSearch input[type="submit"] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 48px;
+	padding: 0;
+	font-size: 0;
+	border: 0;
+	background-color: #f4f4f4;
+	border-left: 1px solid #cfcfcf;
+	background-image: url(../img/icon-search.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: 18px auto;
+	background-size: 18px auto;
+}
 /**/
 
 @media (min-width: 640px) {
