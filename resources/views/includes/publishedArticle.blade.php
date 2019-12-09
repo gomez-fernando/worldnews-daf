@@ -12,14 +12,14 @@
                 </div>
                 <h3 class="title">
                 <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}">
-                    {{ $publishedArticle->title}}
+                    {{$publishedArticle->title}}
                 </a>
                 </h3>
                 <div class="subtitle">
-                    {{ $publishedArticle->sub_title}}
+                    {{$publishedArticle->sub_title}}
                 </div>
                 <div class="summary">
-                    {{ $publishedArticle->text }}
+                    {{$publishedArticle->text}}
                 </div>
                 <div class="link">
                     <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}" class="btn">Leer m&aacute;s <i></i></a>

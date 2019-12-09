@@ -112,7 +112,7 @@ h1, h2, h3, h4 {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	margin: 0 10px;
+	margin: 0 20px 0 10px;
 }
 .header-02 .nav-link {
 	font-weight: bold;
@@ -480,6 +480,10 @@ footer .social i.icon-pi {
 }
 .news-list .box h3.title a {
 	font-size: 18px;
+}
+#tagsSearch {
+    width: 100%;
+    margin: 0 10px;
 }
 
 }
