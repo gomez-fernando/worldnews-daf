@@ -143,9 +143,20 @@
     {{-- --}}
 </div>
 
-
-
         </div>
 
     </div>
+
+
+<script>
+// Eliminar noticia duplicada
+var a=$.trim($('h2.item-title').text());
+$('h3.title a').each(function(){
+    if ($.trim($(this).text())==a) {
+        $(this).parents('.box').remove();   
+    }
+})
+</script>
+
+
 @endsection
