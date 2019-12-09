@@ -31,7 +31,6 @@ class InReviewPublishedController extends Controller
     }
 
     public function save(Request $request){
-//                                dd($request);
 
         // validacion
         $validate = $this->validate($request, [
@@ -58,7 +57,6 @@ class InReviewPublishedController extends Controller
         $text = $request->input('text');
         $keywords = $request->input('keywords');
         $slug = $request->input('slug');
-//        $state = $request->input('publicado');
 
         // recuperamos el artículo original
         $originalArticle = Article::find($articleId);
@@ -95,50 +93,6 @@ class InReviewPublishedController extends Controller
         } else{
             return redirect()->route('editor.controlPanelView')
                 ->with(['message' => 'Cambios guardados con éxito. Están pendientes de revisión']);
-        }
-
-        // asignamos l
-//        BORRAR DESDE AQUI
-//////////////////////////////////////////////////////
-        $user = Auth::user();
-        $originalArticle = Article::find($articleId);
-
-        // creamos el nuevo artículo en in_review_published
-        $article = new InReviewPublished();
-        $article->article_id = $articleId;
-        $article->edited_by = Auth::user()->id;
-        $article->title = $section;
-        $article->title = $title;
-        $article->sub_title = $sub_title;
-        $article->text = $text;
-        $article->keywords = $keywords;
-        $article->slug = $slug;
-        $article->state = 'publicado';
-
-//        dd($article);
-
-        // subir fichero
-        if ($image_path){
-            $image_path_name = time().$image_path->getClientOriginalName();
-            Storage::disk('images')->put($image_path_name, File::get($image_path));
-            $article->image_path = $image_path_name;
-        } else{
-            $article->image_path = $originalArticle->image_path;
-        }
-
-//        dd($article);
-
-        $article->save();
-
-        if (Auth::user()->role == 'journalist'){
-            return redirect()->route('journalist.controlPanelView')
-                ->with(['message' => 'Artículo registrado con éxito']);
-        } elseif(Auth::user()->role == 'admin'){
-            return redirect()->route('admin.controlPanelView')
-                ->with(['message' => 'Artículo registrado con éxito']);
-        } else{
-            return redirect()->route('editor.controlPanelView')
-                ->with(['message' => 'Artículo registrado con éxito']);
         }
     }
 }

@@ -12,14 +12,12 @@ class SectionController extends Controller
 //        $this->middleware('auth');
     }
 
-    public function index(){
-//        $sections = Section::orderBy('id', 'desc');
+    public function index($id){
         $publishedArticles = DB::table('articles')
             ->where('state', 'publicado')
-            ->where('category_id', 'publicado')
+            ->where('category_id', $id)
             ->orderBy('id')
             ->get();
-//        dd($sections);
 
         return view('article.create', [
             'publishedArticles' => $publishedArticles
