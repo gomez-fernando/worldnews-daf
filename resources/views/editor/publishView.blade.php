@@ -95,7 +95,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                             <div class="form-group row">
                                 <div class="col-md-10 offset-md-1">
                                     <img class="preview-img" src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
@@ -123,7 +123,8 @@
                             <div class="form-group row">
                                 <label for="keywords" class="col-md-3 col-form-label text-md-right">Tags</label>
                                 <div class="col-md-8">
-                                    <input type="text" value="{{ $article->keywords }}" id="keywords" name="keywords" class="form-control" required>
+                                    <input type="text" value="{{ $article->keywords }}" id="keywords" name="keywords" class="form-control" required autofocus>
+
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('keywords'))
@@ -155,6 +156,14 @@
                                 <div class="col-md-8">
                                     <textarea id="text" name="text" class="form-control" required>{{ $article->text }}</textarea>
 
+                                    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+
+                                    <script>
+                                        // Replace the <textarea id="editor1"> with a CKEditor
+                                        // instance, using default configuration.
+                                        CKEDITOR.replace( 'text' );
+                                    </script>
+
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('text'))
                                         <span class="alert-danger" role="alert">
@@ -185,7 +194,7 @@
                                 <div class="col-md-8">
                                     <textarea @if (Auth::user() && Auth::user()->usertype != 'editor')
                                               readonly
-                                              @endif id="editorComments" name="editorComments" class="form-control">{{$article->editor_comments }} {{ old('editorComments') }} required autofocus</textarea>
+                                              @endif id="editorComments" name="editorComments" class="form-control" required autofocus>{{$article->editor_comments }} {{ old('editorComments') }} </textarea>
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
                                     @if ($errors->has('editorComments'))

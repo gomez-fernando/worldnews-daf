@@ -179,20 +179,6 @@
         </div>
     </div>
 
-    <script>
-        {{--let urlArticleSave = '{{ route('article.store') }}' ;--}}
-
-        // $(document).ready(function(){
-        //
-        //     $("input[type=submit]").click(function() {
-        //         var accion = $(this).attr('dir');
-        //         $('form').attr('action', accion);
-        //         $('form').submit();
-        //     });
-        //
-        // });
-    </script>
-
 @endsection
 
 

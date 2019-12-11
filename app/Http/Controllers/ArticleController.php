@@ -500,6 +500,7 @@ class ArticleController extends Controller
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
             'submitState' => 'required|string|max:255',
+            'editorComments' => 'required|string|max:255',
         ]);
 
         // recoger los datos
