@@ -84,7 +84,30 @@
                 @endforeach
                 </tbody>
             </table>
+        </div>
 
+        <div class="row">
+            <h3>Noticias en revisión para republicar</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Revisar</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($inReviewPublishedArticles as $inReviewPublishedArticle)
+                    <tr>
+                        <th scope="row">{{ $inReviewPublishedArticle->title }}</th>
+                        <td>{{ $inReviewPublishedArticle->created_at }}</td>
+                        <td>
+                            <a href="{{ route('article.editInReviewForRepublishingView', ['id' => $inReviewPublishedArticle->id]) }}" class="btn btn-sm btn-warning">Revisar</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
 
 

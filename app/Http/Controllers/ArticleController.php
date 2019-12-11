@@ -155,11 +155,18 @@ class ArticleController extends Controller
             ->where('editor_comments', null)
             ->get();
 
+        $inReviewPublishedArticles = InReviewPublished::orderBy('id', 'asc')
+            ->where('author', Auth::user()->id)
+//            ->where('state', 'publicado')
+            ->get();
+//        dd($inReviewPublishedArticles);
+
         return view('journalist.controlPanelView', [
             'sections' => $sections,
             'inProcessArticles' => $inProcessArticles,
             'inReviewArticles' => $inReviewArticles,
-            'commentedArticles' => $commentedArticles
+            'commentedArticles' => $commentedArticles,
+            'inReviewPublishedArticles' => $inReviewPublishedArticles
         ]);
     }
 
@@ -447,6 +454,8 @@ class ArticleController extends Controller
         }
     }
 
+
+
     public function editorControlPanelView(){
         if(!\Auth::check()){
             return redirect()->route('home');
@@ -594,6 +603,7 @@ class ArticleController extends Controller
             'text' => 'required|string',
             'keywords' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
+            'editorComments' => 'required|string|max:255',
         ]);
 
         // recoger los datos
@@ -744,10 +754,10 @@ class ArticleController extends Controller
 
         $article->save();
 
-        if (Auth::user()->role == 'journalist'){
+        if (Auth::user()->usertype == 'journalist'){
             return redirect()->route('journalist.controlPanelView')
                 ->with(['message' => 'Artículo registrado con éxito']);
-        } elseif(Auth::user()->role == 'admin'){
+        } elseif(Auth::user()->usertype == 'admin'){
             return redirect()->route('admin.controlPanelView')
                 ->with(['message' => 'Artículo registrado con éxito']);
         } else{

@@ -63,6 +63,7 @@ DROP TABLE IF EXISTS `in_review_published`;
 CREATE TABLE IF NOT EXISTS `in_review_published` (
                                                   `id` smallint(6) NOT NULL AUTO_INCREMENT,
                                                   `article_id` smallint(6) NOT NULL,
+                                                  `author` smallint(6) NOT NULL,
                                                   `edited_by` smallint(6) DEFAULT NULL,
                                                   `section_id` smallint(6) NOT NULL,
                                                   `title` varchar(255) NOT NULL,
@@ -132,6 +133,7 @@ ALTER TABLE `deleted_articles`
 ALTER TABLE `in_review_published`
 
     ADD CONSTRAINT fk_in_review_published_articles FOREIGN KEY(article_id) REFERENCES articles(id) ON DELETE restrict ON UPDATE restrict,
+    ADD CONSTRAINT fk_in_review_published_author FOREIGN KEY(author) REFERENCES users(id) ON DELETE restrict ON UPDATE restrict,
     ADD CONSTRAINT fk_in_review_published_editors FOREIGN KEY(edited_by) REFERENCES users(id) ON DELETE restrict ON UPDATE restrict;
 
 ALTER TABLE `sections`

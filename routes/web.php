@@ -43,6 +43,8 @@ Route::get('/article/editar/{id}', 'ArticleController@editInProcessInReviewView'
 Route::post('/article/actualizar-articulo', 'ArticleController@editInProcessInReview')->name('article.editInProcessInReview');
 Route::get('/article/editar-publicado/{id}', 'ArticleController@editPublishedView')->name('article.editPublishedView');
 Route::post('/article/republicar', 'ArticleController@editPublished')->name('article.editPublished');
+Route::get('/article/reeditar/{id}', 'InReviewPublishedController@editInReviewForRepublishingView')->name('article.editInReviewForRepublishingView');
+Route::post('/article/en-revision-para-republicar', 'InReviewPublishedController@update')->name('inReviewPublished.update');
 
 
 
