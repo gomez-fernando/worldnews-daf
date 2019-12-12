@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -233,121 +234,134 @@ class ArticleController extends Controller
             ]);
     }
 
-    public function update(Request $request){
-        if(!\Auth::check()){
-            return redirect()->route('home');
-        }
-
-        // validacion
-        $validate = $this->validate($request, [
-            'id' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'section' => 'required|string',
-            'title' => 'required|string|max:255',
-            'sub_title' => 'required|string|max:255',
-            'image_path' => 'image',
-            'text' => 'required|string',
-            'keywords' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-        ]);
-
-        // recoger los datos
-        $id = $request->input('id');
-        $author = $request->input('author');
-        $section = $request->input('section');
-        $title = $request->input('title');
-        $sub_title = $request->input('sub_title');
-        $image_path = $request->file('image_path');
-        $text = $request->input('text');
-        $keywords = $request->input('keywords');
-        $slug = $request->input('slug');
-        $state = $request->input('state');
-
-        $user = Auth::user();
-
-//        obtenemos el articulo antiguo
-        $originalArticle = Article::find($id);
-
-        if ($state != 'publicado'){
-            //        asignamos valores al artículo que se guardará en `deleted_articles`
-            $deletedArticle = new DeletedArticle();
-            $deletedArticle->article_id = $originalArticle->id;
-            $deletedArticle->edited_by = $user->id;
-            $deletedArticle->section_id = $originalArticle->section_id;
-            $deletedArticle->title = $originalArticle->title;
-            $deletedArticle->sub_title = $originalArticle->sub_title;
-            $deletedArticle->image_path = $originalArticle->image_path;
-            $deletedArticle->text = $originalArticle->text;
-            $deletedArticle->keywords = $originalArticle->keywords;
-            $deletedArticle->slug = $originalArticle->slug;
-            $deletedArticle->state = $originalArticle->state;
-
-            //        guardamos el $deletedArticle
-            $deletedArticle->save();
-
-            // actualizar objeto Article
-            $article = Article::find($id);
-            $article->author = $author;
-            $article->edited_by = $user->id;
-            $article->section_id = $section;
-            $article->title = $title;
-            $article->sub_title = $sub_title;
-            $article->text = $text;
-            $article->keywords = $keywords;
-            $article->slug = $slug;
-            $article->state = $state;
-
-            $article->editor_comments = $originalArticle->editor_comments;
-
-            // subir fichero
-            if ($image_path){
-                $image_path_name = time().$image_path->getClientOriginalName();
-                Storage::disk('images')->put($image_path_name, File::get($image_path));
-                $article->image_path = $image_path_name;
-            } else{
-                $article->image_path = $originalArticle->image_path;
-            }
-
-            // actualizar registro
-            $article->update();
-            return redirect()->route('article.detail', ['id' => $id])
-                ->with(['message' => 'Artículo enviado a revisión']);
-        } else {
-            //        asignamos valores al artículo que se guardará en `in_review_published`
-            $publicadoYEnRevision = new inReviewPublished();
-            $publicadoYEnRevision->article_id = $id;
-            $publicadoYEnRevision->edited_by = $user->id;
-            $publicadoYEnRevision->section_id = $section;
-            $publicadoYEnRevision->title = $title;
-            $publicadoYEnRevision->sub_title = $sub_title;
-//            $publicadoYEnRevision->image_path = $image_path;
-            $publicadoYEnRevision->text = $originalArticle->text;
-            $publicadoYEnRevision->keywords = $originalArticle->keywords;
-            $publicadoYEnRevision->slug = $originalArticle->slug;
-            $publicadoYEnRevision->state = $originalArticle->state;
-
-            if ($image_path){
-                $image_path_name = time().$image_path->getClientOriginalName();
-                Storage::disk('images')->put($image_path_name, File::get($image_path));
-                $publicadoYEnRevision->image_path = $image_path_name;
-            } else {
-                $image_path = $originalArticle->image_path;
-            }
-
-            //        guardamos el $publicadoYEnRevision
-            $publicadoYEnRevision->save();
-
-//            // actualizar registro
-//            $article->update();
-            return redirect()->route('article.detail', ['id' => $id])
-                ->with(['message' => 'La versión enviada está en revisión. La versión original sigue publicada sin cambios hasta que los apruebe el editor.']);
-        }
-
-
-
-
-    }
+//    public function update(Request $request){
+//        if(!\Auth::check()){
+//            return redirect()->route('home');
+//        }
+//
+//        // validacion
+//        $validate = $this->validate($request, [
+//            'id' => 'required|string|max:255',
+//            'author' => 'required|string|max:255',
+//            'section' => 'required|string',
+//            'title' => 'required|string|max:255',
+//            'sub_title' => 'required|string|max:255',
+//            'image_path' => 'image',
+//            'text' => 'required|string',
+//            'keywords' => 'required|string|max:255',
+//            'slug' => 'required|string|max:255',
+//            'state' => 'required|string|max:255',
+//        ]);
+//
+//        // recoger los datos
+//        $id = $request->input('id');
+//        $author = $request->input('author');
+//        $section = $request->input('section');
+//        $title = $request->input('title');
+//        $sub_title = $request->input('sub_title');
+//        $image_path = $request->file('image_path');
+//        $text = $request->input('text');
+//        $keywords = $request->input('keywords');
+//        $slug = $request->input('slug');
+//        $state = $request->input('state');
+//
+//        $user = Auth::user();
+//
+////        obtenemos el articulo antiguo
+//        $originalArticle = Article::find($id);
+//
+//        if ($state != 'publicado'){
+//            //        asignamos valores al artículo que se guardará en `deleted_articles`
+//            $deletedArticle = new DeletedArticle();
+//            $deletedArticle->article_id = $originalArticle->id;
+//            $deletedArticle->edited_by = $user->id;
+//            $deletedArticle->section_id = $originalArticle->section_id;
+//            $deletedArticle->title = $originalArticle->title;
+//            $deletedArticle->sub_title = $originalArticle->sub_title;
+//            $deletedArticle->image_path = $originalArticle->image_path;
+//            $deletedArticle->text = $originalArticle->text;
+//            $deletedArticle->keywords = $originalArticle->keywords;
+//            $deletedArticle->slug = $originalArticle->slug;
+//            $deletedArticle->state = $originalArticle->state;
+//
+//            //        guardamos el $deletedArticle
+////            $deletedArticle->save();
+//
+//            // actualizar objeto Article
+//            $article = Article::find($id);
+//            $article->author = $author;
+//            $article->edited_by = $user->id;
+//            $article->section_id = $section;
+////            $article->title = $title;
+//            $article->title = 01;
+//            dd($article->title);
+//            $article->sub_title = $sub_title;
+//            $article->text = $text;
+//            $article->keywords = $keywords;
+//            $article->slug = $slug;
+//            $article->state = $state;
+//
+//            $article->editor_comments = $originalArticle->editor_comments;
+//
+//            // subir fichero
+//            if ($image_path){
+//                $image_path_name = time().$image_path->getClientOriginalName();
+//                Storage::disk('images')->put($image_path_name, File::get($image_path));
+//                $article->image_path = $image_path_name;
+//            } else{
+//                $article->image_path = $originalArticle->image_path;
+//            }
+//
+//            // actualizar registros con transaccion
+////            $deletedArticle->save();
+////            $article->update();
+//
+////            DB::beginTransaction();
+////            try{
+//                $deletedArticle->save();
+//                $article->update();
+////            } catch(\Exception $e) {
+////                DB::rollBack();
+////                throw $e;
+////            }
+//
+//            return redirect()->route('article.detail', ['id' => $id])
+//                ->with(['message' => 'Artículo enviado a revisión']);
+//        } else {
+//            //        asignamos valores al artículo que se guardará en `in_review_published`
+//            $publicadoYEnRevision = new inReviewPublished();
+//            $publicadoYEnRevision->article_id = $id;
+//            $publicadoYEnRevision->edited_by = $user->id;
+//            $publicadoYEnRevision->section_id = $section;
+//            $publicadoYEnRevision->title = $title;
+//            $publicadoYEnRevision->sub_title = $sub_title;
+////            $publicadoYEnRevision->image_path = $image_path;
+//            $publicadoYEnRevision->text = $originalArticle->text;
+//            $publicadoYEnRevision->keywords = $originalArticle->keywords;
+//            $publicadoYEnRevision->slug = $originalArticle->slug;
+//            $publicadoYEnRevision->state = $originalArticle->state;
+//
+//            if ($image_path){
+//                $image_path_name = time().$image_path->getClientOriginalName();
+//                Storage::disk('images')->put($image_path_name, File::get($image_path));
+//                $publicadoYEnRevision->image_path = $image_path_name;
+//            } else {
+//                $image_path = $originalArticle->image_path;
+//            }
+//
+//            //        guardamos el $publicadoYEnRevision
+//            $publicadoYEnRevision->save();
+//
+////            // actualizar registro
+////            $article->update();
+//            return redirect()->route('article.detail', ['id' => $id])
+//                ->with(['message' => 'La versión enviada está en revisión. La versión original sigue publicada sin cambios hasta que los apruebe el editor.']);
+//        }
+//
+//
+//
+//
+//    }
 
     public function editInProcessInReviewView($id){
         if(!\Auth::check()){
@@ -575,17 +589,17 @@ class ArticleController extends Controller
         }
     }
 
-    public function authorizeRePublications(){
-        if(!\Auth::check()){
-            return redirect()->route('home');
-        }
-        $articles = inReviewPublished::orderBy('id', 'asc')
-            ->get();
-
-        return view('editor.authorizeRePublications', [
-            'articles' => $articles,
-        ]);
-    }
+//    public function authorizeRePublications(){
+//        if(!\Auth::check()){
+//            return redirect()->route('home');
+//        }
+//        $articles = inReviewPublished::orderBy('id', 'asc')
+//            ->get();
+//
+//        return view('editor.authorizeRePublications', [
+//            'articles' => $articles,
+//        ]);
+//    }
 
     public function rePublish(Request $request){
 
@@ -662,13 +676,15 @@ class ArticleController extends Controller
             $deletedArticle->slug = $originalArticle->slug;
             $deletedArticle->state = $originalArticle->state;
 
-            $deletedArticle->save();
+//            llevado a transaccion
+//            $deletedArticle->save();
 
             // actualizar objeto Articulo original
             $originalArticle->edited_by = $editedBy;
             $originalArticle->title = $section;
             $originalArticle->title = $section;
             $originalArticle->title = $title;
+//            $originalArticle->title = $newArticle;
             $originalArticle->sub_title = $sub_title;
             $originalArticle->text = $text;
             $originalArticle->keywords = $keywords;
@@ -688,10 +704,28 @@ class ArticleController extends Controller
             }
 
             // actualizar el articulo original
-            $originalArticle->update();
+//            llevado a transaccion
+//            $originalArticle->update();
 
             // eliminar l aversión provisional ya revisada
+//            llevado a transaccion
+//            $newArticle->delete();
+
+//            $deletedArticle->save();
+//            $originalArticle->update();
+//            $newArticle->delete();
+
+            DB::beginTransaction();
+            try{
+            $deletedArticle->save();
+            $originalArticle->update();
             $newArticle->delete();
+            DB::commit();
+            } catch(Exception $e) {
+                DB::rollBack();
+//                throw $e;
+                return redirect()->back()->with(['message' => 'Ha ocurrido un error en el servidor. Por favor inténtelo más tarde o contacte al administrador', 'status' => 'error']);
+            }
 
             return redirect()->route('article.detail', ['id' => $originalArticle->id])
                 ->with(['message' => 'Artículo republicado con éxito']);

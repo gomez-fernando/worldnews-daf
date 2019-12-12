@@ -48,7 +48,7 @@ Route::post('/article/en-revision-para-republicar', 'InReviewPublishedController
 
 
 
-Route::post('/article/update', 'ArticleController@update')->name('article.update');
+//Route::post('/article/update', 'ArticleController@update')->name('article.update');
 Route::post('/article/store', 'ArticleController@store')->name('article.store');
 
 
