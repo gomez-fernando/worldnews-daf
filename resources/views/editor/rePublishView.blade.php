@@ -9,6 +9,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                {{-- // mostramos mensaje --}}
+                @include('includes.message')
                 <div class="card">
                     <div class="card-header">
                         Republicar
