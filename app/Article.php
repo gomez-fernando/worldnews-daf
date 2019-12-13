@@ -10,11 +10,16 @@ class Article extends Model
 
     // relacion ONE TO ONE
     public function user(){
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'author');
     }
 
     // relacion ONE TO ONE
-    public function category(){
-        return $this->belongsTo('App\Category', 'category_id');
+    public function section(){
+        return $this->belongsTo('App\Section', 'section_id');
+    }
+
+    //relacion ONE TO MANY
+    public function deleted_Article() {
+        return $this->hasMany('App\DeletedArticle');
     }
 }

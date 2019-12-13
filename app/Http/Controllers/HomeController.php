@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Section;
 
 class HomeController extends Controller
 {
@@ -20,24 +21,30 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param $section_id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($section_id = null)
     {
-
-        // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
-        $publishedArticles = Article::orderBy('id', 'desc')->paginate(5);
-
-        return view('welcome', [
-            'publishedArticles' => $publishedArticles
-        ]);
-    }
-
-    public function home() {
-        $publishedArticles = Article::orderBy('id', 'desc')->paginate(5);
+//        se muestran los artículos por section si está definida en el get
+        if(!empty($section_id)){
+            // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
+            $publishedArticles = Article::orderBy('id', 'desc')
+                ->where('state', 'publicado')
+                ->where('section_id', $section_id)
+                ->paginate(7);
+            $sections = Section::orderBy('id')->get();
+        } else {
+            // $publishedArticles = Article::all(); asi tambien funcionaria pero sin ordenarlos
+            $publishedArticles = Article::orderBy('id', 'desc')
+                ->where('state', 'publicado')
+                ->paginate(7);
+            $sections = Section::orderBy('id')->get();
+        }
 
         return view('home', [
-            'publishedArticles' => $publishedArticles
+            'publishedArticles' => $publishedArticles,
+            'sections' => $sections
         ]);
     }
 }
