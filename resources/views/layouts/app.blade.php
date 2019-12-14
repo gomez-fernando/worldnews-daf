@@ -26,7 +26,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles-01.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles-02.css') }}" rel="stylesheet">
 
     <!-- favicoon -->
     <link rel="shortout icon" type="image/png" href="{{ asset('../img/favicon.ico') }}">
@@ -198,13 +197,6 @@ Footer
 {{-- css/app.css --}}
 
 <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('lib/superfish/hoverIntent.js') }}"></script>
-<script src="{{ asset('lib/superfish/superfish.min.js') }}"></script>
-<script src="{{ asset('lib/morphext/morphext.min.js') }}"></script>
-<script src="{{ asset('lib/wow/wow.min.js') }}"></script>
-<script src="{{ asset('lib/stickyjs/sticky.js') }}"></script>
 <script src="{{ asset('lib/easing/easing.js') }}"></script>
 
 <script>
