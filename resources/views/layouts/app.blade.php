@@ -28,8 +28,8 @@
     <link href="{{ asset('css/styles-01.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles-02.css') }}" rel="stylesheet">
 
-    <!-- favicoon -->
-    <link rel="shortout icon" type="image/png" href="{{ asset('../img/favicon.ico') }}">
+    <!-- favicon -->
+    <link rel="shortout icon" type="image/ico" href="{{ asset('img/favicon.ico') }}">
 
     {{--    CKEditor--}}
 {{--    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>--}}
@@ -192,7 +192,8 @@ Footer
 
 
 </div>
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+{{--<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>--}}
+<a href="#" class="back-to-top"><img src="https://cdn1.iconfinder.com/data/icons/flat-and-simple-part-1/128/arrow_up-512.png" alt=""></a>
 
 <!-- Required JavaScript Libraries -->
 {{-- css/app.css --}}

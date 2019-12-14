@@ -224,6 +224,12 @@ a.back-to-top {
     text-align: center;
     margin: auto;
 }
+
+a.back-to-top img{
+    height: 42px;
+    width: 42px;
+    padding-bottom: 11px;
+}
 /**/
 footer {
 	padding: 20px 0;
