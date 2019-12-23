@@ -1,4 +1,3 @@
-// var url = 'https://lara-gram.000webhostapp.com';
 var url = 'http://worldnews.test';
 
 window.addEventListener('load', function(){

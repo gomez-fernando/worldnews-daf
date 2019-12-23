@@ -16,10 +16,12 @@ $this->app->bind('path.public',function(){return base_path('public_html'); });
 
 8. Clear old Laravel cache: Delete all files from /bootstrap/cache/    except .gitignore
 
+database name: id11930903_worldnews
+database user: id11930903_root
+database password: cyHuwpOyx0lm
+db host:
 
 
-database name: id11029831_laragram
-database user: id11029831_laragram
-database password: kl6mn23c9jn5n
-db host: localhost
+FS5pgSXrYmsLLFQcCymrXv1g271FwK/RzXap43dt0F8=
 
+'key' => env('APP_KEY', base64_decode('FS5pgSXrYmsLLFQcCymrXv1g271FwK/RzXap43dt0F8=')),

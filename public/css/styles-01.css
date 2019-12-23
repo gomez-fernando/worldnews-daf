@@ -66,7 +66,9 @@ h1, h2, h3, h4 {
 	font-weight: bold;
 	font-family: 'Raleway', serif;
 }
-
+.fz-0 {
+	font-size: 0;
+}
 
 /**/
 .header-01 {
@@ -216,7 +218,7 @@ h1, h2, h3, h4 {
 /**/
 a.back-to-top {
     background-color: #39b54a;
-    color: #ffffff;
+    color: #ffffff!important;
     line-height: 30px;
     height: 30px;
     width: 60px;
@@ -241,6 +243,7 @@ footer .social i {
 	height: 22px;
 	display: inline-block;
 	margin: 0 2px;
+	font-size: 0;
 }
 footer .social i.icon-ig {
 	background-image: url(../img/icon-social-instagram.png);
@@ -414,6 +417,10 @@ footer .social i.icon-pi {
 	border-radius: 0.25rem;
 	overflow: hidden;
 	border: 1px solid #cfcfcf;
+}
+#tagsSearch label {
+	    position: absolute;
+    font-size: 0;
 }
 #tagsSearch > * {
 	height: 40px;
