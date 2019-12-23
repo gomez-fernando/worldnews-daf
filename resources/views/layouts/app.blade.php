@@ -28,7 +28,7 @@
     <link href="{{ asset('css/styles-01.css') }}" rel="stylesheet">
 
     <!-- favicoon -->
-    <link rel="shortout icon" type="image/png" href="{{ asset('../img/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
 
     {{--    CKEditor--}}
 {{--    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>--}}
@@ -50,8 +50,9 @@
                 <div class="col-6 b">
                     <!-- Authentication Links -->
                     @guest
+                      <ul>
                         <li class="nav-item dropdown float-right">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle pt-2 pb-2 pl-1 pr-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle pt-2 pb-2 pl-1 pr-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                  <i class="icon-cms"></i><span class="sm-hidden">Gestor de Contenidos</span>  <span class="caret"></span>
                             </a>
 
@@ -70,6 +71,7 @@
 
                             </div>
                         </li>
+                      </ul>
                     @else
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">Inicio</a>
@@ -132,7 +134,8 @@
 
     <nav class="navbar navbar-expand-md header-02">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}"></a>
+            <h1 class="fz-0">Worldnews, web de noticias</h1>
+            <a class="navbar-brand" title="Logotipo de la web" href="{{ url('/') }}"><span class="fz-0">Worldnews</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -140,7 +143,8 @@
 
             {{--                    formulario del buscador de tags--}}
             <form method="get" action="{{ route('article.tagsSearchResult') }}" id="tagsSearch">
-                <input type="text" id="search" class="form-control" required>
+                <input type="text" id="search" name="search" class="form-control" required>
+                <label for="search">Buscar</label>
                 <input type="submit" value="Buscar">
             </form>
 
@@ -180,10 +184,10 @@ Footer
                     | Todos los derechos reservados
                 </div>
                 <div class="col-12 col-md-6 social">
-                    <a href="#"><i class="icon-ig"></i></a>
-                    <a href="#"><i class="icon-tw"></i></a>
-                    <a href="#"><i class="icon-pi"></i></a>
-                    <a href="#"><i class="icon-sh"></i></a>
+                    <a target="_blank" title="Enlace a instagram" href="http://www.instagram.com"><i class="icon-ig"></i><span class="fz-0">Instagram</span></a>
+                    <a target="_blank" title="Enlace a twitter" href="http://www.twitter.com"><i class="icon-tw"></i><span class="fz-0">Twitter</span></a>
+                    <a target="_blank" title="Enlace a pinterest" href="http://www.pinterest.com"><i class="icon-pi"></i><span class="fz-0">Pinterest</span></a>
+                    <a target="_blank" title="Enlace a facebook" href="http://www.facebook.com"><i class="icon-sh"></i><span class="fz-0">Facebook</span></a>
                 </div>
             </div>
         </div>
@@ -191,7 +195,7 @@ Footer
 
 
 </div>
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a class="back-to-top"><i class="fa fa-chevron-up"></i><span class="fz-0">Volver arriba</span></a>
 
 <!-- Required JavaScript Libraries -->
 {{-- css/app.css --}}
