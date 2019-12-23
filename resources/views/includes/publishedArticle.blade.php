@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-4">
                 <figure>
-                    <img src="{{ route('article.file', ['filename' => $publishedArticle->image_path]) }}" alt="imagen del articulo">
+                    <img src="{{ route('article.file', ['filename' => $publishedArticle->image_path]) }}" alt="{{$publishedArticle->title}}">
                 </figure>
             </div>
             <div class="col-8">
@@ -22,7 +22,7 @@
                     {{$publishedArticle->text}}
                 </div>
                 <div class="link">
-                    <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}" class="btn">Leer m&aacute;s <i></i></a>
+                    <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}" class="btn" title="Leer la noticia completa">Leer m&aacute;s <i></i></a>
                 </div>
             </div>
         </div>
