@@ -97,7 +97,7 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-10 offset-md-1">
-                                        <img class="preview-img" src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
+                                        <img class="preview-img avatar" src="{{ route('article.file', ['filename' => $article->image_path]) }}"  alt="">
                                     </div>
                                 </div>
 
