@@ -15,7 +15,8 @@
 
                 <div class="news-item">
                         <div class="item-date">
-                            Publicado: <?php echo date("d M y, g:i a",strtotime($publishedArticle->published_at));?>
+                            Publicado: <?php /** @var TYPE_NAME $publishedArticle */
+                            echo date("d M y, g:i a",strtotime($publishedArticle->published_at));?>
                         </div>
                         <h2 class="item-title">
 
@@ -153,7 +154,7 @@
 var a=$.trim($('h2.item-title').text());
 $('h3.title a').each(function(){
     if ($.trim($(this).text())==a) {
-        $(this).parents('.box').remove();   
+        $(this).parents('.box').remove();
     }
 })
 </script>
