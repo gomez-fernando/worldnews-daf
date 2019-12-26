@@ -15,7 +15,8 @@
 
                 <div class="news-item">
                         <div class="item-date">
-                            Publicado: <?php echo date("d M y, g:i a",strtotime($publishedArticle->published_at));?>
+                            Publicado:
+                            {{ date("d M y, g:i a",strtotime($publishedArticle->published_at)) }}
                         </div>
                         <h2 class="item-title">
 
@@ -28,10 +29,7 @@
 
                             @endif
 
-{{--{{ Auth::user()->usertype  }}--}}
-
                                     @if (\Auth::user() && \Auth::user()->usertype == 'admin')
-{{--                                        {{ Auth::user()->usertype  }}--}}
                                     <!-- Button to Open the Modal -->
                                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
                                             Borrar
@@ -124,7 +122,7 @@
         @foreach ($last6articles as $article)
         <div class="box">
             <div class="date">
-                <?php echo date("d M y | g:i a",strtotime($article->published_at));?>
+                {{ date("d M y | g:i a",strtotime($article->published_at)) }}
             </div>
             <h3 class="title">
             <a href="{{ route('article.detail', ['id' => $article->id]) }}">
@@ -140,7 +138,7 @@
         </div>
 
         @endforeach
-    {{-- --}}
+
 </div>
 
         </div>
@@ -153,10 +151,10 @@
 var a=$.trim($('h2.item-title').text());
 $('h3.title a').each(function(){
     if ($.trim($(this).text())==a) {
-        $(this).parents('.box').remove();   
+        $(this).parents('.box').remove();
     }
 })
 </script>
 
 
-@endsection
+@stop

@@ -8,7 +8,8 @@
             </div>
             <div class="col-8">
                 <div class="date">
-                    <?php echo date("d M y | g:i a",strtotime($publishedArticle->published_at));?>
+                    <?php /** @var TYPE_NAME $publishedArticle */
+                    echo date("d M y | g:i a",strtotime($publishedArticle->published_at));?>
                 </div>
                 <h3 class="title">
                 <a href="{{ route('article.detail', ['id' => $publishedArticle->id]) }}">
