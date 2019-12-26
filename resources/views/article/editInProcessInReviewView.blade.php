@@ -17,7 +17,6 @@
                         <form action="{{ route('article.editInProcessInReview') }}" method="POST" id="" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
-{{--                            <input type="hidden" value="{{ $article->author }}" name="author" id="" />--}}
 
                             <div class="form-group row">
                                 <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>
@@ -100,9 +99,6 @@
                                     <img class="preview-img avatar" src="{{ route('article.file', ['filename' => $article->image_path]) }}" alt="">
                                 </div>
                             </div>
-
-                            {{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
-
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">Cambiar imagen</label>
                                 <div class="col-md-8">

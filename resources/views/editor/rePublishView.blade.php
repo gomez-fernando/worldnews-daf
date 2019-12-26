@@ -21,15 +21,6 @@
                             <input type="hidden" value="{{ $article->id }}" name="id" id="" />
                             <input type="hidden" value="{{ $article->article_id }}" name="articleId" id="" />
                             <input type="hidden" value="{{ $article->edited_by }}" name="editedBy" id="" />
-{{--                            <input type="hidden" value="{{ $article->image_path }}" name="imagePath" id="" />--}}
-
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="author_readonly" class="col-md-3 col-form-label text-md-right">Autor</label>--}}
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="author_readonly" class="form-control" required>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
 
                             <div class="form-group row">
                                 <label for="title" class="col-md-3 col-form-label text-md-right">Título</label>
@@ -69,13 +60,6 @@
                                 </div>
                             </div>
 
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="published_at" class="col-md-3 col-form-label text-md-right">Publicado</label>--}}
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input readonly value="{{ $article->published_at }}" type="text" id="published_at" name="" class="form-control" required>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">Sección</label>
                                 <div class="col-md-8">
@@ -104,8 +88,6 @@
                                     <img class="preview-img avatar" src="{{ route('article.file', ['filename' => $article->image_path]) }}"  alt="">
                                 </div>
                             </div>
-
-                            {{--                            <input type="hidden" value="{{ $article->image_path }}" name="original_image_path" id="" />--}}
 
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">Cambiar imagen</label>
@@ -208,7 +190,6 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="form-group row justify-content-center"> --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
                                     <input type="submit" value="Devolver al autor" id="" name="submitState" class="btn btn-primary" />

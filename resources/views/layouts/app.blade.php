@@ -29,9 +29,6 @@
 
     <!-- favicoon -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
-
-    {{--    CKEditor--}}
-{{--    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>--}}
 </head>
 <body>
 <div id="app">
@@ -198,7 +195,6 @@ Footer
 <a class="back-to-top"><i class="fa fa-chevron-up"></i><span class="fz-0">Volver arriba</span></a>
 
 <!-- Required JavaScript Libraries -->
-{{-- css/app.css --}}
 
 <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('lib/easing/easing.js') }}"></script>

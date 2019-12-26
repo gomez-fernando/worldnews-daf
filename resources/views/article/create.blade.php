@@ -15,11 +15,7 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ route('article.store') }}" method="POST" id="" enctype="multipart/form-data" >
-{{--                            <form id="altaArticuloForm"  >--}}
                             @csrf
-{{--                            <input type="hidden" id="state" name="state" value="">--}}
-{{--                                                        <input type="hidden" id="state" name="state" value="en proceso">--}}
-                            {{--                            <input type="hidden" id="state" name="state" value="en revisión">--}}
 
                             <div class="form-group row">
                                 <label for="authorReadOnly" class="col-md-3 col-form-label text-md-right">{{ __('lang.author') }}</label>
@@ -60,15 +56,6 @@
                                 </div>
                             </div>
 
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="created_at" class="col-md-3 col-form-label text-md-right">{{ __('lang.created_at') }}</label>--}}
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input readonly value="" type="text" id="created_at"  class="form-control" required>--}}
-
-
-{{--                                </div>--}}
-{{--                            </div>--}}
-
                             <div class="form-group row">
                                 <label for="section" class="col-md-3 col-form-label text-md-right">{{ __('lang.section') }}</label>
                                 <div class="col-md-8">
@@ -91,7 +78,6 @@
                             <div class="form-group row">
                                 <label for="image_path" class="col-md-3 col-form-label text-md-right">{{ __('lang.image') }}</label>
                                 <div class="col-md-8">
-{{--                                    <input type="file" id="image_path" name="image_path" class="form-control  {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required/>--}}
                                     <input type="file" id="image_path" name="image_path" class="form-control {{ $errors->has('image_path') ? 'is-invalid' : '' }}" value="{{ old('image_path') }}" required autofocus />
 
                                     {{-- // si se produce un error en la validacion hay una variable siponivble que es errors --}}
@@ -179,7 +165,7 @@
         </div>
     </div>
 
-@endsection
+@stop
 
 
 
