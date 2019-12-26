@@ -85,7 +85,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-10 offset-md-1">
-                                    <img class="preview-img avatar" src="{{ route('article.file', ['filename' => $article->image_path]) }}"  alt="">
+                                    <img class="preview-img avatar" src="{{ route('article.file', ['filename' => $article->image_path]) }}"  alt="Imagen de la noticia">
                                 </div>
                             </div>
 
@@ -211,6 +211,3 @@
     </div>
 
 @endsection
-
-
-
