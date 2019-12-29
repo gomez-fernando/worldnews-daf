@@ -63,28 +63,5 @@ class UserController extends Controller
             ->with(['message'=>'Usuario actualizado correctamente']);
     }
 
-//    public function getImage($filename){
-//        $file = Storage::disk('users')->get($filename);
-//        return new Response($file, 200);
-//    }
-
-//    public function profile($id){
-//        $user = User::find($id);
-//        // $user = \Auth::user();
-//
-//        /////////////////////////////////
-////        $images = Image::where('user_id', $user->id)
-////            ->orderBy('id', 'desc')
-////            ->paginate(5);
-///////////////////////////////////////////////
-//
-//
-//
-//        return view('user.profile', [
-//            'user' => $user,
-////            'images' => $images
-//        ]);
-//    }
-
 
 }
