@@ -24,8 +24,6 @@
                                 <div class="col-md-8">
                                     <input readonly value="{{ $article->user->name .' '. $article->user->surname }}" type="text" id="author_readonly" name="" class="form-control" required>
                                 </div>
-{{--                                <input type="hidden" value="{{ $article->user->id }}">--}}
-
                             </div>
 
                             <div class="form-group row">
@@ -97,7 +95,7 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-10 offset-md-1">
-                                        <img class="preview-img" src="{{ route('article.file', ['filename' => $article->image_path]) }}" class="avatar" alt="">
+                                        <img class="preview-img avatar" src="{{ route('article.file', ['filename' => $article->image_path]) }}"  alt="Imagen actual">
                                     </div>
                                 </div>
 
@@ -200,27 +198,7 @@
                                     @endif
                                 </div>
                             </div>
-
-{{--                            @if ($article->state == 'publicado')--}}
-{{--                                <div class="row">--}}
-{{--                                    <p>El artículo se enviará a revisión nuevamente para ser autorizado por el editor, mientras tanto la versión antigua seguirá publicada</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="form-group row">--}}
-{{--                                    <div class="col-md-6 offset-md-3">--}}
-{{--                                        <input type="submit" value="A revisión para re-publicar" id="" name="" class="btn btn-primary" />--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-
-
-
                             <div class="form-group row justify-content-center">
-{{--                                <div class="form-group row">--}}
-{{--                                    <div class="col-md-6 offset-md-3">--}}
-{{--                                        <input type="submit" name="submitState" value="Devolver al autor" class="btn btn-primary"  />--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-3">
                                         <input type="submit" name="submitState" value="Enviar a revisión" class="btn btn-primary" />
@@ -236,6 +214,3 @@
     </div>
 
 @endsection
-
-
-

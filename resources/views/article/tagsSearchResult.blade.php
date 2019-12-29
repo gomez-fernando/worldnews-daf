@@ -21,6 +21,7 @@
                     <tr>
                         <th scope="row">{{ $article->title }}</th>
                         <td> <?php
+                            /** @var TYPE_NAME $article */
                             $string = $article->keywords;
                             $str_arr = explode (";", $string);
                             echo '<ul>';
@@ -40,12 +41,6 @@
         <div class="row justify-content-center">
 {{--            {{ $articles->links() }}--}}
         </div>
-
-        </div>
-
-    </div>
-
-    </div>
 
     </div>
 @endsection
