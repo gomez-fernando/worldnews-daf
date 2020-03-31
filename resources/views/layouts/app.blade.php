@@ -175,7 +175,7 @@ Footer
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 copyright">
-                    <a href="https://sites.google.com/fp.uoc.edu/grupo-daf/presentaci%C3%B3n-del-proyecto" target="_blank">Grupo DAF 2019</a>
+                    <a href="https://gomez-fernando.github.io/portfolio/" target="_blank">Fernando Gómez Web &copy; 2020</a>
                     |
                     <a href="https://github.com/FernandoDavidGomezOrtega/worldnews-daf" target="_blank">Github</a>
                     | Todos los derechos reservados
