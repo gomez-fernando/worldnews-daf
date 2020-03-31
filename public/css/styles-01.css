@@ -225,6 +225,7 @@ a.back-to-top {
     display: block;
     text-align: center;
     margin: auto;
+    cursor: pointer;
 }
 /**/
 footer {
