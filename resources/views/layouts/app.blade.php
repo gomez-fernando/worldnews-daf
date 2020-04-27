@@ -24,11 +24,15 @@
     <link href="{{ asset('../lib/animate-css/animate.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles-01.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles-02.css') }}" rel="stylesheet">
 
-    <!-- favicoon -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
+    <!-- favicon -->
+    <link rel="shortout icon" type="image/ico" href="{{ asset('img/favicon.ico') }}">
+
+    {{--    CKEditor--}}
+{{--    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>--}}
 </head>
 <body>
 <div id="app">
@@ -47,9 +51,8 @@
                 <div class="col-6 b">
                     <!-- Authentication Links -->
                     @guest
-                      <ul>
                         <li class="nav-item dropdown float-right">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle pt-2 pb-2 pl-1 pr-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle pt-2 pb-2 pl-1 pr-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                  <i class="icon-cms"></i><span class="sm-hidden">Gestor de Contenidos</span>  <span class="caret"></span>
                             </a>
 
@@ -68,7 +71,6 @@
 
                             </div>
                         </li>
-                      </ul>
                     @else
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">Inicio</a>
@@ -131,8 +133,7 @@
 
     <nav class="navbar navbar-expand-md header-02">
         <div class="container">
-            <h1 class="fz-0">Worldnews, web de noticias</h1>
-            <a class="navbar-brand" title="Logotipo de la web" href="{{ url('/') }}"><span class="fz-0">Worldnews</span></a>
+            <a class="navbar-brand" href="{{ url('/') }}"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -140,8 +141,7 @@
 
             {{--                    formulario del buscador de tags--}}
             <form method="get" action="{{ route('article.tagsSearchResult') }}" id="tagsSearch">
-                <input type="text" id="search" name="search" class="form-control" required>
-                <label for="search">Buscar</label>
+                <input type="text" id="search" class="form-control" required>
                 <input type="submit" value="Buscar">
             </form>
 
