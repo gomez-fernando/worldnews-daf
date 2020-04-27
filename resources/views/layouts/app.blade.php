@@ -171,41 +171,42 @@
 Footer
 ============================-->
 
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 copyright">
-                    <a href="https://gomez-fernando.github.io/portfolio/" target="_blank">Fernando Gómez Web &copy; 2019</a>
-                    |
-                    <a href="https://www.linkedin.com/in/gomez-fernando" target="_blank">LinkedIn</a>
-                    |
-                    <a href="https://github.com/FernandoDavidGomezOrtega/worldnews-daf" target="_blank">Github</a>
-                </div>
-                <div class="col-12 col-md-6 social">
-                    <a target="_blank" title="Enlace a instagram" href="http://www.instagram.com"><i class="icon-ig"></i><span class="fz-0">Instagram</span></a>
-                    <a target="_blank" title="Enlace a twitter" href="http://www.twitter.com"><i class="icon-tw"></i><span class="fz-0">Twitter</span></a>
-                    <a target="_blank" title="Enlace a pinterest" href="http://www.pinterest.com"><i class="icon-pi"></i><span class="fz-0">Pinterest</span></a>
-                    <a target="_blank" title="Enlace a facebook" href="http://www.facebook.com"><i class="icon-sh"></i><span class="fz-0">Facebook</span></a>
-                </div>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 copyright">
+                <a href="https://gomez-fernando.github.io/portfolio/" target="_blank">Fernando Gómez Web &copy; 2019</a>
+                |
+                <a href="https://www.linkedin.com/in/gomez-fernando" target="_blank">LinkedIn</a>
+                |
+                <a href="https://github.com/FernandoDavidGomezOrtega/worldnews-daf" target="_blank">Github</a>
+            </div>
+            <div class="col-12 col-md-6 social">
+                <a target="_blank" title="Enlace a instagram" href="http://www.instagram.com"><i class="icon-ig"></i><span class="fz-0">Instagram</span></a>
+                <a target="_blank" title="Enlace a twitter" href="http://www.twitter.com"><i class="icon-tw"></i><span class="fz-0">Twitter</span></a>
+                <a target="_blank" title="Enlace a pinterest" href="http://www.pinterest.com"><i class="icon-pi"></i><span class="fz-0">Pinterest</span></a>
+                <a target="_blank" title="Enlace a facebook" href="http://www.facebook.com"><i class="icon-sh"></i><span class="fz-0">Facebook</span></a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
 
 </div>
-<a class="back-to-top"><i class="fa fa-chevron-up"></i><span class="fz-0">Volver arriba</span></a>
-
-  <!-- JS FontAwesome -->
-  <script src="https://kit.fontawesome.com/a2e8d0339c.js"></script>
+<a href="#" class="back-to-top mb-3"><i class="fa fa-chevron-up"></i></a>
+{{-- <a href="#" class="back-to-top"><img src="https://cdn1.iconfinder.com/data/icons/flat-and-simple-part-1/128/arrow_up-512.png" alt=""></a> --}}
 
 <!-- Required JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{{-- css/app.css --}}
 
-
-{{-- <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script> --}}
+<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('lib/superfish/hoverIntent.js') }}"></script>
+<script src="{{ asset('lib/superfish/superfish.min.js') }}"></script>
+<script src="{{ asset('lib/morphext/morphext.min.js') }}"></script>
+<script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+<script src="{{ asset('lib/stickyjs/sticky.js') }}"></script>
 <script src="{{ asset('lib/easing/easing.js') }}"></script>
 
 <script>
