@@ -1,9 +1,9 @@
 // para local
-// var url = 'http://worldnews.test';
+var url = "http://worldnews.test";
 // end para local
 
 // para el servidor
-var url = "https://amazingweb.website/worldnews/public/";
+// var url = "https://amazingweb.website/worldnews/public/";
 // end para el servidor
 
 window.addEventListener("load", function () {

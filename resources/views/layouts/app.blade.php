@@ -24,7 +24,7 @@
     <link href="{{ asset('../lib/animate-css/animate.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="{{ asset('css/styles-01.css') }}" rel="stylesheet">
 
     <!-- favicoon -->
@@ -175,10 +175,11 @@ Footer
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 copyright">
-                    <a href="https://sites.google.com/fp.uoc.edu/grupo-daf/presentaci%C3%B3n-del-proyecto" target="_blank">Grupo DAF 2019</a>
+                    <a href="https://gomez-fernando.github.io/portfolio/" target="_blank">Fernando Gómez Web &copy; 2019</a>
+                    |
+                    <a href="https://www.linkedin.com/in/gomez-fernando" target="_blank">LinkedIn</a>
                     |
                     <a href="https://github.com/FernandoDavidGomezOrtega/worldnews-daf" target="_blank">Github</a>
-                    | Todos los derechos reservados
                 </div>
                 <div class="col-12 col-md-6 social">
                     <a target="_blank" title="Enlace a instagram" href="http://www.instagram.com"><i class="icon-ig"></i><span class="fz-0">Instagram</span></a>
@@ -194,9 +195,17 @@ Footer
 </div>
 <a class="back-to-top"><i class="fa fa-chevron-up"></i><span class="fz-0">Volver arriba</span></a>
 
-<!-- Required JavaScript Libraries -->
+  <!-- JS FontAwesome -->
+  <script src="https://kit.fontawesome.com/a2e8d0339c.js"></script>
 
-<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+<!-- Required JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+{{-- <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script> --}}
 <script src="{{ asset('lib/easing/easing.js') }}"></script>
 
 <script>
